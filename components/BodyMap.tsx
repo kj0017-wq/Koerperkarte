@@ -447,6 +447,7 @@ export function BodyMap({
                 const key = triggerPointKey(entry);
                 const active = activePoint ? triggerPointKey(activePoint) === key : false;
                 const labelVisible = showAllLabels || active;
+                const palette = triggerPointPalette(entry.mapView);
 
                 return (
                   <g
@@ -461,9 +462,9 @@ export function BodyMap({
                     onMouseEnter={() => setHoveredPoint(entry)}
                     onMouseLeave={() => setHoveredPoint(null)}
                   >
-                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "30" : "18"} fill="#ff3b30" opacity={active ? "0.2" : "0.07"} />
-                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "18" : "11"} fill="#ff3b30" opacity={active ? "0.28" : "0.14"} />
-                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "9" : "5"} fill={active ? "#d70015" : "#ff3b30"} />
+                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "30" : "18"} fill={palette.base} opacity={active ? "0.22" : "0.08"} />
+                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "18" : "11"} fill={palette.base} opacity={active ? "0.32" : "0.16"} />
+                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "9" : "5"} fill={active ? palette.active : palette.base} />
                     {labelVisible && (
                       <>
                         <line
@@ -471,14 +472,15 @@ export function BodyMap({
                           y1={renderedPoint.y}
                           x2={labelX + (labelAnchor === "start" ? -5 : 5)}
                           y2={labelY - 4}
-                          stroke={active ? "#ff3b30" : "#cbd5e1"}
+                          stroke={active ? palette.base : palette.muted}
                           strokeWidth={active ? "2" : "1.5"}
                         />
                         <text
                           x={labelX}
                           y={labelY}
                           textAnchor={labelAnchor}
-                          className={active ? "fill-red-600 text-[13px] font-bold" : "fill-slate-700 text-[13px] font-semibold"}
+                          fill={active ? palette.active : palette.text}
+                          className={active ? "text-[13px] font-bold" : "text-[13px] font-semibold"}
                         >
                           {point.label}
                         </text>
@@ -667,6 +669,32 @@ export function BodyInfoPanel({ info, floating = false }: { info: BodyMapInfo | 
   );
 }
 
+function triggerPointPalette(mapView: MapView) {
+  if (mapView === "back") {
+    return {
+      base: "#7c3aed",
+      active: "#5b21b6",
+      muted: "#c4b5fd",
+      text: "#4c1d95"
+    };
+  }
+
+  if (mapView === "face") {
+    return {
+      base: "#ec4899",
+      active: "#be185d",
+      muted: "#f9a8d4",
+      text: "#831843"
+    };
+  }
+
+  return {
+    base: "#f04438",
+    active: "#b42318",
+    muted: "#fecaca",
+    text: "#7f1d1d"
+  };
+}
 function selectionFocusKey(selection: MapSelection) {
   if (selection.type === "muscle") return `muscle:${selection.id}`;
   if (selection.type === "triggerpoint") return `triggerpoint:${selection.mapView}:${selection.muscleId}:${selection.pointId}`;
