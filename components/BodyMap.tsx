@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import type {
@@ -395,7 +395,7 @@ export function BodyMap({
             </filter>
           </defs>
 
-          {layers.anatomy && (mapView === "face" ? <FaceSilhouette /> : mapView === "back" ? <BackBodySilhouette /> : <BodySilhouette />)}
+          {layers.anatomy && (mapView === "face" ? <FaceSilhouette /> : mapView === "back" ? <BackBodySilhouette showMuscleFields={mode !== "dermatomes" && mode !== "myotomes"} /> : <BodySilhouette showMuscleFields={mode !== "dermatomes" && mode !== "myotomes"} />)}
 
           {layers.skeleton && <SkeletonLayer mapView={mapView} />}
           {layers.joints && <JointLayer mapView={mapView} />}
@@ -996,7 +996,7 @@ function OrgansLayer({ mapView }: { mapView: MapView }) {
     </g>
   );
 }
-function BodySilhouette() {
+function BodySilhouette({ showMuscleFields = true }: { showMuscleFields?: boolean }) {
   return (
     <g filter="url(#softShadow)">
       <path
@@ -1011,17 +1011,21 @@ function BodySilhouette() {
         stroke="#94a3b8"
         strokeWidth="2.4"
       />
+      {showMuscleFields && (
+        <>
       <path d="M118 208 C148 184 178 182 200 206 C222 182 252 184 282 208 C252 236 148 236 118 208 Z" fill="#fb923c" opacity="0.56" stroke="#c2410c" strokeWidth="2" />
       <path d="M152 258 C178 276 222 276 248 258 L242 382 C218 402 182 402 158 382 Z" fill="#fed7aa" opacity="0.82" stroke="#c2410c" strokeWidth="2" />
       <path d="M150 430 C182 448 218 448 250 430 C240 468 160 468 150 430 Z" fill="#fdba74" opacity="0.62" stroke="#c2410c" strokeWidth="2" />
       <path d="M140 248 C174 272 226 272 260 248" fill="none" stroke="#fed7aa" strokeWidth="2" />
+        </>
+      )}
       <path d="M200 168 L200 760" fill="none" stroke="#e2e8f0" strokeWidth="1.5" strokeDasharray="6 8" />
       <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="2.4" />
       <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="2.4" />
     </g>
   );
 }
-function BackBodySilhouette() {
+function BackBodySilhouette({ showMuscleFields = true }: { showMuscleFields?: boolean }) {
   return (
     <g filter="url(#softShadow)">
       <path
@@ -1037,10 +1041,14 @@ function BackBodySilhouette() {
         strokeWidth="2.4"
       />
       <path d="M200 158 L200 760" fill="none" stroke="#bfdbfe" strokeWidth="2" strokeDasharray="5 7" />
+      {showMuscleFields && (
+        <>
       <path d="M140 236 C164 220 186 230 192 284 C168 322 136 320 118 278 Z" fill="#60a5fa" opacity="0.5" stroke="#1d4ed8" strokeWidth="2" />
       <path d="M260 236 C236 220 214 230 208 284 C232 322 264 320 282 278 Z" fill="#60a5fa" opacity="0.5" stroke="#1d4ed8" strokeWidth="2" />
       <path d="M154 260 C180 246 220 246 246 260 L238 390 C214 414 186 414 162 390 Z" fill="#93c5fd" opacity="0.64" stroke="#1d4ed8" strokeWidth="2" />
       <path d="M150 430 C182 450 218 450 250 430 C238 468 162 468 150 430 Z" fill="#60a5fa" opacity="0.5" stroke="#1d4ed8" strokeWidth="2" />
+        </>
+      )}
       <path d="M130 500 C164 526 190 520 200 492 C210 520 236 526 270 500" fill="none" stroke="#bfdbfe" strokeWidth="2" />
       <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="2.4" />
       <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#ffffff" stroke="#94a3b8" strokeWidth="2.4" />
