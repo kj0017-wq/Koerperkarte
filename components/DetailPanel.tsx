@@ -66,17 +66,20 @@ function MuscleDetail({
             const active = selectedPoint?.id === point.id;
 
             return (
-              <button
-                key={point.id}
-                type="button"
-                onClick={() => onSelect({ type: "triggerpoint", muscleId: item.id, pointId: point.id, mapView: "front" })}
-                className={`focus-ring rounded-lg px-3 py-2 text-left text-sm transition ${
-                  active ? "bg-red-600 text-white" : "bg-slate-50 text-slate-600 hover:bg-red-50 hover:text-slate-950"
-                }`}
-              >
-                <span className="block font-semibold">{point.label}</span>
-                <span className={active ? "text-red-50" : "text-slate-500"}>Koordinate {point.x}/{point.y}</span>
-              </button>
+              <div key={point.id} className="group relative">
+                <button
+                  type="button"
+                  onClick={() => onSelect({ type: "triggerpoint", muscleId: item.id, pointId: point.id, mapView: "front" })}
+                  aria-describedby={`triggerpoint-preview-${point.id}`}
+                  className={`focus-ring w-full rounded-lg px-3 py-2 text-left text-sm transition ${
+                    active ? "bg-red-600 text-white" : "bg-slate-50 text-slate-600 hover:bg-red-50 hover:text-slate-950"
+                  }`}
+                >
+                  <span className="block font-semibold">{point.label}</span>
+                  <span className={active ? "text-red-50" : "text-slate-500"}>Koordinate {point.x}/{point.y}</span>
+                </button>
+                <TriggerPointHoverOverlay muscle={item} point={point} />
+              </div>
             );
           })}
         </div>
@@ -85,6 +88,44 @@ function MuscleDetail({
   );
 }
 
+
+function TriggerPointHoverOverlay({ muscle, point }: { muscle: MuscleMapItem; point: MuscleMapItem["triggerpoints"][number] }) {
+  const regions = point.painRegions?.length ? point.painRegions : muscle.painRegions;
+  const location = point.anatomicalLocation || muscle.bodyArea || "Lage noch nicht beschrieben";
+  const referral = point.referralArea || muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben";
+  const source = point.sourcePage ? `Quelle S. ${point.sourcePage}` : point.reviewStatus || "Entwurf";
+
+  return (
+    <div
+      id={`triggerpoint-preview-${point.id}`}
+      role="tooltip"
+      className="pointer-events-none absolute bottom-full left-0 z-30 mb-2 hidden w-full min-w-[260px] rounded-lg border border-red-100 bg-white p-3 text-left text-sm text-slate-700 shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 group-hover:block group-focus-within:block lg:left-auto lg:right-0 lg:w-[320px]"
+    >
+      <p className="text-xs font-semibold uppercase text-red-600">Triggerpunkt-Info</p>
+      <h3 className="mt-1 text-base font-semibold text-slate-950">{point.label}</h3>
+      <dl className="mt-2 space-y-2 leading-5">
+        <div>
+          <dt className="font-semibold text-slate-900">Lage</dt>
+          <dd>{location}</dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-slate-900">Ausstrahlung</dt>
+          <dd>{referral}</dd>
+        </div>
+      </dl>
+      {regions.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {regions.slice(0, 8).map((region) => (
+            <span key={region} className="rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-700">
+              {region}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="mt-2 text-xs font-medium text-slate-400">{source}</p>
+    </div>
+  );
+}
 function TriggerPointDetail({ muscle, point }: { muscle: MuscleMapItem; point: MuscleMapItem["triggerpoints"][number] }) {
   const regions = point.painRegions?.length ? point.painRegions : muscle.painRegions;
   const location = point.anatomicalLocation || muscle.bodyArea || "Lage noch nicht beschrieben";
@@ -244,4 +285,5 @@ function panelTitle(
   if (mode === "myotomes") return "Myotom";
   return "Detail";
 }
+
 
