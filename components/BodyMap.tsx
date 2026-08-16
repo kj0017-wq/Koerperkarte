@@ -144,6 +144,7 @@ export function BodyMap({
 }: BodyMapProps) {
   const [mapView, setMapView] = useState<MapView>("front");
   const [hoveredPoint, setHoveredPoint] = useState<PositionedTriggerPointEntry | null>(null);
+  const [hoveredPainRegionId, setHoveredPainRegionId] = useState<string | null>(null);
   const [selectedPointKey, setSelectedPointKey] = useState<string | null>(null);
   const [showFullBody, setShowFullBody] = useState(false);
 
@@ -155,6 +156,7 @@ export function BodyMap({
 
   useEffect(() => {
     setHoveredPoint(null);
+    setHoveredPainRegionId(null);
     setShowFullBody(false);
   }, [mapView, mode, selectionKey]);
 
@@ -200,6 +202,8 @@ export function BodyMap({
   }, [mapView, mode, triggerPointEntries]);
 
   const activePainRegions = mapView === "face" ? facePainRegions : mapView === "back" ? backPainRegions : frontPainRegions;
+  const activePainRegionId = hoveredPainRegionId ?? (selection.type === "painRegion" ? selection.id : null);
+  const activePainRegion = activePainRegionId ? activePainRegions.find((region) => region.id === activePainRegionId) ?? null : null;
   const baseViewBox = mapView === "face" ? "0 0 400 520" : "0 0 400 820";
   const title = mapView === "face" ? "Kopf- und Gesichtskarte" : mapView === "back" ? "Dorsale Koerperansicht" : "Ventrale Koerperansicht";
   const visibleEntries = useMemo(
@@ -247,6 +251,7 @@ export function BodyMap({
   function selectPainRegion(regionId: string) {
     const preferredView = viewForPainRegion(regionId, mapView);
     if (preferredView !== mapView) setMapView(preferredView);
+    setHoveredPainRegionId(null);
     setShowFullBody(false);
     onSelect({ type: "painRegion", id: regionId });
   }
@@ -352,22 +357,50 @@ export function BodyMap({
               ))}
 
           {mode === "triggerpoints" &&
-            activePainRegions.map((region) => (
-              <path
-                key={region.id}
-                d={region.path}
-                fill={selection.type === "painRegion" && selection.id === region.id ? "#ff9f0a" : "#ff9f0a"}
-                opacity={selection.type === "painRegion" && selection.id === region.id ? "0.32" : "0.09"}
-                stroke={selection.type === "painRegion" && selection.id === region.id ? "#ff9f0a" : "transparent"}
-                strokeWidth="10"
-                strokeLinejoin="round"
-                strokeOpacity={selection.type === "painRegion" && selection.id === region.id ? "0.55" : "0"}
-                className="cursor-pointer transition-opacity duration-200 hover:opacity-30"
-                onClick={() => selectPainRegion(region.id)}
+            activePainRegions.map((region) => {
+              const active = activePainRegionId === region.id;
+              const fixed = selection.type === "painRegion" && selection.id === region.id;
+
+              return (
+                <path
+                  key={region.id}
+                  d={region.path}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Schmerzregion ${region.label}`}
+                  fill="#ff9f0a"
+                  opacity={active ? "0.36" : "0.09"}
+                  stroke={active ? (fixed ? "#d97706" : "#ff9f0a") : "transparent"}
+                  strokeWidth={active ? "12" : "10"}
+                  strokeLinejoin="round"
+                  strokeOpacity={active ? "0.72" : "0"}
+                  className="cursor-pointer outline-none transition-opacity duration-200 hover:opacity-40 focus:opacity-40"
+                  onClick={() => selectPainRegion(region.id)}
+                  onFocus={() => setHoveredPainRegionId(region.id)}
+                  onBlur={() => setHoveredPainRegionId(null)}
+                  onMouseEnter={() => setHoveredPainRegionId(region.id)}
+                  onMouseLeave={() => setHoveredPainRegionId(null)}
+                >
+                  <title>{region.label}</title>
+                </path>
+              );
+            })}
+
+          {mode === "triggerpoints" && activePainRegion && (
+            <g pointerEvents="none">
+              <text
+                x={painRegionLabelPosition(activePainRegion.id, mapView).x}
+                y={painRegionLabelPosition(activePainRegion.id, mapView).y}
+                textAnchor="middle"
+                className="fill-slate-950 text-[17px] font-bold"
+                stroke="#ffffff"
+                strokeWidth="5"
+                paintOrder="stroke"
               >
-                <title>{region.label}</title>
-              </path>
-            ))}
+                {activePainRegion.label}
+              </text>
+            </g>
+          )}
 
           {mode === "triggerpoints" && layers.triggerpoints && visibleEntries.length > 0 && (
             <g>
@@ -572,6 +605,39 @@ function viewBoxForZone(zone: FocusZone, mapView: MapView) {
 
   return boxes[zone];
 }
+function painRegionLabelPosition(regionId: string, mapView: MapView) {
+  if (mapView === "face") {
+    const positions: Record<string, { x: number; y: number }> = {
+      head: { x: 200, y: 86 },
+      forehead: { x: 200, y: 134 },
+      temple: { x: 200, y: 154 },
+      eye: { x: 200, y: 174 },
+      orbit: { x: 200, y: 218 },
+      face: { x: 200, y: 248 },
+      ear: { x: 200, y: 236 },
+      jaw: { x: 200, y: 330 },
+      teeth: { x: 200, y: 286 },
+      throat: { x: 200, y: 444 },
+      neck: { x: 200, y: 470 }
+    };
+    return positions[regionId] ?? { x: 200, y: 260 };
+  }
+
+  const zone = zoneForRegion(regionId);
+  const positions: Record<FocusZone, { x: number; y: number }> = {
+    head: { x: 200, y: 112 },
+    neck: { x: 200, y: 164 },
+    shoulder: { x: 200, y: 224 },
+    torso: { x: 200, y: 354 },
+    pelvis: { x: 200, y: 462 },
+    upperLeg: { x: 200, y: 586 },
+    lowerLeg: { x: 200, y: 710 },
+    foot: { x: 200, y: 792 }
+  };
+
+  return positions[zone];
+}
+
 function triggerPointKey(entry: TriggerPointEntry) {
   return triggerPointKeyFromParts(entry.mapView, entry.muscle.id, entry.point.id);
 }
