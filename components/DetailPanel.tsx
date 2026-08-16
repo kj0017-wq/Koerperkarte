@@ -68,10 +68,11 @@ function MuscleDetail({
     selection.type === "triggerpoint" && selection.muscleId === item.id
       ? item.triggerpoints.find((point) => point.id === selection.pointId) ?? null
       : null;
+  const selectedMapView = selection.type === "triggerpoint" && selection.muscleId === item.id ? selection.mapView : "front";
 
   return (
     <div className="space-y-4">
-      {selectedPoint && <TriggerPointDetail muscle={item} point={selectedPoint} />}
+      {selectedPoint && <TriggerPointDetail muscle={item} point={selectedPoint} mapView={selectedMapView} />}
       <InfoBlock label="Verlauf" value={item.course} />
       <InfoBlock label="Ausstrahlung" value={item.referralArea} />
       {isDisplayableInfo(item.explanation) && <InfoBlock label="Kurz erklaert" value={item.explanation} />}
@@ -80,19 +81,20 @@ function MuscleDetail({
         <div className="mt-2 grid gap-2">
           {(item.triggerpoints ?? []).map((point) => {
             const active = selectedPoint?.id === point.id;
+            const palette = triggerPointViewPalette(inferPointMapView(point, item));
 
             return (
               <div key={point.id} className="group relative">
                 <button
                   type="button"
-                  onClick={() => onSelect({ type: "triggerpoint", muscleId: item.id, pointId: point.id, mapView: "front" })}
+                  onClick={() => onSelect({ type: "triggerpoint", muscleId: item.id, pointId: point.id, mapView: inferPointMapView(point, item) })}
                   aria-describedby={`triggerpoint-preview-${point.id}`}
                   className={`focus-ring w-full rounded-lg px-3 py-2 text-left text-sm transition ${
-                    active ? "bg-red-600 text-white" : "bg-slate-50 text-slate-600 hover:bg-red-50 hover:text-slate-950"
+                    active ? palette.activeButtonClass : palette.buttonClass
                   }`}
                 >
                   <span className="block font-semibold">{point.label}</span>
-                  <span className={active ? "text-red-50" : "text-slate-500"}>Koordinate {point.x}/{point.y}</span>
+                  <span className={active ? palette.activeSubtleClass : "text-slate-500"}>Koordinate {point.x}/{point.y}</span>
                 </button>
                 <TriggerPointHoverOverlay muscle={item} point={point} />
               </div>
@@ -105,6 +107,49 @@ function MuscleDetail({
 }
 
 
+function inferPointMapView(point: MuscleMapItem["triggerpoints"][number], muscle: MuscleMapItem): "front" | "back" | "face" {
+  if (point.mapType === "face" || point.mapType === "head-side") return "face";
+  if (point.mapType === "back" || point.mapType === "neck-back") return "back";
+  if (point.mapType === "front" || point.mapType === "body") return "front";
+
+  const searchable = [muscle.name, muscle.bodyArea, muscle.referralArea, ...(muscle.painRegions ?? [])].join(" ").toLowerCase();
+  if (/posterior|hamstring|biceps femoris|semimembranosus|semitendinosus|glute|gastrocnemius|soleus|ruecken|rücken|nacken/.test(searchable)) return "back";
+  if (/kopf|gesicht|masseter|temporalis|pterygoid|jaw|face/.test(searchable)) return "face";
+  return "front";
+}
+
+function triggerPointViewPalette(mapView: "front" | "back" | "face") {
+  if (mapView === "back") {
+    return {
+      panelClass: "border-blue-200 bg-blue-50",
+      kickerClass: "text-blue-700",
+      chipClass: "bg-blue-100 text-blue-800",
+      buttonClass: "bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-950",
+      activeButtonClass: "bg-blue-600 text-white",
+      activeSubtleClass: "text-blue-50"
+    };
+  }
+
+  if (mapView === "face") {
+    return {
+      panelClass: "border-pink-200 bg-pink-50",
+      kickerClass: "text-pink-700",
+      chipClass: "bg-pink-100 text-pink-800",
+      buttonClass: "bg-slate-50 text-slate-600 hover:bg-pink-50 hover:text-pink-950",
+      activeButtonClass: "bg-pink-600 text-white",
+      activeSubtleClass: "text-pink-50"
+    };
+  }
+
+  return {
+    panelClass: "border-orange-200 bg-orange-50",
+    kickerClass: "text-orange-700",
+    chipClass: "bg-orange-100 text-orange-800",
+    buttonClass: "bg-slate-50 text-slate-600 hover:bg-orange-50 hover:text-orange-950",
+    activeButtonClass: "bg-orange-600 text-white",
+    activeSubtleClass: "text-orange-50"
+  };
+}
 function TriggerPointHoverOverlay({ muscle, point }: { muscle: MuscleMapItem; point: MuscleMapItem["triggerpoints"][number] }) {
   const regions = point.painRegions?.length ? point.painRegions : muscle.painRegions;
   const location = point.anatomicalLocation || muscle.bodyArea || "Lage noch nicht beschrieben";
@@ -142,15 +187,16 @@ function TriggerPointHoverOverlay({ muscle, point }: { muscle: MuscleMapItem; po
     </div>
   );
 }
-function TriggerPointDetail({ muscle, point }: { muscle: MuscleMapItem; point: MuscleMapItem["triggerpoints"][number] }) {
+function TriggerPointDetail({ muscle, point, mapView }: { muscle: MuscleMapItem; point: MuscleMapItem["triggerpoints"][number]; mapView: "front" | "back" | "face" }) {
+  const palette = triggerPointViewPalette(mapView);
   const regions = point.painRegions?.length ? point.painRegions : muscle.painRegions;
   const location = point.anatomicalLocation || muscle.bodyArea || "Lage noch nicht beschrieben";
   const referral = point.referralArea || muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben";
   const note = isDisplayableInfo(point.notes) ? point.notes : isDisplayableInfo(muscle.explanation) ? muscle.explanation : "";
 
   return (
-    <section className="rounded-lg border border-red-100 bg-red-50 p-4">
-      <p className="text-xs font-semibold uppercase text-red-600">Ausgewaehlter Triggerpunkt</p>
+    <section className={`rounded-lg border p-4 ${palette.panelClass}`}>
+      <p className={`text-xs font-semibold uppercase ${palette.kickerClass}`}>Ausgewaehlter Triggerpunkt</p>
       <h3 className="mt-1 text-lg font-semibold text-slate-950">{point.label}</h3>
       <dl className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
         <div>
@@ -171,7 +217,7 @@ function TriggerPointDetail({ muscle, point }: { muscle: MuscleMapItem; point: M
       {regions.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {regions.slice(0, 6).map((region) => (
-            <span key={region} className="rounded-full bg-white px-2 py-1 text-xs font-semibold text-red-700">
+            <span key={region} className={`rounded-full px-2 py-1 text-xs font-semibold ${palette.chipClass}`}>
               {region}
             </span>
           ))}

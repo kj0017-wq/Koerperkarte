@@ -457,8 +457,8 @@ export function BodyMap({
                     onMouseEnter={() => setHoveredPoint(entry)}
                     onMouseLeave={() => setHoveredPoint(null)}
                   >
-                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "30" : "18"} fill={palette.base} opacity={active ? "0.22" : "0.08"} />
-                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "18" : "11"} fill={palette.base} opacity={active ? "0.32" : "0.16"} />
+                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "30" : "18"} fill={palette.base} opacity={active ? "0.3" : "0.14"} />
+                    <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "18" : "11"} fill={palette.base} opacity={active ? "0.46" : "0.26"} />
                     <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "9" : "5"} fill={active ? palette.active : palette.base} />
                     {labelVisible && (
                       <>
@@ -620,12 +620,13 @@ export function BodyInfoPanel({ info, floating = false }: { info: BodyMapInfo | 
   if (info.type === "triggerpoint") {
     const { point, fixed } = info;
     const regions = (point.point.painRegions?.length ? point.point.painRegions : point.muscle.painRegions) ?? [];
+    const palette = triggerPointPalette(point.mapView);
 
     return (
-      <section className={baseClass + " rounded-lg border border-red-100 p-4 text-left ring-1 ring-slate-950/5"}>
-        <p className="text-xs font-semibold uppercase text-red-600">{fixed ? "Fixierter Triggerpunkt" : "Triggerpunkt"}</p>
+      <section className={baseClass + ` rounded-lg ${palette.panelClass} p-4 text-left ring-1 ring-slate-950/5`}>
+        <p className={`text-xs font-semibold uppercase ${palette.kickerClass}`}>{fixed ? "Fixierter Triggerpunkt" : "Triggerpunkt"}</p>
         <h3 className="mt-1 text-lg font-semibold text-slate-950">{point.muscle.name}</h3>
-        <p className="mt-1 text-sm font-semibold text-red-700">{point.point.label}</p>
+        <p className={`mt-1 text-sm font-semibold ${palette.labelClass}`}>{point.point.label}</p>
         <dl className="mt-2 space-y-2 text-sm leading-5 text-slate-600">
           <div>
             <dt className="font-semibold text-slate-900">Lage</dt>
@@ -639,7 +640,7 @@ export function BodyInfoPanel({ info, floating = false }: { info: BodyMapInfo | 
         {regions.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {regions.slice(0, 5).map((region) => (
-              <span key={region} className="rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-700">
+              <span key={region} className={`rounded-full px-2 py-1 text-xs font-semibold ${palette.chipClass}`}>
                 {regionLabel(region)}
               </span>
             ))}
@@ -667,10 +668,14 @@ export function BodyInfoPanel({ info, floating = false }: { info: BodyMapInfo | 
 function triggerPointPalette(mapView: MapView) {
   if (mapView === "back") {
     return {
-      base: "#7c3aed",
-      active: "#5b21b6",
-      muted: "#c4b5fd",
-      text: "#4c1d95"
+      base: "#2563eb",
+      active: "#1d4ed8",
+      muted: "#93c5fd",
+      text: "#1e3a8a",
+      panelClass: "border-blue-200 bg-blue-50/70",
+      kickerClass: "text-blue-700",
+      labelClass: "text-blue-800",
+      chipClass: "bg-blue-100 text-blue-800"
     };
   }
 
@@ -679,17 +684,26 @@ function triggerPointPalette(mapView: MapView) {
       base: "#ec4899",
       active: "#be185d",
       muted: "#f9a8d4",
-      text: "#831843"
+      text: "#831843",
+      panelClass: "border-pink-200 bg-pink-50/70",
+      kickerClass: "text-pink-700",
+      labelClass: "text-pink-800",
+      chipClass: "bg-pink-100 text-pink-800"
     };
   }
 
   return {
-    base: "#f04438",
-    active: "#b42318",
-    muted: "#fecaca",
-    text: "#7f1d1d"
+    base: "#f97316",
+    active: "#c2410c",
+    muted: "#fed7aa",
+    text: "#7c2d12",
+    panelClass: "border-orange-200 bg-orange-50/70",
+    kickerClass: "text-orange-700",
+    labelClass: "text-orange-800",
+    chipClass: "bg-orange-100 text-orange-800"
   };
 }
+
 function selectionFocusKey(selection: MapSelection) {
   if (selection.type === "muscle") return `muscle:${selection.id}`;
   if (selection.type === "triggerpoint") return `triggerpoint:${selection.mapView}:${selection.muscleId}:${selection.pointId}`;
