@@ -283,6 +283,14 @@ export function BodyMap({
     if (selectedPointKey !== key) setSelectedPointKey(key);
   }, [mapView, selectedPointKey, selection]);
 
+
+  useEffect(() => {
+    if (mode !== "fascia" || selection.type !== "fascia" || manualViewOverride) return;
+    const line = fasciaLines.find((item) => item.id === selection.id);
+    if (!line) return;
+    const views = fasciaMapViews(line);
+    if (!views.includes(mapView)) setMapView(views[0]);
+  }, [fasciaLines, manualViewOverride, mapView, mode, selection]);
   useEffect(() => {
     if (visibleEntries.length === 0) {
       setSelectedPointKey(null);
@@ -332,7 +340,7 @@ export function BodyMap({
           <h2 className="mt-1 text-lg font-semibold text-slate-950 sm:text-xl">{title}</h2>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {mode === "triggerpoints" && (
+          {(mode === "triggerpoints" || mode === "fascia") && (
             <div className="inline-flex w-fit rounded-lg border border-slate-200 bg-white p-1">
               {mapTabs.map((tab) => (
                 <button
@@ -532,7 +540,7 @@ export function BodyMap({
 
           {mode === "fascia" && (layers.segments || layers.referral) &&
             fasciaLines
-              .filter((line) => activeFasciaIds.includes(line.id))
+              .filter((line) => activeFasciaIds.includes(line.id) && fasciaMapViews(line).includes(mapView))
               .map((line) => {
               const active = selection.type === "fascia" && selection.id === line.id;
 
@@ -599,6 +607,17 @@ export function BodyMap({
   );
 }
 
+function fasciaMapViews(line: FasciaLine): MapView[] {
+  const searchable = [line.name, line.system, line.course, line.function, ...(line.regions ?? [])].join(" ").toLowerCase();
+  const views = new Set<MapView>();
+
+  if (/kopf|gesicht|kiefer|schlaefe|schläfe|ohr|parotis|masseter|temporal/.test(searchable)) views.add("face");
+  if (/ruecken|rücken|lws|sakrum|gesaess|gesäß|dorsal|back|posterior|superficial back/.test(searchable)) views.add("back");
+  if (/abdomen|thorax|brust|hals|schulter|arm|becken|huefte|hüfte|oberschenkel|ventral|front|anterior|perineum/.test(searchable)) views.add("front");
+
+  if (views.size === 0) views.add("front");
+  return Array.from(views);
+}
 function getBodyMapInfo(
   point: PositionedTriggerPointEntry | null,
   painRegion: PainRegion | null,
@@ -1212,6 +1231,7 @@ function regionLabel(region: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+
 
 
 

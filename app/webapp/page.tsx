@@ -369,4 +369,3 @@ function sourceLabel(source: DataSourceState) {
   if (source === "realtime") return "Firebase";
   return "Demo-Daten";
 }
-
