@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { BodyMap } from "@/components/BodyMap";
+import { BodyInfoPanel, BodyMap, type BodyMapInfo } from "@/components/BodyMap";
 import { ModuleGrid } from "@/components/ModuleGrid";
 import { DetailPanel } from "@/components/DetailPanel";
 import { LayerToggles } from "@/components/LayerToggles";
@@ -13,6 +13,7 @@ export default function Home() {
   const [dataSource, setDataSource] = useState<DataSourceState>("loading");
   const [mode, setMode] = useState<AnatomyMode>("triggerpoints");
   const [selection, setSelection] = useState<MapSelection | null>(null);
+  const [bodyInfo, setBodyInfo] = useState<BodyMapInfo | null>(null);
   const [layers, setLayers] = useState<LayerState>({
     anatomy: true,
     triggerpoints: true,
@@ -246,10 +247,13 @@ export default function Home() {
           dermatomeRegions={dermatomeRegions}
           myotomeGroups={myotomeGroups}
           blocks={blocks}
+          infoPlacement="external"
+          onInfoChange={setBodyInfo}
           onSelect={setSelection}
         />
 
-        <div className="order-3 lg:order-3">
+        <div className="order-3 space-y-4 lg:order-3">
+          {mode === "triggerpoints" && <BodyInfoPanel info={bodyInfo} />}
           <DetailPanel mode={mode} selection={selection} data={selectedData} onSelect={setSelection} />
         </div>
       </section>
