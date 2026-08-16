@@ -155,7 +155,28 @@ export default function AdminPage() {
       ) : isAdmin === null ? (
         <section className="glass rounded-lg p-6 text-sm leading-6 text-slate-600">Admin-Rechte werden geprueft...</section>
       ) : !isAdmin ? (
-        <section className="glass rounded-lg p-6 text-sm leading-6 text-slate-600">Dieser Firebase-User ist nicht als Admin freigeschaltet.</section>
+        <section className="glass grid gap-4 rounded-lg p-6 text-sm leading-6 text-slate-600">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-950">Kein Adminzugriff</h2>
+            <p className="mt-2">Dieser Firebase-User ist nicht als Admin freigeschaltet.</p>
+          </div>
+          <div className="rounded-lg border border-slate-200 bg-white p-3 text-sm">
+            <p>Angemeldet als: <strong className="text-slate-950">{user.email || "ohne E-Mail"}</strong></p>
+            <p className="mt-1 break-all">UID: <strong className="text-slate-950">{user.uid}</strong></p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => signOut(firebaseAuth)}
+              className="focus-ring rounded-lg bg-slate-950 px-4 py-2 font-semibold text-white transition hover:bg-slate-800"
+            >
+              Abmelden / anderes Konto verwenden
+            </button>
+            <a className="focus-ring rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-50" href="/">
+              Zur Karte
+            </a>
+          </div>
+        </section>
       ) : !anatomyData ? (
         <section className="glass rounded-lg p-6 text-sm leading-6 text-slate-600">Daten werden geladen...</section>
       ) : (
