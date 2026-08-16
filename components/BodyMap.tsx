@@ -323,50 +323,14 @@ export function BodyMap({
       )}
 
       <div className="relative flex min-h-[58vh] items-center justify-center overflow-hidden rounded-lg bg-white p-3 sm:min-h-[620px]">
-        {mode === "triggerpoints" && activePainRegion && (
-          <div className="pointer-events-none absolute right-3 top-3 z-20 w-[min(280px,calc(100%-1.5rem))] rounded-lg border border-orange-200 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
-            <p className="text-xs font-semibold uppercase text-orange-600">
-              {selection.type === "painRegion" && selection.id === activePainRegion.id ? "Fixierte Schmerzregion" : "Schmerzregion"}
-            </p>
-            <h3 className="mt-1 text-lg font-semibold text-slate-950">{activePainRegion.label}</h3>
-            <p className="mt-2 text-sm leading-5 text-slate-600">
-              {selection.type === "painRegion" && selection.id === activePainRegion.id
-                ? "Auswahl ist fixiert. Klick auf eine andere Region wechselt die Auswahl."
-                : "Mouseover zeigt die Region. Klick fixiert die Auswahl."}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              <span className="rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-700">
-                {activePainRegionMuscles.length} passende Muskeln
-              </span>
-              <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{title}</span>
-            </div>
-          </div>
-        )}
-        {mode === "triggerpoints" && activePoint && (
-          <div className="pointer-events-none absolute right-3 top-3 z-30 w-[min(320px,calc(100%-1.5rem))] rounded-lg border border-red-100 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
-            <p className="text-xs font-semibold uppercase text-red-600">
-              {selection.type === "triggerpoint" && selection.muscleId === activePoint.muscle.id && selection.pointId === activePoint.point.id ? "Fixierter Triggerpunkt" : "Triggerpunkt"}
-            </p>
-            <h3 className="mt-1 text-lg font-semibold text-slate-950">{activePoint.muscle.name}</h3>
-            <p className="mt-1 text-sm font-semibold text-red-700">{activePoint.point.label}</p>
-            <dl className="mt-2 space-y-2 text-sm leading-5 text-slate-600">
-              <div>
-                <dt className="font-semibold text-slate-900">Lage</dt>
-                <dd>{activePoint.point.anatomicalLocation || activePoint.muscle.bodyArea || "Lage noch nicht beschrieben"}</dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-slate-900">Ausstrahlung</dt>
-                <dd>{activePoint.point.referralArea || activePoint.muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben"}</dd>
-              </div>
-            </dl>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {((activePoint.point.painRegions?.length ? activePoint.point.painRegions : activePoint.muscle.painRegions) ?? []).slice(0, 5).map((region) => (
-                <span key={region} className="rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-700">
-                  {regionLabel(region)}
-                </span>
-              ))}
-            </div>
-          </div>
+        {mode === "triggerpoints" && (
+          <BodyInfoOverlay
+            point={activePoint}
+            painRegion={activePainRegion}
+            painRegionMuscleCount={activePainRegionMuscles.length}
+            selection={selection}
+            title={title}
+          />
         )}
         <svg
           viewBox={activeViewBox}
@@ -497,9 +461,6 @@ export function BodyMap({
                   className="cursor-pointer transition-opacity duration-200 hover:opacity-30"
                   onClick={() => onSelect({ type: "dermatome", id: region.id })}
                 >
-                  <title>
-                    {region.name}: {region.segments.join(", ")}
-                  </title>
                 </path>
               );
             })}
@@ -519,15 +480,76 @@ export function BodyMap({
                   className="cursor-pointer transition-opacity duration-200 hover:opacity-30"
                   onClick={() => onSelect({ type: "myotome", id: group.id })}
                 >
-                  <title>
-                    {group.name}: {group.segments.join(", ")}
-                  </title>
                 </path>
               );
             })}
         </svg>
       </div>
     </section>
+  );
+}
+
+function BodyInfoOverlay({
+  point,
+  painRegion,
+  painRegionMuscleCount,
+  selection,
+  title
+}: {
+  point: PositionedTriggerPointEntry | null;
+  painRegion: PainRegion | null;
+  painRegionMuscleCount: number;
+  selection: MapSelection;
+  title: string;
+}) {
+  if (point) {
+    const fixed = selection.type === "triggerpoint" && selection.muscleId === point.muscle.id && selection.pointId === point.point.id;
+    const regions = (point.point.painRegions?.length ? point.point.painRegions : point.muscle.painRegions) ?? [];
+
+    return (
+      <div className="pointer-events-none absolute right-3 top-3 z-30 w-[min(320px,calc(100%-1.5rem))] rounded-lg border border-red-100 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
+        <p className="text-xs font-semibold uppercase text-red-600">{fixed ? "Fixierter Triggerpunkt" : "Triggerpunkt"}</p>
+        <h3 className="mt-1 text-lg font-semibold text-slate-950">{point.muscle.name}</h3>
+        <p className="mt-1 text-sm font-semibold text-red-700">{point.point.label}</p>
+        <dl className="mt-2 space-y-2 text-sm leading-5 text-slate-600">
+          <div>
+            <dt className="font-semibold text-slate-900">Lage</dt>
+            <dd>{point.point.anatomicalLocation || point.muscle.bodyArea || "Lage noch nicht beschrieben"}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">Ausstrahlung</dt>
+            <dd>{point.point.referralArea || point.muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben"}</dd>
+          </div>
+        </dl>
+        {regions.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {regions.slice(0, 5).map((region) => (
+              <span key={region} className="rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-700">
+                {regionLabel(region)}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  if (!painRegion) return null;
+
+  const fixed = selection.type === "painRegion" && selection.id === painRegion.id;
+
+  return (
+    <div className="pointer-events-none absolute right-3 top-3 z-20 w-[min(280px,calc(100%-1.5rem))] rounded-lg border border-orange-200 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
+      <p className="text-xs font-semibold uppercase text-orange-600">{fixed ? "Fixierte Schmerzregion" : "Schmerzregion"}</p>
+      <h3 className="mt-1 text-lg font-semibold text-slate-950">{painRegion.label}</h3>
+      <p className="mt-2 text-sm leading-5 text-slate-600">
+        {fixed ? "Auswahl ist fixiert. Klick auf eine andere Region wechselt die Auswahl." : "Mouseover zeigt die Region. Klick fixiert die Auswahl."}
+      </p>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        <span className="rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-700">{painRegionMuscleCount} passende Muskeln</span>
+        <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{title}</span>
+      </div>
+    </div>
   );
 }
 
