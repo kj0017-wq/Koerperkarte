@@ -10,6 +10,7 @@ import type {
   MapView,
   MuscleMapItem,
   MyotomeGroup,
+  PeripheralNerve,
   TriggerPoint
 } from "@/lib/types";
 
@@ -36,6 +37,7 @@ type BodyMapProps = {
   dermatomeRegions: DermatomeRegion[];
   myotomeGroups: MyotomeGroup[];
   blocks: BodyMapBlock[];
+  peripheralNerves?: PeripheralNerve[];
   infoPlacement?: "map" | "external";
   onInfoChange?: (info: BodyMapInfo | null) => void;
   onSelect: (selection: MapSelection) => void;
@@ -156,6 +158,7 @@ export function BodyMap({
   dermatomeRegions,
   myotomeGroups,
   blocks,
+  peripheralNerves = [],
   infoPlacement = "map",
   onInfoChange,
   onSelect
@@ -167,7 +170,7 @@ export function BodyMap({
   const [showFullBody, setShowFullBody] = useState(false);
 
   useEffect(() => {
-    if (mode !== "triggerpoints" && mapView !== "front") setMapView("front");
+    if (mode !== "triggerpoints" && mode !== "nerves" && mapView !== "front") setMapView("front");
   }, [mapView, mode]);
 
   const selectionKey = selectionFocusKey(selection);
@@ -220,6 +223,7 @@ export function BodyMap({
   }, [mapView, mode, triggerPointEntries]);
 
   const activePainRegions = mapView === "face" ? facePainRegions : mapView === "back" ? backPainRegions : frontPainRegions;
+  const selectedNerve = selection.type === "nerve" ? peripheralNerves.find((item) => item.id === selection.id) ?? peripheralNerves[0] : null;
   const activePainRegionId = hoveredPainRegionId ?? (selection.type === "painRegion" ? selection.id : null);
   const activePainRegion = activePainRegionId ? activePainRegions.find((region) => region.id === activePainRegionId) ?? null : null;
   const activePainRegionMuscles = activePainRegionId ? muscles.filter((item) => (item.painRegions ?? []).includes(activePainRegionId)) : [];
@@ -464,6 +468,29 @@ export function BodyMap({
             </g>
           )}
 
+          {mode === "nerves" && layers.segments &&
+            peripheralNerves.map((nerve) => {
+              const active = selection.type === "nerve" && selection.id === nerve.id;
+
+              return (
+                <g key={nerve.id} className="cursor-pointer outline-none" tabIndex={0} role="button" aria-label={nerve.name} onClick={() => onSelect({ type: "nerve", id: nerve.id })}>
+                  {nerve.territoryPath && (
+                    <path d={nerve.territoryPath} fill="#7c3aed" opacity={active ? "0.18" : "0.07"} className="transition-opacity duration-200 hover:opacity-20" />
+                  )}
+                  <path
+                    d={nerve.mapPath}
+                    fill="none"
+                    stroke={active ? "#6d28d9" : "#8b5cf6"}
+                    strokeWidth={active ? "9" : "5"}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    opacity={active ? "0.95" : "0.55"}
+                    className="transition-all duration-200 hover:opacity-90"
+                  />
+                </g>
+              );
+            })}
+
           {mode === "dermatomes" &&
             layers.segments &&
             dermatomeRegions.map((region) => {
@@ -659,6 +686,14 @@ function zoneForRegion(regionId: string): FocusZone {
   if (foot.has(regionId)) return "foot";
   if (regionId === "shin" || regionId === "calf") return "lowerLeg";
   return "torso";
+}
+
+function zoneForNerve(nerveId: string): FocusZone {
+  const lower = new Set(["femoralis", "ischiadicus", "tibialis", "peroneus-communis"]);
+  const foot = new Set(["tibialis", "peroneus-communis"]);
+  if (foot.has(nerveId)) return "lowerLeg";
+  if (lower.has(nerveId)) return "upperLeg";
+  return "shoulder";
 }
 
 function zoneForSegments(segments: string[]): FocusZone {

@@ -1,9 +1,9 @@
-﻿import type { AnatomyMode, BodyMapBlock, DermatomeRegion, MapSelection, MuscleMapItem, MyotomeGroup } from "@/lib/types";
+﻿import type { AnatomyMode, BodyMapBlock, DermatomeRegion, MapSelection, MuscleMapItem, MyotomeGroup, PeripheralNerve } from "@/lib/types";
 
 type DetailPanelProps = {
   mode: AnatomyMode;
   selection: MapSelection;
-  data: MuscleMapItem | MuscleMapItem[] | BodyMapBlock | DermatomeRegion | MyotomeGroup | null;
+  data: MuscleMapItem | MuscleMapItem[] | BodyMapBlock | DermatomeRegion | MyotomeGroup | PeripheralNerve | null;
   onSelect: (selection: MapSelection) => void;
 };
 
@@ -28,6 +28,9 @@ export function DetailPanel({ mode, selection, data, onSelect }: DetailPanelProp
         )}
         {!Array.isArray(data) && mode === "myotomes" && data && "movement" in data && (
           <MyotomeDetail item={data as MyotomeGroup} />
+        )}
+        {!Array.isArray(data) && mode === "nerves" && data && "plexus" in data && (
+          <NerveDetail item={data as PeripheralNerve} />
         )}
       </div>
 
@@ -262,6 +265,23 @@ function MyotomeDetail({ item }: { item: MyotomeGroup }) {
   );
 }
 
+function NerveDetail({ item }: { item: PeripheralNerve }) {
+  return (
+    <div className="space-y-4">
+      <InfoBlock label="Plexus" value={item.plexus} />
+      <InfoBlock label="Verlauf" value={item.course} />
+      <InfoBlock label="Versorgung" value={item.distribution} />
+      <div className="flex flex-wrap gap-2">
+        {(item.segments ?? []).map((segment) => (
+          <span key={segment} className="rounded-lg bg-violet-50 px-3 py-1 text-sm font-semibold text-violet-700">
+            {segment}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function InfoBlock({ label, value }: { label: string; value: string }) {
   return (
     <div>
@@ -274,7 +294,7 @@ function InfoBlock({ label, value }: { label: string; value: string }) {
 function panelTitle(
   mode: AnatomyMode,
   selection: MapSelection,
-  data: MuscleMapItem | MuscleMapItem[] | BodyMapBlock | DermatomeRegion | MyotomeGroup | null
+  data: MuscleMapItem | MuscleMapItem[] | BodyMapBlock | DermatomeRegion | MyotomeGroup | PeripheralNerve | null
 ) {
   if (selection.type === "triggerpoint") return data && "name" in data ? data.name : "Triggerpunkt";
   if (selection.type === "painRegion") return "Schmerzregion ausgewaehlt";
@@ -283,6 +303,7 @@ function panelTitle(
   if (data && "name" in data) return data.name;
   if (mode === "dermatomes") return "Dermatom";
   if (mode === "myotomes") return "Myotom";
+  if (mode === "nerves") return "Peripherer Nerv";
   return "Detail";
 }
 

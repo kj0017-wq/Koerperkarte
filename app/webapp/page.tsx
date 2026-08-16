@@ -13,7 +13,7 @@ const modes: Array<{ id: AnatomyMode; label: string; enabled: boolean }> = [
   { id: "triggerpoints", label: "Trigger", enabled: true },
   { id: "dermatomes", label: "Dermatome", enabled: true },
   { id: "myotomes", label: "Myotome", enabled: true },
-  { id: "nerves", label: "Nerven", enabled: false },
+  { id: "nerves", label: "Nerven", enabled: true },
   { id: "future", label: "Mehr", enabled: false }
 ];
 
@@ -57,6 +57,7 @@ export default function WebApp() {
   const sortedMuscles = useMemo(() => [...muscles].sort((a, b) => a.name.localeCompare(b.name, "de")), [muscles]);
   const dermatomeRegions = anatomyData?.dermatomeRegions ?? [];
   const myotomeGroups = anatomyData?.myotomeGroups ?? [];
+  const peripheralNerves = anatomyData?.peripheralNerves ?? [];
   const blocks = anatomyData?.blocks ?? [];
   const visibleMuscles = useMemo(() => {
     const query = muscleFilter.trim().toLowerCase();
@@ -77,9 +78,10 @@ export default function WebApp() {
     if (selection.type === "painRegion") return muscles.filter((item) => (item.painRegions ?? []).includes(selection.id));
     if (selection.type === "dermatome") return dermatomeRegions.find((item) => item.id === selection.id) ?? dermatomeRegions[0];
     if (selection.type === "myotome") return myotomeGroups.find((item) => item.id === selection.id) ?? myotomeGroups[0];
+    if (selection.type === "nerve") return peripheralNerves.find((item) => item.id === selection.id) ?? peripheralNerves[0];
 
     return null;
-  }, [anatomyData, blocks, dermatomeRegions, muscles, myotomeGroups, selection]);
+  }, [anatomyData, blocks, dermatomeRegions, muscles, myotomeGroups, peripheralNerves, selection]);
 
   function selectAndShow(nextSelection: MapSelection) {
     setSelection(nextSelection);
@@ -94,6 +96,7 @@ export default function WebApp() {
     if (nextMode === "triggerpoints" && sortedMuscles[0]) setSelection({ type: "muscle", id: sortedMuscles[0].id });
     if (nextMode === "dermatomes" && dermatomeRegions[0]) setSelection({ type: "dermatome", id: dermatomeRegions[0].id });
     if (nextMode === "myotomes" && myotomeGroups[0]) setSelection({ type: "myotome", id: myotomeGroups[0].id });
+    if (nextMode === "nerves" && peripheralNerves[0]) setSelection({ type: "nerve", id: peripheralNerves[0].id });
   }
 
   return (
@@ -150,6 +153,7 @@ export default function WebApp() {
                 dermatomeRegions={dermatomeRegions}
                 myotomeGroups={myotomeGroups}
                 blocks={blocks}
+                peripheralNerves={peripheralNerves}
                 onSelect={setSelection}
               />
             )}
@@ -198,6 +202,22 @@ export default function WebApp() {
                         >
                           <span className="block font-semibold">{region.name}</span>
                           <span className="text-sm text-slate-500">{region.segments.join(", ")}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {mode === "nerves" && (
+                    <div className="grid gap-2">
+                      {peripheralNerves.map((nerve) => (
+                        <button
+                          key={nerve.id}
+                          type="button"
+                          onClick={() => selectAndShow({ type: "nerve", id: nerve.id })}
+                          className="focus-ring rounded-lg bg-slate-50 px-3 py-3 text-left"
+                        >
+                          <span className="block font-semibold">{nerve.name}</span>
+                          <span className="text-sm text-slate-500">{nerve.segments.join(", ")}</span>
                         </button>
                       ))}
                     </div>

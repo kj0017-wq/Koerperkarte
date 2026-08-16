@@ -13,7 +13,8 @@ export type MapSelection =
   | { type: "painRegion"; id: string }
   | { type: "block"; id: string }
   | { type: "dermatome"; id: string }
-  | { type: "myotome"; id: string };
+  | { type: "myotome"; id: string }
+  | { type: "nerve"; id: string };
 
 export type MapView = "front" | "back" | "face";
 
@@ -75,6 +76,17 @@ export type MyotomeGroup = {
   segments: string[];
   description: string;
   mapPath: string;
+};
+
+export type PeripheralNerve = {
+  id: string;
+  name: string;
+  plexus: string;
+  segments: string[];
+  course: string;
+  distribution: string;
+  mapPath: string;
+  territoryPath?: string;
 };
 
 export type DataSourceState = "loading" | "realtime" | "local";

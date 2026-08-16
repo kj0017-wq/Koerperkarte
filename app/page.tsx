@@ -50,6 +50,7 @@ export default function Home() {
   }, [muscleFilter, sortedMuscles]);
   const dermatomeRegions = anatomyData?.dermatomeRegions ?? [];
   const myotomeGroups = anatomyData?.myotomeGroups ?? [];
+  const peripheralNerves = anatomyData?.peripheralNerves ?? [];
   const blocks = anatomyData?.blocks ?? [];
 
   const selectedData = useMemo(() => {
@@ -79,8 +80,12 @@ export default function Home() {
       return myotomeGroups.find((item) => item.id === selection.id) ?? myotomeGroups[0];
     }
 
+    if (selection.type === "nerve") {
+      return peripheralNerves.find((item) => item.id === selection.id) ?? peripheralNerves[0];
+    }
+
     return null;
-  }, [anatomyData, blocks, dermatomeRegions, muscles, myotomeGroups, selection]);
+  }, [anatomyData, blocks, dermatomeRegions, muscles, myotomeGroups, peripheralNerves, selection]);
 
   function handleModeChange(nextMode: AnatomyMode) {
     if (!anatomyData) return;
@@ -89,6 +94,7 @@ export default function Home() {
     if (nextMode === "triggerpoints" && sortedMuscles[0]) setSelection({ type: "muscle", id: sortedMuscles[0].id });
     if (nextMode === "dermatomes" && dermatomeRegions[0]) setSelection({ type: "dermatome", id: dermatomeRegions[0].id });
     if (nextMode === "myotomes" && myotomeGroups[0]) setSelection({ type: "myotome", id: myotomeGroups[0].id });
+    if (nextMode === "nerves" && peripheralNerves[0]) setSelection({ type: "nerve", id: peripheralNerves[0].id });
   }
 
   return (
@@ -216,6 +222,22 @@ export default function Home() {
             </div>
           )}
 
+
+          {mode === "nerves" && (
+            <div className="grid gap-2">
+              {peripheralNerves.map((nerve) => (
+                <button
+                  key={nerve.id}
+                  onClick={() => setSelection({ type: "nerve", id: nerve.id })}
+                  className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${selection.type === "nerve" && selection.id === nerve.id ? "bg-violet-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"}`}
+                >
+                  <span className="block font-semibold">{nerve.name}</span>
+                  <span className={selection.type === "nerve" && selection.id === nerve.id ? "text-violet-100" : "text-slate-500"}>{nerve.segments.join(", ")}</span>
+                </button>
+              ))}
+            </div>
+          )}
+
           {mode === "myotomes" && (
             <div className="grid gap-2">
               {myotomeGroups.map((group) => (
@@ -247,6 +269,7 @@ export default function Home() {
           dermatomeRegions={dermatomeRegions}
           myotomeGroups={myotomeGroups}
           blocks={blocks}
+          peripheralNerves={peripheralNerves}
           infoPlacement="external"
           onInfoChange={setBodyInfo}
           onSelect={setSelection}

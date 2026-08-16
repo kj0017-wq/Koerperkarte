@@ -29,8 +29,8 @@ const modules: ModuleCard[] = [
   {
     id: "nerves",
     title: "Periphere Nerven",
-    description: "Nervenverlaeufe und Versorgungsgebiete vorbereiten.",
-    status: "soon"
+    description: "Nervenverlaeufe und Versorgungsgebiete anzeigen.",
+    status: "ready"
   },
   {
     id: "future",

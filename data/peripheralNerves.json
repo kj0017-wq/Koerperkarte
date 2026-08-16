@@ -1,0 +1,108 @@
+{
+  "nerves": [
+    {
+      "id": "medianus",
+      "name": "N. medianus",
+      "plexus": "Plexus brachialis",
+      "segments": [
+        "C6",
+        "C7",
+        "C8",
+        "T1"
+      ],
+      "course": "Verlauf ueber vorderen Oberarm, Ellenbeuge und volaren Unterarm bis in die radiale Hand.",
+      "distribution": "Sensible Versorgung radialer Handanteile; motorisch wichtige Finger- und Daumenfunktionen.",
+      "mapPath": "M250 214 C278 270 292 334 296 398 C298 444 286 486 272 526",
+      "territoryPath": "M254 370 C294 408 304 476 274 530 C246 504 240 430 254 370"
+    },
+    {
+      "id": "ulnaris",
+      "name": "N. ulnaris",
+      "plexus": "Plexus brachialis",
+      "segments": [
+        "C8",
+        "T1"
+      ],
+      "course": "Zieht medial am Oberarm, hinter dem Epicondylus medialis und ulnarseitig zum Kleinfinger.",
+      "distribution": "Ulnare Handkante, Ring- und Kleinfinger; intrinsische Handmuskulatur.",
+      "mapPath": "M266 218 C288 282 304 340 312 404 C318 456 306 504 288 548",
+      "territoryPath": "M286 404 C324 444 328 512 292 560 C270 522 268 450 286 404"
+    },
+    {
+      "id": "radialis",
+      "name": "N. radialis",
+      "plexus": "Plexus brachialis",
+      "segments": [
+        "C5",
+        "C6",
+        "C7",
+        "C8"
+      ],
+      "course": "Laeuft dorsal am Oberarm, zur lateralen Ellenregion und in den dorsoradialen Unterarm.",
+      "distribution": "Extensoren von Ellenbogen, Hand und Fingern; dorsoradiale Sensibilitaet.",
+      "mapPath": "M132 210 C104 270 92 334 86 398 C82 452 96 498 116 540",
+      "territoryPath": "M82 330 C126 374 138 474 116 544 C82 500 66 398 82 330"
+    },
+    {
+      "id": "femoralis",
+      "name": "N. femoralis",
+      "plexus": "Plexus lumbalis",
+      "segments": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "course": "Verlauf unter dem Leistenband in den vorderen Oberschenkel.",
+      "distribution": "Quadrizepsfunktion, Kniestreckung und sensible vordere/mediale Oberschenkel- und Unterschenkelanteile.",
+      "mapPath": "M174 470 C164 536 158 604 154 690",
+      "territoryPath": "M142 502 C172 528 190 604 184 690 C154 672 136 584 142 502"
+    },
+    {
+      "id": "ischiadicus",
+      "name": "N. ischiadicus",
+      "plexus": "Plexus sacralis",
+      "segments": [
+        "L4",
+        "L5",
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "course": "Vom Becken dorsal durch die Glutealregion in den hinteren Oberschenkel.",
+      "distribution": "Hintere Oberschenkelmuskulatur und ueber Aeste grosse Teile von Unterschenkel und Fuss.",
+      "mapPath": "M232 470 C244 536 250 622 246 734",
+      "territoryPath": "M216 500 C262 544 274 662 252 762 C218 720 204 588 216 500"
+    },
+    {
+      "id": "tibialis",
+      "name": "N. tibialis",
+      "plexus": "Ast des N. ischiadicus",
+      "segments": [
+        "L4",
+        "L5",
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "course": "Verlauf durch Kniekehle und tiefe dorsale Wade zum medialen Fuss.",
+      "distribution": "Plantarflexion, Fusssohle und plantare Zehenanteile.",
+      "mapPath": "M230 628 C238 682 238 738 222 792",
+      "territoryPath": "M212 650 C252 690 258 760 224 804 C202 766 196 694 212 650"
+    },
+    {
+      "id": "peroneus-communis",
+      "name": "N. fibularis communis",
+      "plexus": "Ast des N. ischiadicus",
+      "segments": [
+        "L4",
+        "L5",
+        "S1",
+        "S2"
+      ],
+      "course": "Zieht lateral um das Fibulakoepfchen und teilt sich in oberflaechliche und tiefe Aeste.",
+      "distribution": "Dorsalextension/Eversion und sensibler Fussruecken.",
+      "mapPath": "M252 622 C274 674 274 736 262 790",
+      "territoryPath": "M244 646 C282 690 292 756 266 804 C238 766 226 696 244 646"
+    }
+  ]
+}

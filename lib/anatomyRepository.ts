@@ -1,9 +1,10 @@
-﻿import * as database from "firebase/database";
+import * as database from "firebase/database";
 import fallbackDermatomes from "@/data/dermatomes.json";
 import fallbackMyotomes from "@/data/myotomes.json";
+import fallbackPeripheralNerves from "@/data/peripheralNerves.json";
 import fallbackTriggerpoints from "@/data/triggerpoints.json";
 import { firebaseDatabaseUrl, realtimeDb } from "@/lib/firebase";
-import type { BodyMapBlock, DermatomeRegion, MuscleMapItem, MyotomeGroup } from "@/lib/types";
+import type { BodyMapBlock, DermatomeRegion, MuscleMapItem, MyotomeGroup, PeripheralNerve } from "@/lib/types";
 
 const { get, ref, remove, set } = database as any;
 
@@ -12,6 +13,7 @@ export type AnatomyData = {
   muscles: MuscleMapItem[];
   dermatomeRegions: DermatomeRegion[];
   myotomeGroups: MyotomeGroup[];
+  peripheralNerves: PeripheralNerve[];
   blocks: BodyMapBlock[];
   source: "realtime" | "local";
 };
@@ -36,20 +38,22 @@ const localData: AnatomyData = {
   muscles: normalizeMuscles(fallbackTriggerpoints.muscles),
   dermatomeRegions: normalizeDermatomes(fallbackDermatomes.regions),
   myotomeGroups: normalizeMyotomes(fallbackMyotomes.groups),
+  peripheralNerves: normalizePeripheralNerves(fallbackPeripheralNerves.nerves),
   blocks: [],
   source: "local"
 };
 
 export async function loadAnatomyData(): Promise<AnatomyData> {
   try {
-    const [muscles, dermatomeRegions, myotomeGroups, blocks] = await Promise.all([
+    const [muscles, dermatomeRegions, myotomeGroups, peripheralNerves, blocks] = await Promise.all([
       readRealtimeList<MuscleMapItem>("muscles"),
       readRealtimeList<DermatomeRegion>("dermatomes"),
       readRealtimeList<MyotomeGroup>("myotomes"),
+      readRealtimeList<PeripheralNerve>("nerves"),
       readRealtimeList<BodyMapBlock>("blocks")
     ]);
 
-    const hasRealtimeData = muscles.length > 0 || dermatomeRegions.length > 0 || myotomeGroups.length > 0 || blocks.length > 0;
+    const hasRealtimeData = muscles.length > 0 || dermatomeRegions.length > 0 || myotomeGroups.length > 0 || peripheralNerves.length > 0 || blocks.length > 0;
 
     if (!hasRealtimeData) {
       return localData;
@@ -59,6 +63,7 @@ export async function loadAnatomyData(): Promise<AnatomyData> {
       muscles: normalizeMuscles(muscles.length ? muscles : localData.muscles),
       dermatomeRegions: normalizeDermatomes(dermatomeRegions.length ? dermatomeRegions : localData.dermatomeRegions),
       myotomeGroups: normalizeMyotomes(myotomeGroups.length ? myotomeGroups : localData.myotomeGroups),
+      peripheralNerves: normalizePeripheralNerves(peripheralNerves.length ? peripheralNerves : localData.peripheralNerves),
       blocks: normalizeBlocks(blocks),
       source: "realtime"
     };
@@ -132,6 +137,22 @@ function normalizeMyotomes(items: MyotomeGroup[]): MyotomeGroup[] {
       segments: asStringArray(item.segments),
       description: asString(item.description, "Noch zu ergaenzen."),
       mapPath: asString(item.mapPath, fallbackMyotomeMapPath(item))
+    }));
+}
+
+function normalizePeripheralNerves(items: PeripheralNerve[]): PeripheralNerve[] {
+  return items
+    .filter((item) => item && item.id)
+    .map((item) => ({
+      ...item,
+      id: String(item.id),
+      name: asString(item.name, item.id),
+      plexus: asString(item.plexus, "Peripherer Nerv"),
+      segments: asStringArray(item.segments),
+      course: asString(item.course, "Noch zu ergaenzen."),
+      distribution: asString(item.distribution, "Noch zu ergaenzen."),
+      mapPath: asString(item.mapPath, ""),
+      territoryPath: asString(item.territoryPath, "")
     }));
 }
 
