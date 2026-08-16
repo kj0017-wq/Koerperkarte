@@ -204,6 +204,7 @@ export function BodyMap({
   const activePainRegions = mapView === "face" ? facePainRegions : mapView === "back" ? backPainRegions : frontPainRegions;
   const activePainRegionId = hoveredPainRegionId ?? (selection.type === "painRegion" ? selection.id : null);
   const activePainRegion = activePainRegionId ? activePainRegions.find((region) => region.id === activePainRegionId) ?? null : null;
+  const activePainRegionMuscles = activePainRegionId ? muscles.filter((item) => (item.painRegions ?? []).includes(activePainRegionId)) : [];
   const baseViewBox = mapView === "face" ? "0 0 400 520" : "0 0 400 820";
   const title = mapView === "face" ? "Kopf- und Gesichtskarte" : mapView === "back" ? "Dorsale Koerperansicht" : "Ventrale Koerperansicht";
   const visibleEntries = useMemo(
@@ -322,7 +323,26 @@ export function BodyMap({
       )}
 
       <div className="relative flex min-h-[58vh] items-center justify-center overflow-hidden rounded-lg bg-white p-3 sm:min-h-[620px]">
-          <svg
+        {mode === "triggerpoints" && activePainRegion && (
+          <div className="pointer-events-none absolute right-3 top-3 z-20 w-[min(280px,calc(100%-1.5rem))] rounded-lg border border-orange-200 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
+            <p className="text-xs font-semibold uppercase text-orange-600">
+              {selection.type === "painRegion" && selection.id === activePainRegion.id ? "Fixierte Schmerzregion" : "Schmerzregion"}
+            </p>
+            <h3 className="mt-1 text-lg font-semibold text-slate-950">{activePainRegion.label}</h3>
+            <p className="mt-2 text-sm leading-5 text-slate-600">
+              {selection.type === "painRegion" && selection.id === activePainRegion.id
+                ? "Auswahl ist fixiert. Klick auf eine andere Region wechselt die Auswahl."
+                : "Mouseover zeigt die Region. Klick fixiert die Auswahl."}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              <span className="rounded-full bg-orange-50 px-2 py-1 text-xs font-semibold text-orange-700">
+                {activePainRegionMuscles.length} passende Muskeln
+              </span>
+              <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{title}</span>
+            </div>
+          </div>
+        )}
+        <svg
           viewBox={activeViewBox}
           role="img"
           aria-label={title}
@@ -386,21 +406,6 @@ export function BodyMap({
               );
             })}
 
-          {mode === "triggerpoints" && activePainRegion && (
-            <g pointerEvents="none">
-              <text
-                x={painRegionLabelPosition(activePainRegion.id, mapView).x}
-                y={painRegionLabelPosition(activePainRegion.id, mapView).y}
-                textAnchor="middle"
-                className="fill-slate-950 text-[17px] font-bold"
-                stroke="#ffffff"
-                strokeWidth="5"
-                paintOrder="stroke"
-              >
-                {activePainRegion.label}
-              </text>
-            </g>
-          )}
 
           {mode === "triggerpoints" && layers.triggerpoints && visibleEntries.length > 0 && (
             <g>
@@ -604,38 +609,6 @@ function viewBoxForZone(zone: FocusZone, mapView: MapView) {
   };
 
   return boxes[zone];
-}
-function painRegionLabelPosition(regionId: string, mapView: MapView) {
-  if (mapView === "face") {
-    const positions: Record<string, { x: number; y: number }> = {
-      head: { x: 200, y: 86 },
-      forehead: { x: 200, y: 134 },
-      temple: { x: 200, y: 154 },
-      eye: { x: 200, y: 174 },
-      orbit: { x: 200, y: 218 },
-      face: { x: 200, y: 248 },
-      ear: { x: 200, y: 236 },
-      jaw: { x: 200, y: 330 },
-      teeth: { x: 200, y: 286 },
-      throat: { x: 200, y: 444 },
-      neck: { x: 200, y: 470 }
-    };
-    return positions[regionId] ?? { x: 200, y: 260 };
-  }
-
-  const zone = zoneForRegion(regionId);
-  const positions: Record<FocusZone, { x: number; y: number }> = {
-    head: { x: 200, y: 112 },
-    neck: { x: 200, y: 164 },
-    shoulder: { x: 200, y: 224 },
-    torso: { x: 200, y: 354 },
-    pelvis: { x: 200, y: 462 },
-    upperLeg: { x: 200, y: 586 },
-    lowerLeg: { x: 200, y: 710 },
-    foot: { x: 200, y: 792 }
-  };
-
-  return positions[zone];
 }
 
 function triggerPointKey(entry: TriggerPointEntry) {
