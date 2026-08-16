@@ -669,42 +669,16 @@ export function BodyInfoPanel({ info, floating = false }: { info: BodyMapInfo | 
   );
 }
 
-function triggerPointPalette(mapView: MapView) {
-  if (mapView === "back") {
-    return {
-      base: "#2563eb",
-      active: "#1d4ed8",
-      muted: "#93c5fd",
-      text: "#1e3a8a",
-      panelClass: "border-blue-200 bg-blue-50/70",
-      kickerClass: "text-blue-700",
-      labelClass: "text-blue-800",
-      chipClass: "bg-blue-100 text-blue-800"
-    };
-  }
-
-  if (mapView === "face") {
-    return {
-      base: "#ec4899",
-      active: "#be185d",
-      muted: "#f9a8d4",
-      text: "#831843",
-      panelClass: "border-pink-200 bg-pink-50/70",
-      kickerClass: "text-pink-700",
-      labelClass: "text-pink-800",
-      chipClass: "bg-pink-100 text-pink-800"
-    };
-  }
-
+function triggerPointPalette(_mapView: MapView) {
   return {
-    base: "#f97316",
-    active: "#c2410c",
-    muted: "#fed7aa",
-    text: "#7c2d12",
-    panelClass: "border-orange-200 bg-orange-50/70",
-    kickerClass: "text-orange-700",
-    labelClass: "text-orange-800",
-    chipClass: "bg-orange-100 text-orange-800"
+    base: "#dc2626",
+    active: "#b91c1c",
+    muted: "#fecaca",
+    text: "#7f1d1d",
+    panelClass: "border-red-200 bg-red-50/70",
+    kickerClass: "text-red-700",
+    labelClass: "text-red-800",
+    chipClass: "bg-red-100 text-red-800"
   };
 }
 
@@ -963,51 +937,52 @@ function BodySilhouette() {
     <g filter="url(#softShadow)">
       <path
         d="M200 42 C236 42 258 70 256 104 C254 136 232 158 200 158 C168 158 146 136 144 104 C142 70 164 42 200 42 Z"
-        fill="#f8fafc"
-        stroke="#d9dee7"
+        fill="#fff7ed"
+        stroke="#fdba74"
         strokeWidth="2"
       />
       <path
         d="M174 148 C182 166 218 166 226 148 L230 184 C266 190 304 210 326 246 C342 272 348 314 348 384 C348 408 326 414 318 390 C306 330 286 276 260 248 L250 430 C276 458 282 508 264 548 C252 602 252 682 270 762 C258 778 230 778 220 760 C202 690 198 614 200 556 C202 614 198 690 180 760 C170 778 142 778 130 762 C148 682 148 602 136 548 C118 508 124 458 150 430 L140 248 C114 276 94 330 82 390 C74 414 52 408 52 384 C52 314 58 272 74 246 C96 210 134 190 170 184 Z"
-        fill="#f8fafc"
-        stroke="#d9dee7"
+        fill="#fff7ed"
+        stroke="#fb923c"
         strokeWidth="2"
       />
-      <path d="M150 430 C182 448 218 448 250 430" fill="none" stroke="#d9dee7" strokeWidth="2" />
-      <path d="M140 248 C174 272 226 272 260 248" fill="none" stroke="#e6e8ec" strokeWidth="2" />
-      <path d="M200 168 L200 760" fill="none" stroke="#e6e8ec" strokeWidth="1.5" strokeDasharray="6 8" />
-      <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
-      <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
+      <path d="M118 208 C148 184 178 182 200 206 C222 182 252 184 282 208 C252 236 148 236 118 208 Z" fill="#fed7aa" opacity="0.48" stroke="#fb923c" strokeWidth="1.5" />
+      <path d="M152 258 C178 276 222 276 248 258 L242 382 C218 402 182 402 158 382 Z" fill="#ffedd5" opacity="0.72" stroke="#fdba74" strokeWidth="1.5" />
+      <path d="M150 430 C182 448 218 448 250 430 C240 468 160 468 150 430 Z" fill="#fed7aa" opacity="0.42" stroke="#fb923c" strokeWidth="1.5" />
+      <path d="M140 248 C174 272 226 272 260 248" fill="none" stroke="#fed7aa" strokeWidth="2" />
+      <path d="M200 168 L200 760" fill="none" stroke="#fed7aa" strokeWidth="1.5" strokeDasharray="6 8" />
+      <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#fff7ed" stroke="#fdba74" strokeWidth="2" />
+      <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#fff7ed" stroke="#fdba74" strokeWidth="2" />
     </g>
   );
 }
-
 function BackBodySilhouette() {
   return (
     <g filter="url(#softShadow)">
       <path
         d="M200 42 C236 42 258 70 256 104 C254 136 232 158 200 158 C168 158 146 136 144 104 C142 70 164 42 200 42 Z"
-        fill="#f8fafc"
-        stroke="#d9dee7"
+        fill="#eff6ff"
+        stroke="#93c5fd"
         strokeWidth="2"
       />
       <path
         d="M174 148 C182 166 218 166 226 148 L230 184 C266 190 304 210 326 246 C342 272 348 314 348 384 C348 408 326 414 318 390 C306 330 286 276 260 248 L250 430 C276 458 282 508 264 548 C252 602 252 682 270 762 C258 778 230 778 220 760 C202 690 198 614 200 556 C202 614 198 690 180 760 C170 778 142 778 130 762 C148 682 148 602 136 548 C118 508 124 458 150 430 L140 248 C114 276 94 330 82 390 C74 414 52 408 52 384 C52 314 58 272 74 246 C96 210 134 190 170 184 Z"
-        fill="#f8fafc"
-        stroke="#d9dee7"
+        fill="#eff6ff"
+        stroke="#60a5fa"
         strokeWidth="2"
       />
-      <path d="M200 158 L200 760" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5 7" />
-      <path d="M140 236 C164 220 186 230 192 284 C168 322 136 320 118 278 Z" fill="none" stroke="#d9dee7" strokeWidth="2" />
-      <path d="M260 236 C236 220 214 230 208 284 C232 322 264 320 282 278 Z" fill="none" stroke="#d9dee7" strokeWidth="2" />
-      <path d="M150 430 C182 450 218 450 250 430" fill="none" stroke="#d9dee7" strokeWidth="2" />
-      <path d="M130 500 C164 526 190 520 200 492 C210 520 236 526 270 500" fill="none" stroke="#e2e8f0" strokeWidth="2" />
-      <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
-      <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
+      <path d="M200 158 L200 760" fill="none" stroke="#93c5fd" strokeWidth="2" strokeDasharray="5 7" />
+      <path d="M140 236 C164 220 186 230 192 284 C168 322 136 320 118 278 Z" fill="#dbeafe" opacity="0.58" stroke="#3b82f6" strokeWidth="1.6" />
+      <path d="M260 236 C236 220 214 230 208 284 C232 322 264 320 282 278 Z" fill="#dbeafe" opacity="0.58" stroke="#3b82f6" strokeWidth="1.6" />
+      <path d="M154 260 C180 246 220 246 246 260 L238 390 C214 414 186 414 162 390 Z" fill="#dbeafe" opacity="0.54" stroke="#60a5fa" strokeWidth="1.5" />
+      <path d="M150 430 C182 450 218 450 250 430 C238 468 162 468 150 430 Z" fill="#bfdbfe" opacity="0.5" stroke="#3b82f6" strokeWidth="1.5" />
+      <path d="M130 500 C164 526 190 520 200 492 C210 520 236 526 270 500" fill="none" stroke="#93c5fd" strokeWidth="2" />
+      <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#eff6ff" stroke="#93c5fd" strokeWidth="2" />
+      <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#eff6ff" stroke="#93c5fd" strokeWidth="2" />
     </g>
   );
 }
-
 function FaceSilhouette() {
   return (
     <g filter="url(#softShadow)">
