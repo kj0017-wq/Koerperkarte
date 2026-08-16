@@ -41,6 +41,8 @@ export default function WebApp() {
   const [zoom, setZoom] = useState(1);
   const [bodyResetKey, setBodyResetKey] = useState(0);
   const [hoveredPainRegionId, setHoveredPainRegionId] = useState<string | null>(null);
+  const [hoveredDermatomeId, setHoveredDermatomeId] = useState<string | null>(null);
+  const [hoveredMyotomeId, setHoveredMyotomeId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
 
   useEffect(() => {
@@ -171,6 +173,8 @@ export default function WebApp() {
                 zoom={zoom}
                 resetViewKey={bodyResetKey}
                 hoveredPainRegionId={hoveredPainRegionId}
+                hoveredDermatomeId={hoveredDermatomeId}
+                hoveredMyotomeId={hoveredMyotomeId}
                 onPainRegionHover={setHoveredPainRegionId}
                 muscles={muscles}
                 dermatomeRegions={dermatomeRegions}
@@ -217,17 +221,25 @@ export default function WebApp() {
 
                   {mode === "dermatomes" && (
                     <div className="grid gap-2">
-                      {dermatomeRegions.map((region) => (
-                        <button
-                          key={region.id}
-                          type="button"
-                          onClick={() => selectAndShow({ type: "dermatome", id: region.id })}
-                          className="focus-ring rounded-lg bg-slate-50 px-3 py-3 text-left"
-                        >
-                          <span className="block font-semibold">{region.name}</span>
-                          <span className="text-sm text-slate-500">{region.segments.join(", ")}</span>
-                        </button>
-                      ))}
+                      {dermatomeRegions.map((region) => {
+                        const active = (selection.type === "dermatome" && selection.id === region.id) || hoveredDermatomeId === region.id;
+
+                        return (
+                          <button
+                            key={region.id}
+                            type="button"
+                            onMouseEnter={() => setHoveredDermatomeId(region.id)}
+                            onMouseLeave={() => setHoveredDermatomeId(null)}
+                            onFocus={() => setHoveredDermatomeId(region.id)}
+                            onBlur={() => setHoveredDermatomeId(null)}
+                            onClick={() => selectAndShow({ type: "dermatome", id: region.id })}
+                            className={`focus-ring rounded-lg px-3 py-3 text-left transition ${active ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-700"}`}
+                          >
+                            <span className="block font-semibold">{region.name}</span>
+                            <span className={active ? "text-sm text-blue-100" : "text-sm text-slate-500"}>{region.segments.join(", ")}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
 
@@ -264,17 +276,25 @@ export default function WebApp() {
                   )}
                   {mode === "myotomes" && (
                     <div className="grid gap-2">
-                      {myotomeGroups.map((group) => (
-                        <button
-                          key={group.id}
-                          type="button"
-                          onClick={() => selectAndShow({ type: "myotome", id: group.id })}
-                          className="focus-ring rounded-lg bg-slate-50 px-3 py-3 text-left"
-                        >
-                          <span className="block font-semibold">{group.name}</span>
-                          <span className="text-sm text-slate-500">{group.segments.join(", ")}</span>
-                        </button>
-                      ))}
+                      {myotomeGroups.map((group) => {
+                        const active = (selection.type === "myotome" && selection.id === group.id) || hoveredMyotomeId === group.id;
+
+                        return (
+                          <button
+                            key={group.id}
+                            type="button"
+                            onMouseEnter={() => setHoveredMyotomeId(group.id)}
+                            onMouseLeave={() => setHoveredMyotomeId(null)}
+                            onFocus={() => setHoveredMyotomeId(group.id)}
+                            onBlur={() => setHoveredMyotomeId(null)}
+                            onClick={() => selectAndShow({ type: "myotome", id: group.id })}
+                            className={`focus-ring rounded-lg px-3 py-3 text-left transition ${active ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-700"}`}
+                          >
+                            <span className="block font-semibold">{group.name}</span>
+                            <span className={active ? "text-sm text-blue-100" : "text-sm text-slate-500"}>{group.segments.join(", ")}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
 
@@ -322,3 +342,4 @@ function sourceLabel(source: DataSourceState) {
   if (source === "realtime") return "Firebase";
   return "Demo-Daten";
 }
+

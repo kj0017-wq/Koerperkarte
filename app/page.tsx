@@ -25,6 +25,8 @@ export default function Home() {
   const [zoom, setZoom] = useState(1);
   const [bodyResetKey, setBodyResetKey] = useState(0);
   const [hoveredPainRegionId, setHoveredPainRegionId] = useState<string | null>(null);
+  const [hoveredDermatomeId, setHoveredDermatomeId] = useState<string | null>(null);
+  const [hoveredMyotomeId, setHoveredMyotomeId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
 
   useEffect(() => {
@@ -222,20 +224,28 @@ export default function Home() {
 
           {mode === "dermatomes" && (
             <div className="grid gap-2">
-              {dermatomeRegions.map((region) => (
-                <button
-                  key={region.id}
-                  onClick={() => setSelection({ type: "dermatome", id: region.id })}
-                  className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${
-                    selection.type === "dermatome" && selection.id === region.id ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  <span className="block font-semibold">{region.name}</span>
-                  <span className={selection.type === "dermatome" && selection.id === region.id ? "text-blue-100" : "text-slate-500"}>
-                    {region.segments.join(", ")}
-                  </span>
-                </button>
-              ))}
+              {dermatomeRegions.map((region) => {
+                const active = (selection.type === "dermatome" && selection.id === region.id) || hoveredDermatomeId === region.id;
+
+                return (
+                  <button
+                    key={region.id}
+                    onMouseEnter={() => setHoveredDermatomeId(region.id)}
+                    onMouseLeave={() => setHoveredDermatomeId(null)}
+                    onFocus={() => setHoveredDermatomeId(region.id)}
+                    onBlur={() => setHoveredDermatomeId(null)}
+                    onClick={() => setSelection({ type: "dermatome", id: region.id })}
+                    className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${
+                      active ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <span className="block font-semibold">{region.name}</span>
+                    <span className={active ? "text-blue-100" : "text-slate-500"}>
+                      {region.segments.join(", ")}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           )}
 
@@ -271,20 +281,28 @@ export default function Home() {
           )}
           {mode === "myotomes" && (
             <div className="grid gap-2">
-              {myotomeGroups.map((group) => (
-                <button
-                  key={group.id}
-                  onClick={() => setSelection({ type: "myotome", id: group.id })}
-                  className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${
-                    selection.type === "myotome" && selection.id === group.id ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  <span className="block font-semibold">{group.name}</span>
-                  <span className={selection.type === "myotome" && selection.id === group.id ? "text-blue-100" : "text-slate-500"}>
-                    {group.segments.join(", ")}
-                  </span>
-                </button>
-              ))}
+              {myotomeGroups.map((group) => {
+                const active = (selection.type === "myotome" && selection.id === group.id) || hoveredMyotomeId === group.id;
+
+                return (
+                  <button
+                    key={group.id}
+                    onMouseEnter={() => setHoveredMyotomeId(group.id)}
+                    onMouseLeave={() => setHoveredMyotomeId(null)}
+                    onFocus={() => setHoveredMyotomeId(group.id)}
+                    onBlur={() => setHoveredMyotomeId(null)}
+                    onClick={() => setSelection({ type: "myotome", id: group.id })}
+                    className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${
+                      active ? "bg-blue-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <span className="block font-semibold">{group.name}</span>
+                    <span className={active ? "text-blue-100" : "text-slate-500"}>
+                      {group.segments.join(", ")}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           )}
 
@@ -298,6 +316,8 @@ export default function Home() {
           zoom={zoom}
           resetViewKey={bodyResetKey}
           hoveredPainRegionId={hoveredPainRegionId}
+          hoveredDermatomeId={hoveredDermatomeId}
+          hoveredMyotomeId={hoveredMyotomeId}
           onPainRegionHover={setHoveredPainRegionId}
           muscles={muscles}
           dermatomeRegions={dermatomeRegions}

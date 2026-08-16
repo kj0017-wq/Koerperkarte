@@ -43,6 +43,8 @@ type BodyMapProps = {
   infoPlacement?: "map" | "external";
   resetViewKey?: number;
   hoveredPainRegionId?: string | null;
+  hoveredDermatomeId?: string | null;
+  hoveredMyotomeId?: string | null;
   onPainRegionHover?: (regionId: string | null) => void;
   onInfoChange?: (info: BodyMapInfo | null) => void;
   onSelect: (selection: MapSelection) => void;
@@ -168,6 +170,8 @@ export function BodyMap({
   infoPlacement = "map",
   resetViewKey,
   hoveredPainRegionId: externalHoveredPainRegionId,
+  hoveredDermatomeId,
+  hoveredMyotomeId,
   onPainRegionHover,
   onInfoChange,
   onSelect
@@ -535,7 +539,7 @@ export function BodyMap({
           {mode === "dermatomes" &&
             layers.segments &&
             dermatomeRegions.map((region) => {
-              const active = selection.type === "dermatome" && selection.id === region.id;
+              const active = (selection.type === "dermatome" && selection.id === region.id) || hoveredDermatomeId === region.id;
               return (
                 <path
                   key={region.id}
@@ -554,7 +558,7 @@ export function BodyMap({
           {mode === "myotomes" &&
             layers.segments &&
             myotomeGroups.map((group) => {
-              const active = selection.type === "myotome" && selection.id === group.id;
+              const active = (selection.type === "myotome" && selection.id === group.id) || hoveredMyotomeId === group.id;
               return (
                 <path
                   key={group.id}
@@ -1147,16 +1151,4 @@ function regionLabel(region: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
