@@ -157,11 +157,11 @@ export default function AdminPage() {
       ) : !isAdmin ? (
         <section className="glass grid gap-4 rounded-lg p-6 text-sm leading-6 text-slate-600">
           <div>
-            <h2 className="text-xl font-semibold text-slate-950">Kein Adminzugriff</h2>
-            <p className="mt-2">Dieser Firebase-User ist nicht als Admin freigeschaltet.</p>
+            <h2 className="text-xl font-semibold text-slate-950">Adminzugang noch nicht freigeschaltet</h2>
+            <p className="mt-2">Der aktuell angemeldete Account hat noch keinen Adminzugang fuer die Verwaltung.</p>
           </div>
           <div className="rounded-lg border border-slate-200 bg-white p-3 text-sm">
-            <p>Angemeldet als: <strong className="text-slate-950">{user.email || "ohne E-Mail"}</strong></p>
+            <p>Aktuell angemeldet als: <strong className="text-slate-950">{user.email || "ohne E-Mail"}</strong></p>
             <p className="mt-1 break-all">UID: <strong className="text-slate-950">{user.uid}</strong></p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -170,7 +170,7 @@ export default function AdminPage() {
               onClick={() => signOut(firebaseAuth)}
               className="focus-ring rounded-lg bg-slate-950 px-4 py-2 font-semibold text-white transition hover:bg-slate-800"
             >
-              Abmelden / anderes Konto verwenden
+              Login wechseln
             </button>
             <a className="focus-ring rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-50" href="/">
               Zur Karte
