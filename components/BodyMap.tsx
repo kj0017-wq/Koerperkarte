@@ -314,12 +314,12 @@ export function BodyMap({
 
   return (
     <section className="glass order-1 overflow-hidden rounded-lg p-3 sm:p-4 lg:sticky lg:top-4 lg:order-2 lg:min-h-[720px] lg:self-start">
-      <div className="mb-3 flex flex-col gap-2 sm:mb-4 xl:flex-row xl:items-center xl:justify-between">
+      <div className="mb-3 flex flex-col gap-3 sm:mb-4">
         <div>
           <p className="text-xs font-semibold uppercase text-slate-400">Interaktive Karte</p>
           <h2 className="mt-1 text-lg font-semibold text-slate-950 sm:text-xl">{title}</h2>
         </div>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between xl:justify-end">
+        <div className="flex flex-wrap items-center gap-2">
           {mode === "triggerpoints" && (
             <div className="inline-flex w-fit rounded-lg border border-slate-200 bg-white p-1">
               {mapTabs.map((tab) => (
