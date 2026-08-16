@@ -1,0 +1,47 @@
+muscleId,name,points,createdDraftMuscle
+biceps-brachii,M. biceps brachii,1,yes
+brachialis,M. brachialis,1,yes
+brachioradialis,M. brachioradialis,1,yes
+coracobrachialis,M. coracobrachialis,1,yes
+deltoid,M. deltoid,3,yes
+digastric,M. digastric,2,yes
+gluteus-maximus,M. gluteus maximus,1,no
+gluteus-medius,M. gluteus medius,2,yes
+gluteus-minimus,M. gluteus minimus,2,no
+iliopsoas,M. iliopsoas,1,yes
+infraspinatus,M. infraspinatus,1,no
+lateral-pterygoid,M. lateral pterygoid,1,yes
+latissimus-dorsi,M. latissimus dorsi,1,no
+levator-scapulae,M. levator scapulae,2,no
+longissimus-capitis,M. longissimus capitis,1,no
+masseter,M. masseter,3,yes
+medial-pterygoid,M. medial pterygoid,2,yes
+multifidus,M. multifidus,1,yes
+occipitofrontalis,M. occipitofrontalis,2,yes
+pectoralis-major,M. pectoralis major,3,no
+pectoralis-minor,M. pectoralis minor,1,no
+piriformis,M. piriformis,1,no
+pronator-teres,M. pronator teres,1,yes
+quadratus-lumborum,M. quadratus lumborum,1,yes
+rhomboid-major,M. rhomboid major,1,yes
+rhomboid-minor,M. rhomboid minor,1,yes
+scalene-anterior,M. scalene anterior,1,no
+scalene-medius,M. scalene medius,1,no
+scalene-minimus,M. scalene minimus,1,no
+scalene-posterior,M. scalene posterior,1,no
+semispinalis-capitis,M. semispinalis capitis,3,no
+serratus-anterior,M. serratus anterior,1,no
+splenius-capitis,M. splenius capitis,3,no
+splenius-cervicis,M. splenius cervicis,2,no
+sternocleidomastoid,SCM,2,no
+subclavius,M. subclavius,1,no
+suboccipitals,M. suboccipitals,1,yes
+subscapularis,M. subscapularis,1,no
+supraspinatus,M. supraspinatus,1,no
+temporalis,M. temporalis,3,yes
+tensor-fasciae-latae,M. tensor fasciae latae,1,no
+teres-major,M. teres major,1,yes
+teres-minor,M. teres minor,1,no
+triceps-brachii,M. triceps brachii,2,yes
+upper-trapezius,M. trapezius pars descendens,2,no
+vastus-intermedius,M. vastus intermedius,1,yes

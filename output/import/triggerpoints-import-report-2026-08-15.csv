@@ -1,0 +1,13 @@
+muscleId,triggerpointId,label,x,y,sourcePage,reviewStatus
+upper-trapezius,tp-upper-trapezius-1,TP 1,120,150,257,draft
+upper-trapezius,tp-upper-trapezius-2,TP 2,280,150,258,draft
+sternocleidomastoid,tp-sternocleidomastoid-1,sternaler Kopf,160,155,274,draft
+sternocleidomastoid,tp-sternocleidomastoid-2,sternaler Kopf,240,155,274,draft
+sternocleidomastoid,tp-sternocleidomastoid-3,clavicularer Kopf,155,180,274,draft
+sternocleidomastoid,tp-sternocleidomastoid-4,clavicularer Kopf,245,180,274,draft
+splenius-capitis,tp-splenius-capitis-1,oberer Anteil,200,125,437,draft
+splenius-capitis,tp-splenius-capitis-2,mittlerer Anteil,200,145,437,draft
+splenius-capitis,tp-splenius-capitis-3,unterer Anteil,200,165,437,draft
+semispinalis-capitis,tp-semispinalis-capitis-1,oberer Anteil,200,110,452,draft
+semispinalis-capitis,tp-semispinalis-capitis-2,mittlerer Anteil,200,135,452,draft
+semispinalis-capitis,tp-semispinalis-capitis-3,unterer Anteil,200,160,452,draft

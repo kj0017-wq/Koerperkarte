@@ -1,0 +1,37 @@
+{
+  "version": "0.1",
+  "groups": [
+    {
+      "id": "shoulder-abduction",
+      "name": "Schulterabduktion",
+      "movement": "Arm seitlich anheben",
+      "segments": ["C5"],
+      "description": "Orientierend mit Deltoideus/Supraspinatus verknuepft.",
+      "mapPath": "M132 232 C100 250 78 286 66 332 C90 334 116 300 138 250 Z"
+    },
+    {
+      "id": "elbow-flexion",
+      "name": "Ellenbogenflexion",
+      "movement": "Ellenbogen beugen",
+      "segments": ["C5", "C6"],
+      "description": "Orientierend mit Bizeps/Brachialis und daumenseitigem Unterarmbezug.",
+      "mapPath": "M260 286 C292 306 312 344 318 390 C292 384 270 352 252 314 Z"
+    },
+    {
+      "id": "knee-extension",
+      "name": "Kniestreckung",
+      "movement": "Knie strecken",
+      "segments": ["L3", "L4"],
+      "description": "Orientierend mit Quadrizepsfunktion verknuepft.",
+      "mapPath": "M214 510 C240 552 246 604 238 656 C214 644 202 592 202 542 Z"
+    },
+    {
+      "id": "ankle-plantarflexion",
+      "name": "Plantarflexion",
+      "movement": "Fuss nach unten druecken / Zehenstand",
+      "segments": ["S1", "S2"],
+      "description": "Orientierend mit Wadenmuskulatur und Achillessehnenfunktion verknuepft.",
+      "mapPath": "M144 626 C166 656 174 698 172 746 C144 734 130 694 132 648 Z"
+    }
+  ]
+}

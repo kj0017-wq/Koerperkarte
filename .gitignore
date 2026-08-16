@@ -1,0 +1,13 @@
+﻿.next/
+out/
+.firebase/
+node_modules/
+.env*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+.next-dev.err.log
+.next-dev.out.log

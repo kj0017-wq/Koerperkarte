@@ -1,0 +1,1047 @@
+{
+  "cervical-multifidus": {
+    "bodyArea": "Tiefer Nacken",
+    "course": "Kurze segmentale Fasern zwischen Wirbelboegen und Querfortsaetzen mehrerer Halssegmente.",
+    "explanation": "Wichtig fuer segmentale Kontrolle und Tiefenstabilitaet der Halswirbelsaeule.",
+    "id": "cervical-multifidus",
+    "name": "M. multifidus cervicis",
+    "notes": "Die Quelle betont vor allem segmentale Kontrolle.",
+    "painRegions": [
+      "neck",
+      "cervical-spine"
+    ],
+    "referralArea": "Segmentnaher tiefer Nacken.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "triggerpoints": [
+      {
+        "id": "tp-cervical-multifidus-1",
+        "label": "TP 1",
+        "x": 194,
+        "y": 176
+      },
+      {
+        "id": "tp-cervical-multifidus-2",
+        "label": "TP 2",
+        "x": 206,
+        "y": 176
+      }
+    ]
+  },
+  "cervical-rotatores": {
+    "bodyArea": "Tiefer Nacken",
+    "course": "Sehr kurze tiefe Segmente zwischen benachbarten oder uebersprungenen Wirbeln.",
+    "explanation": "Unterstuetzt feine Rotation und Stabilisierung in der Halswirbelsaeule.",
+    "id": "cervical-rotatores",
+    "name": "M. rotatores cervicis",
+    "notes": "In der Quelle werden die Rotatores als sehr tiefe, kurze paraspinale Muskeln beschrieben.",
+    "painRegions": [
+      "neck",
+      "cervical-spine"
+    ],
+    "referralArea": "Segmentnaher tiefer Nacken.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "triggerpoints": [
+      {
+        "id": "tp-cervical-rotatores-1",
+        "label": "TP 1",
+        "x": 196,
+        "y": 188
+      },
+      {
+        "id": "tp-cervical-rotatores-2",
+        "label": "TP 2",
+        "x": 204,
+        "y": 188
+      }
+    ]
+  },
+  "longissimus-capitis": {
+    "bodyArea": "Subokzipital / Nacken",
+    "course": "Vom Mastoidbereich zu unteren Hals- und oberen Brustwirbeln.",
+    "explanation": "Tiefer Kopf-auf-Hals-Extensor mit Bezug zu Hinterkopf- und Nackenbeschwerden.",
+    "id": "longissimus-capitis",
+    "name": "M. longissimus capitis",
+    "notes": "Lage und Funktion sind gut belegt; Referierung im Material nur indirekt beschrieben.",
+    "painRegions": [
+      "head",
+      "neck",
+      "occiput"
+    ],
+    "referralArea": "Hinterkopf und oberer Nacken.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "triggerpoints": [
+      {
+        "id": "tp-longissimus-capitis-1",
+        "label": "TP 1",
+        "x": 176,
+        "y": 132
+      },
+      {
+        "id": "tp-longissimus-capitis-2",
+        "label": "TP 2",
+        "x": 224,
+        "y": 132
+      }
+    ]
+  },
+  "semispinalis-capitis": {
+    "bodyArea": "Subokzipital / Nacken",
+    "course": "Vom Hinterhaupt zu oberen Hals- und oberen Brustwirbelabschnitten.",
+    "explanation": "Tiefe Kopfausrichtung und Haltearbeit; Triggerpunkte koennen in den Kopf ausstrahlen.",
+    "id": "semispinalis-capitis",
+    "name": "M. semispinalis capitis",
+    "notes": "Referred-pain-Muster variiert je nach Muskelabschnitt.",
+    "painRegions": [
+      "eye",
+      "head",
+      "neck",
+      "occiput",
+      "suboccipital",
+      "temple"
+    ],
+    "referralArea": "Hinterkopf mit Ausstrahlung in Schlaefe, Auge und subokzipitale Region.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0446.pdf",
+    "sourcePage": 446,
+    "triggerpoints": [
+      {
+        "id": "tp-semispinalis-capitis-1",
+        "label": "oberer Anteil",
+        "x": 200,
+        "y": 110,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "subokzipital direkt unter dem Hinterhaupt",
+        "painRegions": [
+          "head",
+          "temple",
+          "eye",
+          "occiput"
+        ],
+        "referralArea": "Bandfoermig zum Scheitel, zu den Schlaefen und ueber das Auge.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0452.pdf",
+        "sourcePage": 452,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      },
+      {
+        "id": "tp-semispinalis-capitis-2",
+        "label": "mittlerer Anteil",
+        "x": 200,
+        "y": 135,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "oberer hinterer Hals, tief unter dem Splenius capitis",
+        "painRegions": [
+          "head",
+          "occiput"
+        ],
+        "referralArea": "Tiefe Schmerzen am hinteren Schaedel.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0452.pdf",
+        "sourcePage": 452,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      },
+      {
+        "id": "tp-semispinalis-capitis-3",
+        "label": "unterer Anteil",
+        "x": 200,
+        "y": 160,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tiefer hinterer Hals an der unteren Halswirbelsaeule",
+        "painRegions": [
+          "head",
+          "occiput",
+          "neck"
+        ],
+        "referralArea": "Hinterkopf und oberer Nacken.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0452.pdf",
+        "sourcePage": 452,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      }
+    ]
+  },
+  "semispinalis-cervicis": {
+    "bodyArea": "Tiefer Nacken",
+    "course": "Von C2 bis C5 zu oberen Brustwirbelsegmenten; liegt tief unter dem semispinalen Kapitis.",
+    "explanation": "Stabilisiert und streckt die Halswirbelsaeule segmentnah.",
+    "id": "semispinalis-cervicis",
+    "name": "M. semispinalis cervicis",
+    "notes": "Hauptrolle eher Stabilisation als grosse Bewegungsamplitude.",
+    "painRegions": [
+      "neck"
+    ],
+    "referralArea": "Tiefer Halsbereich entlang der Halswirbelsaeule.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "triggerpoints": [
+      {
+        "id": "tp-semispinalis-cervicis-1",
+        "label": "TP 1",
+        "x": 192,
+        "y": 166
+      },
+      {
+        "id": "tp-semispinalis-cervicis-2",
+        "label": "TP 2",
+        "x": 208,
+        "y": 166
+      }
+    ]
+  },
+  "splenius-capitis": {
+    "bodyArea": "Nacken",
+    "course": "Verlaeuft vom oberen Nacken- und Brustwirbelbereich zum Schaedel und unterstuetzt Kopfbewegungen.",
+    "explanation": "Kann bei Nackenbeschwerden und Kopfschmerzmustern eine Rolle spielen; mit eingeschraenkter Kopfdrehung assoziiert.",
+    "id": "splenius-capitis",
+    "name": "M. splenius capitis",
+    "notes": "Abgrenzung zu benachbarten hinteren Halsmuskeln klinisch wichtig.",
+    "painRegions": [
+      "eye",
+      "head",
+      "neck",
+      "occiput",
+      "temple",
+      "vertex"
+    ],
+    "referralArea": "Hinterkopf und Scheitelregion mit Ausstrahlung zum Kopf.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0433.pdf",
+    "sourcePage": 433,
+    "triggerpoints": [
+      {
+        "id": "tp-splenius-capitis-1",
+        "label": "oberer Anteil",
+        "x": 200,
+        "y": 125,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tief im oberen hinteren Hals nahe Mastoid",
+        "painRegions": [
+          "head",
+          "occiput",
+          "temple",
+          "eye"
+        ],
+        "referralArea": "Bandfoermig ueber Hinterkopf, Schlaefe und bis zum Auge.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0437.pdf",
+        "sourcePage": 437,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      },
+      {
+        "id": "tp-splenius-capitis-2",
+        "label": "mittlerer Anteil",
+        "x": 200,
+        "y": 145,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "mittlerer hinterer Hals oberhalb C2-C3",
+        "painRegions": [
+          "head",
+          "occiput"
+        ],
+        "referralArea": "Tiefe Schmerzen eher am hinteren Schaedel.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0437.pdf",
+        "sourcePage": 437,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      },
+      {
+        "id": "tp-splenius-capitis-3",
+        "label": "unterer Anteil",
+        "x": 200,
+        "y": 165,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "unterer hinterer Hals nahe C7",
+        "painRegions": [
+          "head",
+          "occiput",
+          "neck"
+        ],
+        "referralArea": "Hinterkopf und tiefer Nacken.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0437.pdf",
+        "sourcePage": 437,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      }
+    ]
+  },
+  "splenius-cervicis": {
+    "bodyArea": "Nacken",
+    "course": "Verlaeuft tief im hinteren Hals von oberen Brust-/Halswirbeln zu hoeheren Halssegmenten.",
+    "explanation": "Wird vor allem bei Halsstreckung und Rotation relevant; kann bei Nackensteifigkeit mitbeteiligt sein.",
+    "id": "splenius-cervicis",
+    "name": "M. splenius cervicis",
+    "notes": "In der Quelle wird die Abgrenzung zur Levator-scapulae-Region betont.",
+    "painRegions": [
+      "neck",
+      "occiput"
+    ],
+    "referralArea": "Tiefer Nacken und Hinterhauptbereich.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0440.pdf",
+    "sourcePage": 440,
+    "triggerpoints": [
+      {
+        "id": "tp-splenius-cervicis-1",
+        "label": "TP 1",
+        "x": 184,
+        "y": 160
+      },
+      {
+        "id": "tp-splenius-cervicis-2",
+        "label": "TP 2",
+        "x": 216,
+        "y": 160
+      }
+    ]
+  },
+  "sternocleidomastoid": {
+    "bodyArea": "Nacken / Kopf",
+    "course": "Zweistufiger Muskel vom Brustbein- und Schlueselbeinanteil zum Warzenfortsatz.",
+    "explanation": "Wichtiger Halte- und Bewegungsmuskel des Kopfes; Triggerpunkte koennen Kopf-, Gesichts- und Halsmuster begleiten.",
+    "id": "sternocleidomastoid",
+    "name": "SCM",
+    "notes": "Beide Muskelkoepfe referieren unterschiedlich; Koordinaten fehlen.",
+    "painRegions": [
+      "ear",
+      "face",
+      "frontal",
+      "head",
+      "neck",
+      "sternum",
+      "throat"
+    ],
+    "referralArea": "Kopf, Gesicht, Rachen, Ohr und oberer Brustbeinbereich.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0274.pdf",
+    "sourcePage": 274,
+    "triggerpoints": [
+      {
+        "id": "tp-sternocleidomastoid-1",
+        "label": "sternaler Kopf",
+        "x": 200,
+        "y": 155,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "vorderer Hals am sternalen SCM-Kopf",
+        "painRegions": [
+          "head",
+          "face",
+          "ear",
+          "throat",
+          "neck",
+          "sternum"
+        ],
+        "referralArea": "Cheek, Schlaefe, Orbit, Ohr, Rachen und oberer Brustbeinbereich.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0274.pdf",
+        "sourcePage": 274,
+        "reviewStatus": "draft",
+        "notes": "Sternaler Anteil des SCM; beide Seiten zusammengezogen."
+      },
+      {
+        "id": "tp-sternocleidomastoid-2",
+        "label": "clavicularer Kopf",
+        "x": 200,
+        "y": 180,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "seitlicher Hals am clavicularen SCM-Kopf",
+        "painRegions": [
+          "head",
+          "face",
+          "ear",
+          "neck",
+          "frontal"
+        ],
+        "referralArea": "Frontalregion, Ohr und seitlicher Kopf; kann auch den Hals mitbetreffen.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0274.pdf",
+        "sourcePage": 274,
+        "reviewStatus": "draft",
+        "notes": "Clavicularer Anteil des SCM; beide Seiten zusammengezogen."
+      }
+    ]
+  },
+  "upper-trapezius": {
+    "bodyArea": "Nacken / Schulter",
+    "course": "Verlaeuft vom Hinterhaupt- und Nackenbereich zum Schulterguertel und zur lateralen Klavikula.",
+    "explanation": "Wichtiger Halte- und Bewegungsmuskel fuer Kopf, Nacken und Schulterguertel; Triggerpunkte koennen Kopf- und Nackensymptome mitpraegen.",
+    "id": "upper-trapezius",
+    "name": "M. trapezius pars descendens",
+    "notes": "Triggerpunkt-Referierung in der Quelle gut belegt; Koordinaten fehlen.",
+    "painRegions": [
+      "jaw",
+      "neck",
+      "occiput",
+      "orbit",
+      "shoulder",
+      "temple"
+    ],
+    "referralArea": "Posterolateraler Nacken bis Schlaefe, Orbit, Kieferwinkel und Hinterkopf.",
+    "referralPath": "",
+    "reviewStatus": "draft",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0248.pdf",
+    "sourcePage": 248,
+    "triggerpoints": [
+      {
+        "id": "tp-upper-trapezius-1",
+        "label": "TP 1",
+        "x": 200,
+        "y": 150,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "oberer Trapeziusrand am Schulter-Nacken-Uebergang",
+        "painRegions": [
+          "neck",
+          "temple",
+          "orbit",
+          "jaw",
+          "occiput",
+          "shoulder"
+        ],
+        "referralArea": "Seitlicher Nacken, Schlaefe, Augenbereich, Kieferwinkel und Hinterkopf.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0257.pdf",
+        "sourcePage": 257,
+        "reviewStatus": "draft",
+        "notes": "Links/rechts zusammengefasst; Koordinate nur naeherungsweise."
+      },
+      {
+        "id": "tp-upper-trapezius-2",
+        "label": "TP 2",
+        "x": 200,
+        "y": 170,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "oberer Trapeziusrand am Schulter-Nacken-Uebergang",
+        "painRegions": [
+          "neck",
+          "temple",
+          "orbit",
+          "jaw",
+          "occiput",
+          "shoulder"
+        ],
+        "referralArea": "Seitlicher Nacken, Schlaefe, Augenbereich, Kieferwinkel und Hinterkopf.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0258.pdf",
+        "sourcePage": 258,
+        "reviewStatus": "draft",
+        "notes": "Links/rechts zusammengefasst; Koordinate nur naeherungsweise."
+      }
+    ]
+  },
+  "levator-scapulae": {
+    "id": "levator-scapulae",
+    "name": "M. levator scapulae",
+    "bodyArea": "Nacken / Kopf",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "head",
+      "neck",
+      "scapula",
+      "shoulder"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-levator-scapulae-1",
+        "label": "proximaler Anteil",
+        "x": 200,
+        "y": 135,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "oberer Nacken zum oberen Schulterblattwinkel",
+        "painRegions": [
+          "neck",
+          "scapula",
+          "shoulder",
+          "head"
+        ],
+        "referralArea": "Nackenwinkel und medialer Schulterblattrand; bei starker Reizung auch hintere Schulter.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0517.pdf",
+        "sourcePage": 517,
+        "reviewStatus": "draft",
+        "notes": "Proximaler Anteil beider Seiten zusammengefasst."
+      },
+      {
+        "id": "tp-levator-scapulae-2",
+        "label": "distaler Anteil",
+        "x": 200,
+        "y": 180,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "nahe Ansatz am superioren Schulterblattwinkel",
+        "painRegions": [
+          "neck",
+          "scapula",
+          "shoulder"
+        ],
+        "referralArea": "Posteriorer Schulterblattbereich medial der Scapula; oft mit Nackenschmerz verbunden.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0518.pdf",
+        "sourcePage": 518,
+        "reviewStatus": "draft",
+        "notes": "Distaler Anteil beider Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Nackenwinkel und medialer Schulterblattrand; bei starker Reizung auch hintere Schulter.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0517.pdf",
+    "sourcePage": 517,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "scalene-anterior": {
+    "id": "scalene-anterior",
+    "name": "M. scalene anterior",
+    "bodyArea": "Nacken / Kopf",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "chest",
+      "hand",
+      "neck",
+      "scapula"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-scalene-anterior-1",
+        "label": "oberer Anteil",
+        "x": 200,
+        "y": 120,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "seitlicher oberer Hals vor den mittleren Scalenen",
+        "painRegions": [
+          "neck",
+          "scapula",
+          "chest",
+          "arm",
+          "hand"
+        ],
+        "referralArea": "Kann in Nacken, Brustwand, Schulterblatt und Arm bis Daumen/Zeigefinger ausstrahlen.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+        "sourcePage": 536,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      }
+    ],
+    "referralArea": "Kann in Nacken, Brustwand, Schulterblatt und Arm bis Daumen/Zeigefinger ausstrahlen.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+    "sourcePage": 536,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "scalene-medius": {
+    "id": "scalene-medius",
+    "name": "M. scalene medius",
+    "bodyArea": "Nacken / Kopf",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "chest",
+      "hand",
+      "neck",
+      "scapula"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-scalene-medius-1",
+        "label": "mittlerer Anteil",
+        "x": 200,
+        "y": 130,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tiefer seitlicher Hals hinter dem M. scalenus anterior",
+        "painRegions": [
+          "neck",
+          "scapula",
+          "chest",
+          "arm",
+          "hand"
+        ],
+        "referralArea": "Brustwand, medialer Scapularand und Arm mit Daumenbezug.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+        "sourcePage": 536,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      }
+    ],
+    "referralArea": "Brustwand, medialer Scapularand und Arm mit Daumenbezug.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+    "sourcePage": 536,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "scalene-posterior": {
+    "id": "scalene-posterior",
+    "name": "M. scalene posterior",
+    "bodyArea": "Nacken / Kopf",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "chest",
+      "hand",
+      "neck",
+      "scapula"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-scalene-posterior-1",
+        "label": "tiefer Anteil",
+        "x": 200,
+        "y": 140,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "hinterer tiefer seitlicher Hals",
+        "painRegions": [
+          "neck",
+          "scapula",
+          "chest",
+          "arm",
+          "hand"
+        ],
+        "referralArea": "Vor allem Schulterblattmedialrand, Brustwand und Armregion.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+        "sourcePage": 536,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengezogen."
+      }
+    ],
+    "referralArea": "Vor allem Schulterblattmedialrand, Brustwand und Armregion.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+    "sourcePage": 536,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "scalene-minimus": {
+    "id": "scalene-minimus",
+    "name": "M. scalene minimus",
+    "bodyArea": "Nacken / Kopf",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "chest",
+      "hand",
+      "neck",
+      "scapula",
+      "thumb"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-scalene-minimus-1",
+        "label": "variabler Anteil",
+        "x": 200,
+        "y": 125,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tiefer oberer Hals an der cervikothorakalen Uebergangsregion",
+        "painRegions": [
+          "neck",
+          "scapula",
+          "chest",
+          "arm",
+          "hand",
+          "thumb"
+        ],
+        "referralArea": "Kann bis Daumen und gesamte radiale Handseite ziehen; variabler Muskel.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+        "sourcePage": 536,
+        "reviewStatus": "draft",
+        "notes": "Variabler Muskel; beide Seiten zusammengezogen."
+      }
+    ],
+    "referralArea": "Kann bis Daumen und gesamte radiale Handseite ziehen; variabler Muskel.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0536.pdf",
+    "sourcePage": 536,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "pectoralis-major": {
+    "id": "pectoralis-major",
+    "name": "M. pectoralis major",
+    "bodyArea": "Brust / Schulter",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "chest",
+      "elbow",
+      "hand",
+      "shoulder"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-pectoralis-major-1",
+        "label": "clavicularer Kopf",
+        "x": 200,
+        "y": 230,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "vordere Schulter / subclaviculare Region",
+        "painRegions": [
+          "chest",
+          "shoulder",
+          "arm"
+        ],
+        "referralArea": "Vordere Schulter und obere Brust, oft mit subclavicularem Druckschmerz.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0979.pdf",
+        "sourcePage": 979,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      },
+      {
+        "id": "tp-pectoralis-major-2",
+        "label": "sternaler Kopf",
+        "x": 200,
+        "y": 255,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "parasternal an der vorderen Brust",
+        "painRegions": [
+          "chest",
+          "arm",
+          "elbow",
+          "hand"
+        ],
+        "referralArea": "Vordere Brust mit Ausstrahlung medial in Arm, Ellbogen und ulnare Handseite.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0979.pdf",
+        "sourcePage": 979,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      },
+      {
+        "id": "tp-pectoralis-major-3",
+        "label": "parasternaler Triggerpunkt",
+        "x": 225,
+        "y": 280,
+        "bodySide": "right",
+        "anatomicalLocation": "rechts parasternal unterhalb der 5. Rippe",
+        "painRegions": [
+          "chest"
+        ],
+        "referralArea": "Fokale Druckdolenz unter der 5. Rippe; im Text mit arrhythmischer Reizung verknuepft.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0979.pdf",
+        "sourcePage": 979,
+        "reviewStatus": "draft",
+        "notes": "Rechts-spezifischer Hotspot bleibt separat."
+      }
+    ],
+    "referralArea": "Vordere Schulter und obere Brust, oft mit subclavicularem Druckschmerz.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0979.pdf",
+    "sourcePage": 979,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "pectoralis-minor": {
+    "id": "pectoralis-minor",
+    "name": "M. pectoralis minor",
+    "bodyArea": "Brust / Schulter",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "chest",
+      "hand",
+      "shoulder"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-pectoralis-minor-1",
+        "label": "oberer Anteil",
+        "x": 200,
+        "y": 245,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "unter dem Pectoralis major an den oberen Rippen",
+        "painRegions": [
+          "chest",
+          "shoulder",
+          "arm",
+          "hand"
+        ],
+        "referralArea": "Vordere Schulter, ulnare Armseite und ulnare Handseite bis zu den letzten Fingern.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1006.pdf",
+        "sourcePage": 1006,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Vordere Schulter, ulnare Armseite und ulnare Handseite bis zu den letzten Fingern.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1006.pdf",
+    "sourcePage": 1006,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "subclavius": {
+    "id": "subclavius",
+    "name": "M. subclavius",
+    "bodyArea": "Brust / Schulter",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "arm",
+      "forearm",
+      "hand",
+      "index-finger",
+      "shoulder",
+      "thumb"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-subclavius-1",
+        "label": "subclavicular",
+        "x": 200,
+        "y": 210,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "unter dem medialen Schluessebein",
+        "painRegions": [
+          "shoulder",
+          "arm",
+          "forearm",
+          "hand",
+          "thumb",
+          "index-finger"
+        ],
+        "referralArea": "Ueber die vordere Schulter in den radialen Unterarm und die radiale Handseite.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0979.pdf",
+        "sourcePage": 979,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Ueber die vordere Schulter in den radialen Unterarm und die radiale Handseite.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0979.pdf",
+    "sourcePage": 979,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "serratus-anterior": {
+    "id": "serratus-anterior",
+    "name": "M. serratus anterior",
+    "bodyArea": "Brust / Schulter",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "back",
+      "chest",
+      "scapula",
+      "shoulder"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-serratus-anterior-1",
+        "label": "lateraler Thorax",
+        "x": 200,
+        "y": 310,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "Axillarlinie an der seitlichen Brustwand",
+        "painRegions": [
+          "chest",
+          "scapula",
+          "back",
+          "shoulder"
+        ],
+        "referralArea": "Anterolaterale Brust, Schulterblattunterrand und teils hinterer Schulterguertel.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1067.pdf",
+        "sourcePage": 1067,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Anterolaterale Brust, Schulterblattunterrand und teils hinterer Schulterguertel.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1067.pdf",
+    "sourcePage": 1067,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "gluteus-maximus": {
+    "id": "gluteus-maximus",
+    "name": "M. gluteus maximus",
+    "bodyArea": "Becken / Huefte",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "buttock",
+      "coccyx",
+      "hip",
+      "low-back"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-gluteus-maximus-1",
+        "label": "oberer Anteil",
+        "x": 200,
+        "y": 515,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "oberes Gesaess nahe Kreuzbein und SI-Region",
+        "painRegions": [
+          "buttock",
+          "low-back",
+          "coccyx",
+          "hip"
+        ],
+        "referralArea": "Gesaess, Kreuzbein und naehe Iliac crest; meist lokal im Gesaess.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1288.pdf",
+        "sourcePage": 1288,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Gesaess, Kreuzbein und naehe Iliac crest; meist lokal im Gesaess.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1288.pdf",
+    "sourcePage": 1288,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "gluteus-minimus": {
+    "id": "gluteus-minimus",
+    "name": "M. gluteus minimus",
+    "bodyArea": "Becken / Huefte",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "ankle",
+      "buttock",
+      "calf",
+      "hip",
+      "knee",
+      "thigh"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-gluteus-minimus-1",
+        "label": "anteriorer Anteil",
+        "x": 200,
+        "y": 480,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tiefes seitliches Gesaess ueber dem Trochanter",
+        "painRegions": [
+          "buttock",
+          "thigh",
+          "calf",
+          "ankle",
+          "hip"
+        ],
+        "referralArea": "Seitliches Gesaess, lateraler Oberschenkel und Unterschenkel bis zum Knochel.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1339.pdf",
+        "sourcePage": 1339,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      },
+      {
+        "id": "tp-gluteus-minimus-2",
+        "label": "posteriorer Anteil",
+        "x": 200,
+        "y": 520,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tiefes hinteres Gesaess",
+        "painRegions": [
+          "buttock",
+          "thigh",
+          "knee",
+          "calf",
+          "hip"
+        ],
+        "referralArea": "Gesaess, hinterer Oberschenkel, Knie und Wade; kann S1-aehnlich wirken.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1339.pdf",
+        "sourcePage": 1339,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Seitliches Gesaess, lateraler Oberschenkel und Unterschenkel bis zum Knochel.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1339.pdf",
+    "sourcePage": 1339,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "tensor-fasciae-latae": {
+    "id": "tensor-fasciae-latae",
+    "name": "M. tensor fasciae latae",
+    "bodyArea": "Becken / Huefte",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "hip",
+      "knee",
+      "thigh"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-tensor-fasciae-latae-1",
+        "label": "oberer Anteil",
+        "x": 200,
+        "y": 510,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "anterolateraler Huftbereich vor dem Trochanter",
+        "painRegions": [
+          "hip",
+          "thigh",
+          "knee"
+        ],
+        "referralArea": "Huftregion und anterolateraler Oberschenkel bis zum Knie.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1340.pdf",
+        "sourcePage": 1340,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Huftregion und anterolateraler Oberschenkel bis zum Knie.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1340.pdf",
+    "sourcePage": 1340,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  },
+  "piriformis": {
+    "id": "piriformis",
+    "name": "M. piriformis",
+    "bodyArea": "Becken / Huefte",
+    "course": "Noch zu ergaenzen.",
+    "explanation": "Draft-Datensatz aus Triggerpunkt-Import; anatomische Detailbeschreibung noch pruefen und ergaenzen.",
+    "painRegions": [
+      "buttock",
+      "hip",
+      "thigh"
+    ],
+    "triggerpoints": [
+      {
+        "id": "tp-piriformis-1",
+        "label": "tiefer Gesaessanteil",
+        "x": 200,
+        "y": 500,
+        "bodySide": "bilateral",
+        "anatomicalLocation": "tief im Gesaess nahe Kreuzbein und Sitzbein",
+        "painRegions": [
+          "buttock",
+          "hip",
+          "thigh"
+        ],
+        "referralArea": "Gesaess, Huefte, Sitzbein und hinterer Oberschenkel.",
+        "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1226.pdf",
+        "sourcePage": 1226,
+        "reviewStatus": "draft",
+        "notes": "Beide Seiten zusammengefasst."
+      }
+    ],
+    "referralArea": "Gesaess, Huefte, Sitzbein und hinterer Oberschenkel.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1226.pdf",
+    "sourcePage": 1226,
+    "reviewStatus": "draft",
+    "notes": "Automatisch aus Triggerpunkt-CSV angelegt; Muskelverlauf und Beschreibung fachlich nachpflegen."
+  }
+}

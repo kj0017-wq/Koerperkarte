@@ -1,0 +1,23 @@
+muscleId,name,points,createdDraftMuscle
+gluteus-maximus,M. gluteus maximus,1,no
+gluteus-minimus,M. gluteus minimus,2,no
+infraspinatus,M. infraspinatus,1,yes
+latissimus-dorsi,M. latissimus dorsi,1,yes
+levator-scapulae,M. levator scapulae,2,no
+pectoralis-major,M. pectoralis major,3,no
+pectoralis-minor,M. pectoralis minor,1,no
+piriformis,M. piriformis,1,no
+scalene-anterior,M. scalene anterior,1,no
+scalene-medius,M. scalene medius,1,no
+scalene-minimus,M. scalene minimus,1,no
+scalene-posterior,M. scalene posterior,1,no
+semispinalis-capitis,M. semispinalis capitis,3,no
+serratus-anterior,M. serratus anterior,1,no
+splenius-capitis,M. splenius capitis,3,no
+sternocleidomastoid,SCM,2,no
+subclavius,M. subclavius,1,no
+subscapularis,M. subscapularis,1,yes
+supraspinatus,M. supraspinatus,1,yes
+tensor-fasciae-latae,M. tensor fasciae latae,1,no
+teres-minor,M. teres minor,1,yes
+upper-trapezius,M. trapezius pars descendens,2,no

@@ -1,0 +1,62 @@
+{
+  "version": "0.1",
+  "note": "Demo-Daten fuer Lernzwecke. Medizinisch pruefen, bevor der Datensatz produktiv verwendet wird.",
+  "muscles": [
+    {
+      "id": "upper-trapezius",
+      "name": "M. trapezius pars descendens",
+      "bodyArea": "Nacken / Schulter",
+      "course": "Vom Hinterhaupt und Nackenband zum lateralen Drittel der Clavicula.",
+      "explanation": "Typische Punkte koennen in Richtung Nacken, Schlaefe und seitlicher Kopfregion ausstrahlen.",
+      "painRegions": ["neck", "temple", "shoulder"],
+      "triggerpoints": [
+        { "id": "tp-trap-1", "label": "TP 1", "x": 220, "y": 154 },
+        { "id": "tp-trap-2", "label": "TP 2", "x": 180, "y": 184 }
+      ],
+      "referralArea": "Seitlicher Hals, Schlaefe, Kieferwinkel und Schulterdach.",
+      "referralPath": "M206 154 C182 126 178 94 198 62 C220 92 236 122 232 164 C238 180 252 193 272 202 C248 210 224 194 206 154"
+    },
+    {
+      "id": "infraspinatus",
+      "name": "M. infraspinatus",
+      "bodyArea": "Schulterblatt / Arm",
+      "course": "Von der Fossa infraspinata zur dorsalen Facette des Tuberculum majus.",
+      "explanation": "Kann Schmerzen nach vorn in die Schulter und entlang des lateralen Arms projizieren.",
+      "painRegions": ["shoulder", "upper-arm", "forearm"],
+      "triggerpoints": [
+        { "id": "tp-infra-1", "label": "TP 1", "x": 166, "y": 246 },
+        { "id": "tp-infra-2", "label": "TP 2", "x": 184, "y": 270 }
+      ],
+      "referralArea": "Vordere Schulter, lateraler Oberarm, gelegentlich bis Unterarm und Hand.",
+      "referralPath": "M172 246 C216 234 252 246 278 276 C308 312 326 350 326 404 C292 376 266 342 244 304 C224 272 198 256 172 246"
+    },
+    {
+      "id": "gluteus-medius",
+      "name": "M. gluteus medius",
+      "bodyArea": "Becken / Huefte",
+      "course": "Von der Ala ossis ilii zur lateralen Flaeche des Trochanter major.",
+      "explanation": "Haeufige Projektion in LWS, Kreuzbeinregion, Gesaess und laterale Huefte.",
+      "painRegions": ["low-back", "hip", "buttock"],
+      "triggerpoints": [
+        { "id": "tp-glut-1", "label": "TP 1", "x": 178, "y": 442 },
+        { "id": "tp-glut-2", "label": "TP 2", "x": 222, "y": 444 }
+      ],
+      "referralArea": "Lumbosakrale Region, Iliosakralbereich, Gesaess und laterale Huefte.",
+      "referralPath": "M150 420 C178 396 222 394 252 422 C272 452 262 486 232 504 C204 516 166 506 142 482 C130 456 132 436 150 420"
+    },
+    {
+      "id": "quadratus-lumborum",
+      "name": "M. quadratus lumborum",
+      "bodyArea": "Lendenwirbelsaeule",
+      "course": "Zwischen Crista iliaca, 12. Rippe und Querfortsaetzen der LWS.",
+      "explanation": "Kann tiefe Rueckenschmerzen mit Ausstrahlung in Becken, Leiste und laterale Huefte imitieren.",
+      "painRegions": ["low-back", "hip", "groin"],
+      "triggerpoints": [
+        { "id": "tp-ql-1", "label": "TP 1", "x": 176, "y": 370 },
+        { "id": "tp-ql-2", "label": "TP 2", "x": 224, "y": 370 }
+      ],
+      "referralArea": "Tiefe LWS, Beckenkamm, Trochanterregion und gelegentlich Leiste.",
+      "referralPath": "M160 340 C188 326 216 326 244 340 C258 372 258 408 238 434 C218 450 180 450 160 434 C142 404 142 370 160 340"
+    }
+  ]
+}

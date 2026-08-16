@@ -1,0 +1,176 @@
+{
+  "upper-trapezius": {
+    "id": "upper-trapezius",
+    "name": "M. trapezius pars descendens",
+    "bodyArea": "Nacken / Schulter",
+    "course": "Verlaeuft vom Hinterhaupt- und Nackenbereich zum Schulterguertel und zur lateralen Klavikula.",
+    "explanation": "Wichtiger Halte- und Bewegungsmuskel fuer Kopf, Nacken und Schulterguertel; Triggerpunkte koennen Kopf- und Nackensymptome mitpraegen.",
+    "painRegions": [
+      "neck",
+      "temple",
+      "orbit",
+      "jaw",
+      "occiput",
+      "shoulder"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Posterolateraler Nacken bis Schlaefe, Orbit, Kieferwinkel und Hinterkopf.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0248.pdf",
+    "sourcePage": 248,
+    "reviewStatus": "draft",
+    "notes": "Triggerpunkt-Referierung in der Quelle gut belegt; Koordinaten fehlen."
+  },
+  "sternocleidomastoid": {
+    "id": "sternocleidomastoid",
+    "name": "SCM",
+    "bodyArea": "Nacken / Kopf",
+    "course": "Zweistufiger Muskel vom Brustbein- und Schlueselbeinanteil zum Warzenfortsatz.",
+    "explanation": "Wichtiger Halte- und Bewegungsmuskel des Kopfes; Triggerpunkte koennen Kopf-, Gesichts- und Halsmuster begleiten.",
+    "painRegions": [
+      "head",
+      "face",
+      "ear",
+      "throat",
+      "neck",
+      "sternum"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Kopf, Gesicht, Rachen, Ohr und oberer Brustbeinbereich.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0274.pdf",
+    "sourcePage": 274,
+    "reviewStatus": "draft",
+    "notes": "Beide Muskelkoepfe referieren unterschiedlich; Koordinaten fehlen."
+  },
+  "splenius-capitis": {
+    "id": "splenius-capitis",
+    "name": "M. splenius capitis",
+    "bodyArea": "Nacken",
+    "course": "Verlaeuft vom oberen Nacken- und Brustwirbelbereich zum Schaedel und unterstuetzt Kopfbewegungen.",
+    "explanation": "Kann bei Nackenbeschwerden und Kopfschmerzmustern eine Rolle spielen; mit eingeschraenkter Kopfdrehung assoziiert.",
+    "painRegions": [
+      "neck",
+      "occiput",
+      "vertex"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Hinterkopf und Scheitelregion mit Ausstrahlung zum Kopf.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0433.pdf",
+    "sourcePage": 433,
+    "reviewStatus": "draft",
+    "notes": "Abgrenzung zu benachbarten hinteren Halsmuskeln klinisch wichtig."
+  },
+  "splenius-cervicis": {
+    "id": "splenius-cervicis",
+    "name": "M. splenius cervicis",
+    "bodyArea": "Nacken",
+    "course": "Verlaeuft tief im hinteren Hals von oberen Brust-/Halswirbeln zu hoeheren Halssegmenten.",
+    "explanation": "Wird vor allem bei Halsstreckung und Rotation relevant; kann bei Nackensteifigkeit mitbeteiligt sein.",
+    "painRegions": [
+      "neck",
+      "occiput"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Tiefer Nacken und Hinterhauptbereich.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0440.pdf",
+    "sourcePage": 440,
+    "reviewStatus": "draft",
+    "notes": "In der Quelle wird die Abgrenzung zur Levator-scapulae-Region betont."
+  },
+  "semispinalis-capitis": {
+    "id": "semispinalis-capitis",
+    "name": "M. semispinalis capitis",
+    "bodyArea": "Subokzipital / Nacken",
+    "course": "Vom Hinterhaupt zu oberen Hals- und oberen Brustwirbelabschnitten.",
+    "explanation": "Tiefe Kopfausrichtung und Haltearbeit; Triggerpunkte koennen in den Kopf ausstrahlen.",
+    "painRegions": [
+      "head",
+      "suboccipital",
+      "temple",
+      "eye",
+      "occiput"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Hinterkopf mit Ausstrahlung in Schlaefe, Auge und subokzipitale Region.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0446.pdf",
+    "sourcePage": 446,
+    "reviewStatus": "draft",
+    "notes": "Referred-pain-Muster variiert je nach Muskelabschnitt."
+  },
+  "longissimus-capitis": {
+    "id": "longissimus-capitis",
+    "name": "M. longissimus capitis",
+    "bodyArea": "Subokzipital / Nacken",
+    "course": "Vom Mastoidbereich zu unteren Hals- und oberen Brustwirbeln.",
+    "explanation": "Tiefer Kopf-auf-Hals-Extensor mit Bezug zu Hinterkopf- und Nackenbeschwerden.",
+    "painRegions": [
+      "head",
+      "neck",
+      "occiput"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Hinterkopf und oberer Nacken.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "reviewStatus": "draft",
+    "notes": "Lage und Funktion sind gut belegt; Referierung im Material nur indirekt beschrieben."
+  },
+  "semispinalis-cervicis": {
+    "id": "semispinalis-cervicis",
+    "name": "M. semispinalis cervicis",
+    "bodyArea": "Tiefer Nacken",
+    "course": "Von C2 bis C5 zu oberen Brustwirbelsegmenten; liegt tief unter dem semispinalen Kapitis.",
+    "explanation": "Stabilisiert und streckt die Halswirbelsaeule segmentnah.",
+    "painRegions": [
+      "neck"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Tiefer Halsbereich entlang der Halswirbelsaeule.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "reviewStatus": "draft",
+    "notes": "Hauptrolle eher Stabilisation als grosse Bewegungsamplitude."
+  },
+  "cervical-multifidus": {
+    "id": "cervical-multifidus",
+    "name": "M. multifidus cervicis",
+    "bodyArea": "Tiefer Nacken",
+    "course": "Kurze segmentale Fasern zwischen Wirbelboegen und Querfortsaetzen mehrerer Halssegmente.",
+    "explanation": "Wichtig fuer segmentale Kontrolle und Tiefenstabilitaet der Halswirbelsaeule.",
+    "painRegions": [
+      "neck",
+      "cervical-spine"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Segmentnaher tiefer Nacken.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "reviewStatus": "draft",
+    "notes": "Die Quelle betont vor allem segmentale Kontrolle."
+  },
+  "cervical-rotatores": {
+    "id": "cervical-rotatores",
+    "name": "M. rotatores cervicis",
+    "bodyArea": "Tiefer Nacken",
+    "course": "Sehr kurze tiefe Segmente zwischen benachbarten oder uebersprungenen Wirbeln.",
+    "explanation": "Unterstuetzt feine Rotation und Stabilisierung in der Halswirbelsaeule.",
+    "painRegions": [
+      "neck",
+      "cervical-spine"
+    ],
+    "triggerpoints": [],
+    "referralArea": "Segmentnaher tiefer Nacken.",
+    "referralPath": "",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0449.pdf",
+    "sourcePage": 449,
+    "reviewStatus": "draft",
+    "notes": "In der Quelle werden die Rotatores als sehr tiefe, kurze paraspinale Muskeln beschrieben."
+  }
+}

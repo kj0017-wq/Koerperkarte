@@ -1,0 +1,132 @@
+{
+  "c4": {
+    "id": "c4",
+    "name": "C4 myotome",
+    "movement": "scapular elevation",
+    "segments": [
+      "C4"
+    ],
+    "description": "Schulterguertelhebung und obere Nackenstabilitaet.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0769.pdf",
+    "sourcePage": 769,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt scapular weakness with C4."
+  },
+  "c5": {
+    "id": "c5",
+    "name": "C5 myotome",
+    "movement": "shoulder abduction / elbow flexion",
+    "segments": [
+      "C5"
+    ],
+    "description": "Abduktion der Schulter und Ellenbogenflexion als Orientierung.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0769.pdf",
+    "sourcePage": 769,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt shoulder abduction or elbow flexion weakness with C5."
+  },
+  "c6": {
+    "id": "c6",
+    "name": "C6 myotome",
+    "movement": "wrist extension / supination",
+    "segments": [
+      "C6"
+    ],
+    "description": "Handgelenkstreckung und Supination als Orientierung.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0769.pdf",
+    "sourcePage": 769,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt wrist extension/supination with C6."
+  },
+  "c7": {
+    "id": "c7",
+    "name": "C7 myotome",
+    "movement": "elbow extension / wrist flexion-pronation",
+    "segments": [
+      "C7"
+    ],
+    "description": "Ellenbogenstreckung sowie Handgelenkflexion/Pronationsanteile.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0769.pdf",
+    "sourcePage": 769,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt triceps brachii, wrist flexion/pronation with C7."
+  },
+  "c8": {
+    "id": "c8",
+    "name": "C8 myotome",
+    "movement": "finger flexion / interossei",
+    "segments": [
+      "C8"
+    ],
+    "description": "Fingerflexion und intrinsische Handmuskeln als Orientierung.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_0769.pdf",
+    "sourcePage": 769,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt finger flexor/interossei with C8."
+  },
+  "l2": {
+    "id": "l2",
+    "name": "L2 myotome",
+    "movement": "hip flexion",
+    "segments": [
+      "L2"
+    ],
+    "description": "Hüftflexion als grober Funktionshinweis.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1516.pdf",
+    "sourcePage": 1516,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt rectus femoris with L2, L3 root involvement."
+  },
+  "l3": {
+    "id": "l3",
+    "name": "L3 myotome",
+    "movement": "knee extension",
+    "segments": [
+      "L3"
+    ],
+    "description": "Kniestreckung als grober Funktionshinweis.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1516.pdf",
+    "sourcePage": 1516,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt rectus femoris with L2, L3 root involvement."
+  },
+  "l4": {
+    "id": "l4",
+    "name": "L4 myotome",
+    "movement": "ankle dorsiflexion",
+    "segments": [
+      "L4"
+    ],
+    "description": "Sprunggelenks-Dorsalflexion als grober Funktionshinweis.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1527.pdf",
+    "sourcePage": 1527,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt tibialis anterior mit L4/L5 und manchmal S1; Abgrenzung zu L5/S1 beachten."
+  },
+  "l5": {
+    "id": "l5",
+    "name": "L5 myotome",
+    "movement": "great toe extension / foot clearance",
+    "segments": [
+      "L5"
+    ],
+    "description": "Grosszehenextension und Fusshebung beim Gehen.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1647.pdf",
+    "sourcePage": 1647,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt foot slap und L5 myotomal weakness."
+  },
+  "s1": {
+    "id": "s1",
+    "name": "S1 myotome",
+    "movement": "plantarflexion",
+    "segments": [
+      "S1"
+    ],
+    "description": "Zehenstand und Push-off als grober Funktionshinweis.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1573.pdf",
+    "sourcePage": 1573,
+    "reviewStatus": "draft",
+    "notes": "Quelle nennt gastrocnemius mit S1/S2; Funktionsbezug aus 1606 mitgedacht."
+  }
+}

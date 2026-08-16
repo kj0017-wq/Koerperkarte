@@ -1,0 +1,33 @@
+{
+  "version": "0.1",
+  "regions": [
+    {
+      "id": "c5-c6",
+      "name": "Lateraler Arm",
+      "segments": ["C5", "C6"],
+      "description": "Orientierende Sensibilitaetszone ueber Schulterkappe, lateralen Oberarm und daumenseitigen Unterarm.",
+      "mapPath": "M252 244 C292 260 320 318 322 394 C300 384 282 354 266 318 C252 286 242 264 252 244"
+    },
+    {
+      "id": "t4-t7",
+      "name": "Thorax anterior",
+      "segments": ["T4", "T5", "T6", "T7"],
+      "description": "Guertelfoermige Orientierung im Brustkorbbereich, ventral und lateral.",
+      "mapPath": "M150 230 C184 214 218 214 252 230 L248 330 C216 342 184 342 152 330 Z"
+    },
+    {
+      "id": "l4-l5",
+      "name": "Vorder-/Aussenseite Unterschenkel",
+      "segments": ["L4", "L5"],
+      "description": "Orientierende Zone ueber ventral-lateralem Unterschenkel bis Fussruecken.",
+      "mapPath": "M226 520 C252 572 264 638 260 734 C240 722 226 650 214 582 C210 552 212 530 226 520"
+    },
+    {
+      "id": "s1",
+      "name": "Rueckseite Bein",
+      "segments": ["S1"],
+      "description": "Orientierende Zone ueber Gesaess, hinterem Oberschenkel, Wade und lateraler Fusskante.",
+      "mapPath": "M160 502 C178 548 184 620 176 734 C154 706 142 644 136 584 C134 540 142 514 160 502"
+    }
+  ]
+}

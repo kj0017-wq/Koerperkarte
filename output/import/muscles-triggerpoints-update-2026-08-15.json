@@ -1,0 +1,146 @@
+{
+  "upper-trapezius": {
+    "triggerpoints": [
+      {
+        "id": "tp-upper-trapezius-1",
+        "label": "TP 1",
+        "x": 220,
+        "y": 154
+      },
+      {
+        "id": "tp-upper-trapezius-2",
+        "label": "TP 2",
+        "x": 180,
+        "y": 184
+      }
+    ]
+  },
+  "sternocleidomastoid": {
+    "triggerpoints": [
+      {
+        "id": "tp-sternocleidomastoid-1",
+        "label": "TP sternal",
+        "x": 178,
+        "y": 146
+      },
+      {
+        "id": "tp-sternocleidomastoid-2",
+        "label": "TP clavicular",
+        "x": 222,
+        "y": 154
+      }
+    ]
+  },
+  "splenius-capitis": {
+    "triggerpoints": [
+      {
+        "id": "tp-splenius-capitis-1",
+        "label": "TP 1",
+        "x": 186,
+        "y": 126
+      },
+      {
+        "id": "tp-splenius-capitis-2",
+        "label": "TP 2",
+        "x": 214,
+        "y": 128
+      }
+    ]
+  },
+  "splenius-cervicis": {
+    "triggerpoints": [
+      {
+        "id": "tp-splenius-cervicis-1",
+        "label": "TP 1",
+        "x": 184,
+        "y": 160
+      },
+      {
+        "id": "tp-splenius-cervicis-2",
+        "label": "TP 2",
+        "x": 216,
+        "y": 160
+      }
+    ]
+  },
+  "semispinalis-capitis": {
+    "triggerpoints": [
+      {
+        "id": "tp-semispinalis-capitis-1",
+        "label": "TP 1",
+        "x": 190,
+        "y": 118
+      },
+      {
+        "id": "tp-semispinalis-capitis-2",
+        "label": "TP 2",
+        "x": 210,
+        "y": 118
+      }
+    ]
+  },
+  "longissimus-capitis": {
+    "triggerpoints": [
+      {
+        "id": "tp-longissimus-capitis-1",
+        "label": "TP 1",
+        "x": 176,
+        "y": 132
+      },
+      {
+        "id": "tp-longissimus-capitis-2",
+        "label": "TP 2",
+        "x": 224,
+        "y": 132
+      }
+    ]
+  },
+  "semispinalis-cervicis": {
+    "triggerpoints": [
+      {
+        "id": "tp-semispinalis-cervicis-1",
+        "label": "TP 1",
+        "x": 192,
+        "y": 166
+      },
+      {
+        "id": "tp-semispinalis-cervicis-2",
+        "label": "TP 2",
+        "x": 208,
+        "y": 166
+      }
+    ]
+  },
+  "cervical-multifidus": {
+    "triggerpoints": [
+      {
+        "id": "tp-cervical-multifidus-1",
+        "label": "TP 1",
+        "x": 194,
+        "y": 176
+      },
+      {
+        "id": "tp-cervical-multifidus-2",
+        "label": "TP 2",
+        "x": 206,
+        "y": 176
+      }
+    ]
+  },
+  "cervical-rotatores": {
+    "triggerpoints": [
+      {
+        "id": "tp-cervical-rotatores-1",
+        "label": "TP 1",
+        "x": 196,
+        "y": 188
+      },
+      {
+        "id": "tp-cervical-rotatores-2",
+        "label": "TP 2",
+        "x": 204,
+        "y": 188
+      }
+    ]
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "c2": {
+    "id": "c2",
+    "name": "C2 dermatome",
+    "segments": [
+      "C2"
+    ],
+    "description": "Hinterkopf und oberer Nacken.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source mentions cervical radicular levels, not a full dermatome map."
+  },
+  "c3": {
+    "id": "c3",
+    "name": "C3 dermatome",
+    "segments": [
+      "C3"
+    ],
+    "description": "Seitlicher oberer Hals.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source mentions cervical radicular levels, not a full dermatome map."
+  },
+  "c4": {
+    "id": "c4",
+    "name": "C4 dermatome",
+    "segments": [
+      "C4"
+    ],
+    "description": "Unterer Hals und Schulterdach.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source index lists C4-C8 radicular pain."
+  },
+  "c5": {
+    "id": "c5",
+    "name": "C5 dermatome",
+    "segments": [
+      "C5"
+    ],
+    "description": "Laterale Schulter und oberer Oberarm.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source index lists C5 radicular pain/radiculopathy."
+  },
+  "c6": {
+    "id": "c6",
+    "name": "C6 dermatome",
+    "segments": [
+      "C6"
+    ],
+    "description": "Lateraler Unterarm bis Daumen.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source index lists C6 radicular pain/radiculopathy."
+  },
+  "c7": {
+    "id": "c7",
+    "name": "C7 dermatome",
+    "segments": [
+      "C7"
+    ],
+    "description": "Dorsaler Mittelhandbereich und Mittelfinger.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source index lists C7 radicular pain/radiculopathy."
+  },
+  "c8": {
+    "id": "c8",
+    "name": "C8 dermatome",
+    "segments": [
+      "C8"
+    ],
+    "description": "Medialer Unterarm bis Ring- und Kleinfinger.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_2030.pdf",
+    "sourcePage": 2030,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source index lists C7-C8 radicular pain/radiculopathy."
+  },
+  "t1": {
+    "id": "t1",
+    "name": "T1 dermatome",
+    "segments": [
+      "T1"
+    ],
+    "description": "Medialer Unterarm und ellbogennaher Bereich.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; no dedicated T1 dermatome figure found in source pages."
+  },
+  "t4": {
+    "id": "t4",
+    "name": "T4 dermatome",
+    "segments": [
+      "T4"
+    ],
+    "description": "Brusthoehe etwa auf Mamillenlinie.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source only gives general thoracic referral context."
+  },
+  "t6": {
+    "id": "t6",
+    "name": "T6 dermatome",
+    "segments": [
+      "T6"
+    ],
+    "description": "Oberer bis mittlerer Brustkorb.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source only gives general thoracic referral context."
+  },
+  "t10": {
+    "id": "t10",
+    "name": "T10 dermatome",
+    "segments": [
+      "T10"
+    ],
+    "description": "Bauchhoehe um den Nabel.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source only gives general thoracic and lumbar radicular context."
+  },
+  "l1": {
+    "id": "l1",
+    "name": "L1 dermatome",
+    "segments": [
+      "L1"
+    ],
+    "description": "Leiste und oberer vorderer Oberschenkel.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source mentions lower thoracic and upper lumbar referral areas."
+  },
+  "l2": {
+    "id": "l2",
+    "name": "L2 dermatome",
+    "segments": [
+      "L2"
+    ],
+    "description": "Vorderer Oberschenkel.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source mentions lumbar radicular pain generally."
+  },
+  "l3": {
+    "id": "l3",
+    "name": "L3 dermatome",
+    "segments": [
+      "L3"
+    ],
+    "description": "Medialer Oberschenkel und Knie.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1514.pdf",
+    "sourcePage": 1514,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source mentions lower-extremity referral but not a full map."
+  },
+  "l4": {
+    "id": "l4",
+    "name": "L4 dermatome",
+    "segments": [
+      "L4"
+    ],
+    "description": "Mediale Wade und Innenknochel.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1649.pdf",
+    "sourcePage": 1649,
+    "reviewStatus": "draft",
+    "notes": "Source mentions L4/L5 radiculopathy; exact dermatome boundary inferred."
+  },
+  "l5": {
+    "id": "l5",
+    "name": "L5 dermatome",
+    "segments": [
+      "L5"
+    ],
+    "description": "Dorsum des Fusses und Grosszehe.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1649.pdf",
+    "sourcePage": 1649,
+    "reviewStatus": "draft",
+    "notes": "Source mentions L5 nerve root and L5 radiculopathy; exact dermatome boundary inferred."
+  },
+  "s1": {
+    "id": "s1",
+    "name": "S1 dermatome",
+    "segments": [
+      "S1"
+    ],
+    "description": "Lateraler Fussrand, Ferse und Wade.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1583.pdf",
+    "sourcePage": 1583,
+    "reviewStatus": "draft",
+    "notes": "Source mentions S1 radiculopathy/Achilles reflex; exact dermatome boundary inferred."
+  },
+  "s2": {
+    "id": "s2",
+    "name": "S2 dermatome",
+    "segments": [
+      "S2"
+    ],
+    "description": "Hinterer Oberschenkel und hinteres Knie.",
+    "sourceFile": "Myofascial Pain and Dysfunction The Trigger Point Manual by Janet G. Travell David Simons 3rd Edition_page_1678.pdf",
+    "sourcePage": 1678,
+    "reviewStatus": "draft",
+    "notes": "Standard map; source page only provides S2 root context for intrinsic foot muscles."
+  }
+}
