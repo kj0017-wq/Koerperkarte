@@ -82,11 +82,14 @@ export default function AdminPage() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-4 px-3 py-3 sm:gap-6 sm:px-6 sm:py-5 lg:px-8">
       <header className="flex flex-col gap-3 rounded-lg px-1 py-2 sm:gap-4 sm:py-3 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-sm font-medium text-blue-600">Koerperkarte</p>
-          <h1 className="mt-1 max-w-3xl text-2xl font-semibold leading-tight text-slate-950 sm:mt-2 sm:text-4xl lg:text-5xl">
-            Verwaltung und Datenbankpflege.
-          </h1>
+        <div className="flex items-start gap-3">
+          <img src="/logo-koerperkarte.png" alt="Koerperkarte Logo" className="mt-1 h-14 w-14 rounded-lg border border-slate-200 bg-white object-cover p-1 shadow-sm sm:h-16 sm:w-16" />
+          <div>
+            <p className="text-sm font-medium text-blue-600">Koerperkarte</p>
+            <h1 className="mt-1 max-w-3xl text-2xl font-semibold leading-tight text-slate-950 sm:mt-2 sm:text-4xl lg:text-5xl">
+              Verwaltung und Datenbankpflege.
+            </h1>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2 text-sm">
           <a className="focus-ring rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-50" href="/">

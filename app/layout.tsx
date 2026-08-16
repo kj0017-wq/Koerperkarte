@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   applicationName: "Koerperkarte",
   manifest: "/manifest.webmanifest",
   icons: {
+    icon: "/icon-192.png",
     apple: "/apple-touch-icon.png"
   },
   appleWebApp: {
@@ -30,3 +31,4 @@ export default function RootLayout({
     </html>
   );
 }
+

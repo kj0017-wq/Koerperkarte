@@ -126,9 +126,12 @@ export default function WebApp() {
     <main className="min-h-screen bg-slate-50 pb-24 text-slate-950">
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur">
         <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-xs font-semibold uppercase text-blue-600">Koerperkarte Webapp</p>
-            <h1 className="text-xl font-semibold leading-tight">Anatomische Karte</h1>
+          <div className="flex items-center gap-3">
+            <img src="/logo-koerperkarte.png" alt="Koerperkarte Logo" className="h-11 w-11 rounded-lg border border-slate-200 bg-white object-cover p-0.5" />
+            <div>
+              <p className="text-xs font-semibold uppercase text-blue-600">Koerperkarte Webapp</p>
+              <h1 className="text-xl font-semibold leading-tight">Anatomische Karte</h1>
+            </div>
           </div>
           <a
             href="/"

@@ -123,7 +123,10 @@ export default function Home() {
       <main className="min-h-screen bg-slate-950 text-white">
         <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center gap-8 px-4 py-6 sm:px-8 lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-center lg:gap-10">
           <div className="order-2 lg:order-1">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Koerperkarte</p>
+            <div className="flex items-center gap-3">
+              <img src="/logo-koerperkarte.png" alt="Koerperkarte Logo" className="h-14 w-14 rounded-lg bg-white object-cover p-1 shadow-lg shadow-black/30" />
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Koerperkarte</p>
+            </div>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
               Anatomie verstehen, fuehlen und bewegen.
             </h1>
@@ -160,11 +163,14 @@ export default function Home() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-4 px-3 py-3 sm:gap-6 sm:px-6 sm:py-5 lg:px-8">
       <header className="flex flex-col gap-3 rounded-lg px-1 py-2 sm:gap-4 sm:py-3 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-sm font-medium text-blue-600">Koerperkarte</p>
-          <h1 className="mt-1 max-w-3xl text-2xl font-semibold leading-tight text-slate-950 sm:mt-2 sm:text-4xl lg:text-5xl">
-            Anatomische Karten fuer Therapie, Unterricht und Praxis.
-          </h1>
+        <div className="flex items-start gap-3">
+          <img src="/logo-koerperkarte.png" alt="Koerperkarte Logo" className="mt-1 h-14 w-14 rounded-lg border border-slate-200 bg-white object-cover p-1 shadow-sm sm:h-16 sm:w-16" />
+          <div>
+            <p className="text-sm font-medium text-blue-600">Koerperkarte</p>
+            <h1 className="mt-1 max-w-3xl text-2xl font-semibold leading-tight text-slate-950 sm:mt-2 sm:text-4xl lg:text-5xl">
+              Anatomische Karten fuer Therapie, Unterricht und Praxis.
+            </h1>
+          </div>
         </div>
         <div className="flex max-w-md flex-col gap-3 text-sm leading-6 text-slate-600 sm:text-base lg:text-sm">
           <p>
