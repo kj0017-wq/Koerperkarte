@@ -5,9 +5,11 @@ type DetailPanelProps = {
   selection: MapSelection;
   data: MuscleMapItem | MuscleMapItem[] | BodyMapBlock | DermatomeRegion | MyotomeGroup | PeripheralNerve | FasciaLine | null;
   onSelect: (selection: MapSelection) => void;
+  activePainRegionId?: string | null;
+  onPainRegionHover?: (regionId: string | null) => void;
 };
 
-export function DetailPanel({ mode, selection, data, onSelect }: DetailPanelProps) {
+export function DetailPanel({ mode, selection, data, onSelect, activePainRegionId, onPainRegionHover }: DetailPanelProps) {
   return (
     <aside className="glass rounded-lg p-5">
       <p className="text-xs font-semibold uppercase text-slate-400">Befundhilfe</p>
@@ -16,7 +18,15 @@ export function DetailPanel({ mode, selection, data, onSelect }: DetailPanelProp
       </h2>
 
       <div className="mt-5">
-        {Array.isArray(data) && <PainRegionResults items={data} selection={selection} onSelect={onSelect} />}
+        {Array.isArray(data) && (
+          <PainRegionResults
+            items={data}
+            selection={selection}
+            activePainRegionId={activePainRegionId}
+            onPainRegionHover={onPainRegionHover}
+            onSelect={onSelect}
+          />
+        )}
         {!Array.isArray(data) && mode === "triggerpoints" && data && "triggerpoints" in data && (
           <MuscleDetail item={data} selection={selection} onSelect={onSelect} />
         )}
@@ -191,10 +201,14 @@ function BlockDetail({ item }: { item: BodyMapBlock }) {
 function PainRegionResults({
   items,
   selection,
+  activePainRegionId,
+  onPainRegionHover,
   onSelect
 }: {
   items: MuscleMapItem[];
   selection: MapSelection;
+  activePainRegionId?: string | null;
+  onPainRegionHover?: (regionId: string | null) => void;
   onSelect: (selection: MapSelection) => void;
 }) {
   if (items.length === 0) {
@@ -229,6 +243,32 @@ function PainRegionResults({
             <span className={active ? "mt-2 block text-xs font-semibold uppercase text-blue-100" : "mt-2 block text-xs font-semibold uppercase text-blue-600"}>
               {item.bodyArea}
             </span>
+            {(item.painRegions ?? []).length > 0 && (
+              <span className="mt-3 flex flex-wrap gap-1.5">
+                {(item.painRegions ?? []).slice(0, 7).map((region) => {
+                  const regionActive = activePainRegionId === region;
+
+                  return (
+                    <span
+                      key={region}
+                      onMouseEnter={() => onPainRegionHover?.(region)}
+                      onMouseLeave={() => onPainRegionHover?.(null)}
+                      onFocus={() => onPainRegionHover?.(region)}
+                      onBlur={() => onPainRegionHover?.(null)}
+                      className={`rounded-full px-2 py-1 text-xs font-semibold transition ${
+                        regionActive
+                          ? "bg-orange-500 text-white ring-2 ring-orange-200"
+                          : active
+                            ? "bg-white/20 text-white"
+                            : "bg-orange-50 text-orange-700 hover:bg-orange-100"
+                      }`}
+                    >
+                      {painRegionLabel(region)}
+                    </span>
+                  );
+                })}
+              </span>
+            )}
             <span className={active ? "mt-3 block text-xs font-semibold text-white" : "mt-3 block text-xs font-semibold text-blue-700"}>
               Auf Karte anzeigen
             </span>
@@ -239,6 +279,13 @@ function PainRegionResults({
   );
 }
 
+function painRegionLabel(region: string) {
+  return region
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
 function SegmentDetail({ item }: { item: DermatomeRegion }) {
   return (
     <div className="space-y-4">

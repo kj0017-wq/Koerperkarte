@@ -42,6 +42,8 @@ type BodyMapProps = {
   fasciaLines?: FasciaLine[];
   infoPlacement?: "map" | "external";
   resetViewKey?: number;
+  hoveredPainRegionId?: string | null;
+  onPainRegionHover?: (regionId: string | null) => void;
   onInfoChange?: (info: BodyMapInfo | null) => void;
   onSelect: (selection: MapSelection) => void;
 };
@@ -165,12 +167,14 @@ export function BodyMap({
   fasciaLines = [],
   infoPlacement = "map",
   resetViewKey,
+  hoveredPainRegionId: externalHoveredPainRegionId,
+  onPainRegionHover,
   onInfoChange,
   onSelect
 }: BodyMapProps) {
   const [mapView, setMapView] = useState<MapView>("front");
   const [hoveredPoint, setHoveredPoint] = useState<PositionedTriggerPointEntry | null>(null);
-  const [hoveredPainRegionId, setHoveredPainRegionId] = useState<string | null>(null);
+  const [internalHoveredPainRegionId, setInternalHoveredPainRegionId] = useState<string | null>(null);
   const [selectedPointKey, setSelectedPointKey] = useState<string | null>(null);
   const [showFullBody, setShowFullBody] = useState(false);
 
@@ -187,7 +191,7 @@ export function BodyMap({
 
   useEffect(() => {
     setHoveredPoint(null);
-    setHoveredPainRegionId(null);
+    hoverPainRegion(null);
     setShowFullBody(false);
   }, [mapView, mode, selectionKey]);
 
@@ -234,7 +238,7 @@ export function BodyMap({
 
   const activePainRegions = mapView === "face" ? facePainRegions : mapView === "back" ? backPainRegions : frontPainRegions;
   const selectedNerve = selection.type === "nerve" ? peripheralNerves.find((item) => item.id === selection.id) ?? peripheralNerves[0] : null;
-  const activePainRegionId = hoveredPainRegionId ?? (selection.type === "painRegion" ? selection.id : null);
+  const activePainRegionId = externalHoveredPainRegionId ?? internalHoveredPainRegionId ?? (selection.type === "painRegion" ? selection.id : null);
   const activePainRegion = activePainRegionId ? activePainRegions.find((region) => region.id === activePainRegionId) ?? null : null;
   const activePainRegionMuscles = activePainRegionId ? muscles.filter((item) => (item.painRegions ?? []).includes(activePainRegionId)) : [];
   const baseViewBox = mapView === "face" ? "0 0 400 520" : "0 0 400 820";
@@ -289,10 +293,15 @@ export function BodyMap({
     selectEntry(entry);
   }
 
+  function hoverPainRegion(regionId: string | null) {
+    setInternalHoveredPainRegionId(regionId);
+    onPainRegionHover?.(regionId);
+  }
+
   function selectPainRegion(regionId: string) {
     const preferredView = viewForPainRegion(regionId, mapView);
     if (preferredView !== mapView) setMapView(preferredView);
-    setHoveredPainRegionId(null);
+    hoverPainRegion(null);
     setShowFullBody(false);
     onSelect({ type: "painRegion", id: regionId });
   }
@@ -421,10 +430,10 @@ export function BodyMap({
                   strokeOpacity={active ? "0.72" : "0"}
                   className="cursor-pointer outline-none transition-opacity duration-200 hover:opacity-40 focus:opacity-40"
                   onClick={() => selectPainRegion(region.id)}
-                  onFocus={() => setHoveredPainRegionId(region.id)}
-                  onBlur={() => setHoveredPainRegionId(null)}
-                  onMouseEnter={() => setHoveredPainRegionId(region.id)}
-                  onMouseLeave={() => setHoveredPainRegionId(null)}
+                  onFocus={() => hoverPainRegion(region.id)}
+                  onBlur={() => hoverPainRegion(null)}
+                  onMouseEnter={() => hoverPainRegion(region.id)}
+                  onMouseLeave={() => hoverPainRegion(null)}
                 >
                 </path>
               );

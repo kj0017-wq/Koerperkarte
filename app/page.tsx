@@ -24,6 +24,7 @@ export default function Home() {
   });
   const [zoom, setZoom] = useState(1);
   const [bodyResetKey, setBodyResetKey] = useState(0);
+  const [hoveredPainRegionId, setHoveredPainRegionId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
 
   useEffect(() => {
@@ -296,6 +297,8 @@ export default function Home() {
           layers={layers}
           zoom={zoom}
           resetViewKey={bodyResetKey}
+          hoveredPainRegionId={hoveredPainRegionId}
+          onPainRegionHover={setHoveredPainRegionId}
           muscles={muscles}
           dermatomeRegions={dermatomeRegions}
           myotomeGroups={myotomeGroups}
@@ -309,7 +312,7 @@ export default function Home() {
 
         <div className="order-3 space-y-4 lg:order-3">
           {mode === "triggerpoints" && <BodyInfoPanel info={bodyInfo} />}
-          <DetailPanel mode={mode} selection={selection} data={selectedData} onSelect={setSelection} />
+          <DetailPanel mode={mode} selection={selection} data={selectedData} activePainRegionId={hoveredPainRegionId} onPainRegionHover={setHoveredPainRegionId} onSelect={setSelection} />
         </div>
       </section>
       )}

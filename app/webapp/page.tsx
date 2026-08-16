@@ -40,6 +40,7 @@ export default function WebApp() {
   });
   const [zoom, setZoom] = useState(1);
   const [bodyResetKey, setBodyResetKey] = useState(0);
+  const [hoveredPainRegionId, setHoveredPainRegionId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
 
   useEffect(() => {
@@ -169,6 +170,8 @@ export default function WebApp() {
                 layers={layers}
                 zoom={zoom}
                 resetViewKey={bodyResetKey}
+                hoveredPainRegionId={hoveredPainRegionId}
+                onPainRegionHover={setHoveredPainRegionId}
                 muscles={muscles}
                 dermatomeRegions={dermatomeRegions}
                 myotomeGroups={myotomeGroups}
@@ -280,7 +283,7 @@ export default function WebApp() {
               </section>
             )}
 
-            {pane === "detail" && <DetailPanel mode={mode} selection={selection} data={selectedData} onSelect={setSelection} />}
+            {pane === "detail" && <DetailPanel mode={mode} selection={selection} data={selectedData} activePainRegionId={hoveredPainRegionId} onPainRegionHover={setHoveredPainRegionId} onSelect={setSelection} />}
           </>
         )}
       </div>
