@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { BodyInfoPanel, BodyMap, type BodyMapInfo } from "@/components/BodyMap";
@@ -57,6 +57,7 @@ export default function Home() {
   const dermatomeRegions = anatomyData?.dermatomeRegions ?? [];
   const myotomeGroups = anatomyData?.myotomeGroups ?? [];
   const peripheralNerves = anatomyData?.peripheralNerves ?? [];
+  const fasciaLines = anatomyData?.fasciaLines ?? [];
   const blocks = anatomyData?.blocks ?? [];
 
   const selectedData = useMemo(() => {
@@ -91,7 +92,7 @@ export default function Home() {
     }
 
     return null;
-  }, [anatomyData, blocks, dermatomeRegions, muscles, myotomeGroups, peripheralNerves, selection]);
+  }, [anatomyData, blocks, dermatomeRegions, muscles, myotomeGroups, peripheralNerves, fasciaLines, selection]);
 
   function handleModeChange(nextMode: AnatomyMode) {
     if (!anatomyData) return;
@@ -101,6 +102,7 @@ export default function Home() {
     if (nextMode === "dermatomes" && dermatomeRegions[0]) setSelection({ type: "dermatome", id: dermatomeRegions[0].id });
     if (nextMode === "myotomes" && myotomeGroups[0]) setSelection({ type: "myotome", id: myotomeGroups[0].id });
     if (nextMode === "nerves" && peripheralNerves[0]) setSelection({ type: "nerve", id: peripheralNerves[0].id });
+    if (nextMode === "fascia" && fasciaLines[0]) setSelection({ type: "fascia", id: fasciaLines[0].id });
   }
 
   return (
@@ -244,6 +246,20 @@ export default function Home() {
             </div>
           )}
 
+          {mode === "fascia" && (
+            <div className="grid gap-2">
+              {fasciaLines.map((line) => (
+                <button
+                  key={line.id}
+                  onClick={() => setSelection({ type: "fascia", id: line.id })}
+                  className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${selection.type === "fascia" && selection.id === line.id ? "bg-teal-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"}`}
+                >
+                  <span className="block font-semibold">{line.name}</span>
+                  <span className={selection.type === "fascia" && selection.id === line.id ? "text-teal-100" : "text-slate-500"}>{line.regions.join(", ")}</span>
+                </button>
+              ))}
+            </div>
+          )}
           {mode === "myotomes" && (
             <div className="grid gap-2">
               {myotomeGroups.map((group) => (
@@ -276,6 +292,7 @@ export default function Home() {
           myotomeGroups={myotomeGroups}
           blocks={blocks}
           peripheralNerves={peripheralNerves}
+          fasciaLines={fasciaLines}
           infoPlacement="external"
           onInfoChange={setBodyInfo}
           onSelect={setSelection}
@@ -297,6 +314,7 @@ function modeLabel(mode: AnatomyMode) {
     dermatomes: "Dermatome",
     myotomes: "Myotome",
     nerves: "Periphere Nerven",
+    fascia: "Faszien",
     future: "Weitere Karten"
   };
 
@@ -308,6 +326,7 @@ function getInitialSelection(data: AnatomyData): MapSelection | null {
   if (data.dermatomeRegions[0]) return { type: "dermatome", id: data.dermatomeRegions[0].id };
   if (data.myotomeGroups[0]) return { type: "myotome", id: data.myotomeGroups[0].id };
   if (data.peripheralNerves[0]) return { type: "nerve", id: data.peripheralNerves[0].id };
+  if (data.fasciaLines[0]) return { type: "fascia", id: data.fasciaLines[0].id };
   if (data.blocks[0]) return { type: "block", id: data.blocks[0].id };
   return null;
 }

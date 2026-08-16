@@ -1,0 +1,54 @@
+﻿{
+  "lines": [
+    {
+      "id": "superficial-back-line",
+      "name": "Superficial Back Line",
+      "system": "Myofasziale Leitbahn",
+      "course": "Von Plantarfaszie und Achillessehne ueber Waden, ischiocrurale Muskulatur, Sakrotuberalband, Rückenstrecker bis Galea aponeurotica.",
+      "function": "Unterstuetzt Aufrichtung, Extension und Spannungskontrolle der dorsalen Kette.",
+      "regions": ["Fusssohle", "Wade", "Ruecken", "Nacken"],
+      "mapPath": "M200 790 C192 715 186 642 176 560 C166 482 144 412 150 332 C154 250 178 188 188 126 C190 96 194 68 200 42",
+      "territoryPath": "M168 742 C178 680 178 590 164 520 C148 438 138 352 150 270 C158 212 176 156 184 96 L216 96 C224 156 242 212 250 270 C262 352 252 438 236 520 C222 590 222 680 232 742 C214 758 186 758 168 742"
+    },
+    {
+      "id": "superficial-front-line",
+      "name": "Superficial Front Line",
+      "system": "Myofasziale Leitbahn",
+      "course": "Von Fussruecken und vorderem Unterschenkel ueber Quadrizeps, Rektusscheide, Sternum bis Halsvorderseite.",
+      "function": "Unterstuetzt Flexion, Rumpfspannung und die ventrale Gegenbalance zur dorsalen Kette.",
+      "regions": ["Fussruecken", "Schienbein", "Oberschenkel vorne", "Bauch", "Hals"],
+      "mapPath": "M200 764 C206 690 210 620 210 548 C210 486 216 434 218 370 C220 304 216 242 208 182 C204 140 204 108 200 76",
+      "territoryPath": "M178 740 C186 672 188 600 188 528 C188 454 180 384 174 310 C170 250 178 190 188 128 L212 128 C222 190 230 250 226 310 C220 384 212 454 212 528 C212 600 214 672 222 740 C208 754 192 754 178 740"
+    },
+    {
+      "id": "lateral-line",
+      "name": "Lateral Line",
+      "system": "Myofasziale Leitbahn",
+      "course": "Seitliche Verbindung von Fibularisgruppe, Tractus iliotibialis, seitlicher Rumpffaszie, Interkostalraum und Halsseite.",
+      "function": "Stabilisiert Seitenneigung, Becken-Rumpf-Kopplung und laterale Balance.",
+      "regions": ["Lateraler Unterschenkel", "IT-Band", "Flanke", "Halsseite"],
+      "mapPath": "M252 744 C250 664 248 586 252 516 C258 444 270 382 266 314 C262 244 246 188 224 126",
+      "territoryPath": "M238 732 C238 650 236 580 240 510 C244 434 252 360 250 300 C248 240 234 184 216 128 L244 132 C266 196 282 252 286 318 C290 390 276 454 270 526 C264 604 266 674 268 734 Z"
+    },
+    {
+      "id": "spiral-line",
+      "name": "Spiral Line",
+      "system": "Myofasziale Leitbahn",
+      "course": "Verlaeuft diagonal um Rumpf und Becken und koppelt Schulterguertel, schräge Bauchfaszien, Huftregion und Beinachsen.",
+      "function": "Organisiert Rotation, Gangdynamik und diagonale Kraftuebertragung.",
+      "regions": ["Schulter", "Rumpf diagonal", "Becken", "Beinachse"],
+      "mapPath": "M126 210 C176 260 232 312 258 382 C280 442 250 492 204 520 C160 548 140 610 156 700 M274 214 C222 266 168 318 144 386 C124 444 152 492 196 520 C238 548 260 612 244 700",
+      "territoryPath": "M116 196 C176 246 246 306 276 380 C300 440 276 498 222 530 C178 556 160 610 176 690 L148 700 C128 626 146 560 190 526 C238 490 258 444 238 390 C212 324 156 274 102 226 Z"
+    },
+    {
+      "id": "functional-arm-lines",
+      "name": "Functional Arm Lines",
+      "system": "Myofasziale Leitbahn",
+      "course": "Verbindet Armfaszien ueber Pectoralis, Latissimus und Thorakolumbalfaszie mit Rumpf und Gegenseite.",
+      "function": "Relevant fuer Zug-, Stuetz- und Rotationsmuster zwischen Arm, Schulter und Rumpf.",
+      "regions": ["Arm", "Schulter", "Brust", "Ruecken"],
+      "mapPath": "M96 240 C132 250 164 282 190 330 C210 366 236 398 278 420 M304 240 C268 250 236 282 210 330 C190 366 164 398 122 420",
+      "territoryPath": "M78 226 C134 232 174 270 206 326 C230 368 260 396 320 410 L310 442 C246 430 206 392 178 344 C150 296 116 266 66 260 Z"
+    }
+  ]
+}

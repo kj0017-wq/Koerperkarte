@@ -1,4 +1,4 @@
-import type { AnatomyMode } from "@/lib/types";
+﻿import type { AnatomyMode } from "@/lib/types";
 
 type ModuleCard = {
   id: AnatomyMode;
@@ -33,10 +33,10 @@ const modules: ModuleCard[] = [
     status: "ready"
   },
   {
-    id: "future",
-    title: "Weitere Karten",
-    description: "Faszien, Gefaesse oder Spezialkarten modular ergaenzen.",
-    status: "soon"
+    id: "fascia",
+    title: "Faszien",
+    description: "Myofasziale Leitbahnen und funktionelle Ketten anzeigen.",
+    status: "ready"
   }
 ];
 

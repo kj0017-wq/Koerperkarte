@@ -1,10 +1,11 @@
-import * as database from "firebase/database";
+﻿import * as database from "firebase/database";
 import fallbackDermatomes from "@/data/dermatomes.json";
 import fallbackMyotomes from "@/data/myotomes.json";
 import fallbackPeripheralNerves from "@/data/peripheralNerves.json";
+import fallbackFascia from "@/data/fascia.json";
 import fallbackTriggerpoints from "@/data/triggerpoints.json";
 import { firebaseDatabaseUrl, realtimeDb } from "@/lib/firebase";
-import type { BodyMapBlock, DermatomeRegion, MuscleMapItem, MyotomeGroup, PeripheralNerve } from "@/lib/types";
+import type { BodyMapBlock, DermatomeRegion, FasciaLine, MuscleMapItem, MyotomeGroup, PeripheralNerve } from "@/lib/types";
 
 const { get, ref, remove, set } = database as any;
 
@@ -16,6 +17,7 @@ export type AnatomyData = {
   dermatomeRegions: DermatomeRegion[];
   myotomeGroups: MyotomeGroup[];
   peripheralNerves: PeripheralNerve[];
+  fasciaLines: FasciaLine[];
   blocks: BodyMapBlock[];
   source: "realtime" | "local";
 };
@@ -41,21 +43,23 @@ const localData: AnatomyData = {
   dermatomeRegions: normalizeDermatomes(fallbackDermatomes.regions),
   myotomeGroups: normalizeMyotomes(fallbackMyotomes.groups),
   peripheralNerves: normalizePeripheralNerves(fallbackPeripheralNerves.nerves),
+  fasciaLines: normalizeFasciaLines(fallbackFascia.lines),
   blocks: [],
   source: "local"
 };
 
 export async function loadAnatomyData(): Promise<AnatomyData> {
   try {
-    const [muscles, dermatomeRegions, myotomeGroups, peripheralNerves, blocks] = await Promise.all([
+    const [muscles, dermatomeRegions, myotomeGroups, peripheralNerves, fasciaLines, blocks] = await Promise.all([
       readRealtimeList<MuscleMapItem>("muscles"),
       readRealtimeList<DermatomeRegion>("dermatomes"),
       readRealtimeList<MyotomeGroup>("myotomes"),
       readRealtimeList<PeripheralNerve>("nerves"),
+      readRealtimeList<FasciaLine>("fascia"),
       readRealtimeList<BodyMapBlock>("blocks")
     ]);
 
-    const hasRealtimeData = muscles.length > 0 || dermatomeRegions.length > 0 || myotomeGroups.length > 0 || peripheralNerves.length > 0 || blocks.length > 0;
+    const hasRealtimeData = muscles.length > 0 || dermatomeRegions.length > 0 || myotomeGroups.length > 0 || peripheralNerves.length > 0 || fasciaLines.length > 0 || blocks.length > 0;
 
     if (!hasRealtimeData) {
       return localData;
@@ -66,6 +70,7 @@ export async function loadAnatomyData(): Promise<AnatomyData> {
       dermatomeRegions: normalizeDermatomes(dermatomeRegions.length ? dermatomeRegions : localData.dermatomeRegions),
       myotomeGroups: normalizeMyotomes(myotomeGroups.length ? myotomeGroups : localData.myotomeGroups),
       peripheralNerves: normalizePeripheralNerves(peripheralNerves.length ? peripheralNerves : localData.peripheralNerves),
+      fasciaLines: normalizeFasciaLines(fasciaLines.length ? fasciaLines : localData.fasciaLines),
       blocks: normalizeBlocks(blocks),
       source: "realtime"
     };
@@ -158,6 +163,22 @@ function normalizePeripheralNerves(items: PeripheralNerve[]): PeripheralNerve[] 
     }));
 }
 
+
+function normalizeFasciaLines(items: FasciaLine[]): FasciaLine[] {
+  return items
+    .filter((item) => item && item.id)
+    .map((item) => ({
+      ...item,
+      id: String(item.id),
+      name: asString(item.name, item.id),
+      system: asString(item.system, "Faszie"),
+      course: asString(item.course, ""),
+      function: asString(item.function, ""),
+      regions: asStringArray(item.regions),
+      mapPath: asString(item.mapPath, ""),
+      territoryPath: asString(item.territoryPath, "")
+    }));
+}
 function asString(value: unknown, fallback: string) {
   return typeof value === "string" && value.trim() ? value : fallback;
 }

@@ -5,6 +5,7 @@ import type {
   AnatomyMode,
   BodyMapBlock,
   DermatomeRegion,
+  FasciaLine,
   LayerState,
   MapSelection,
   MapView,
@@ -38,6 +39,7 @@ type BodyMapProps = {
   myotomeGroups: MyotomeGroup[];
   blocks: BodyMapBlock[];
   peripheralNerves?: PeripheralNerve[];
+  fasciaLines?: FasciaLine[];
   infoPlacement?: "map" | "external";
   onInfoChange?: (info: BodyMapInfo | null) => void;
   onSelect: (selection: MapSelection) => void;
@@ -159,6 +161,7 @@ export function BodyMap({
   myotomeGroups,
   blocks,
   peripheralNerves = [],
+  fasciaLines = [],
   infoPlacement = "map",
   onInfoChange,
   onSelect
@@ -170,7 +173,7 @@ export function BodyMap({
   const [showFullBody, setShowFullBody] = useState(false);
 
   useEffect(() => {
-    if (mode !== "triggerpoints" && mode !== "nerves" && mapView !== "front") setMapView("front");
+    if (mode !== "triggerpoints" && mode !== "nerves" && mode !== "fascia" && mapView !== "front") setMapView("front");
   }, [mapView, mode]);
 
   const selectionKey = selectionFocusKey(selection);
@@ -491,6 +494,28 @@ export function BodyMap({
               );
             })}
 
+          {mode === "fascia" && layers.segments &&
+            fasciaLines.map((line) => {
+              const active = selection.type === "fascia" && selection.id === line.id;
+
+              return (
+                <g key={line.id} className="cursor-pointer outline-none" tabIndex={0} role="button" aria-label={line.name} onClick={() => onSelect({ type: "fascia", id: line.id })}>
+                  {line.territoryPath && (
+                    <path d={line.territoryPath} fill="#14b8a6" opacity={active ? "0.2" : "0.08"} className="transition-opacity duration-200 hover:opacity-20" />
+                  )}
+                  <path
+                    d={line.mapPath}
+                    fill="none"
+                    stroke={active ? "#0f766e" : "#14b8a6"}
+                    strokeWidth={active ? "8" : "5"}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    opacity={active ? "0.95" : "0.58"}
+                    className="transition-all duration-200 hover:opacity-90"
+                  />
+                </g>
+              );
+            })}
           {mode === "dermatomes" &&
             layers.segments &&
             dermatomeRegions.map((region) => {

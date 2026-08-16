@@ -1,4 +1,4 @@
-﻿export type AnatomyMode = "triggerpoints" | "dermatomes" | "myotomes" | "nerves" | "future";
+﻿export type AnatomyMode = "triggerpoints" | "dermatomes" | "myotomes" | "nerves" | "fascia" | "future";
 
 export type LayerState = {
   anatomy: boolean;
@@ -14,7 +14,8 @@ export type MapSelection =
   | { type: "block"; id: string }
   | { type: "dermatome"; id: string }
   | { type: "myotome"; id: string }
-  | { type: "nerve"; id: string };
+  | { type: "nerve"; id: string }
+  | { type: "fascia"; id: string };
 
 export type MapView = "front" | "back" | "face";
 
@@ -85,6 +86,17 @@ export type PeripheralNerve = {
   segments: string[];
   course: string;
   distribution: string;
+  mapPath: string;
+  territoryPath?: string;
+};
+
+export type FasciaLine = {
+  id: string;
+  name: string;
+  system: string;
+  course: string;
+  function: string;
+  regions: string[];
   mapPath: string;
   territoryPath?: string;
 };
