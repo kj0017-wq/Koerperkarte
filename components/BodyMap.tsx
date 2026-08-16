@@ -342,6 +342,32 @@ export function BodyMap({
             </div>
           </div>
         )}
+        {mode === "triggerpoints" && activePoint && (
+          <div className="pointer-events-none absolute right-3 top-3 z-30 w-[min(320px,calc(100%-1.5rem))] rounded-lg border border-red-100 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
+            <p className="text-xs font-semibold uppercase text-red-600">
+              {selection.type === "triggerpoint" && selection.muscleId === activePoint.muscle.id && selection.pointId === activePoint.point.id ? "Fixierter Triggerpunkt" : "Triggerpunkt"}
+            </p>
+            <h3 className="mt-1 text-lg font-semibold text-slate-950">{activePoint.muscle.name}</h3>
+            <p className="mt-1 text-sm font-semibold text-red-700">{activePoint.point.label}</p>
+            <dl className="mt-2 space-y-2 text-sm leading-5 text-slate-600">
+              <div>
+                <dt className="font-semibold text-slate-900">Lage</dt>
+                <dd>{activePoint.point.anatomicalLocation || activePoint.muscle.bodyArea || "Lage noch nicht beschrieben"}</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-slate-900">Ausstrahlung</dt>
+                <dd>{activePoint.point.referralArea || activePoint.muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben"}</dd>
+              </div>
+            </dl>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {((activePoint.point.painRegions?.length ? activePoint.point.painRegions : activePoint.muscle.painRegions) ?? []).slice(0, 5).map((region) => (
+                <span key={region} className="rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-700">
+                  {regionLabel(region)}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
         <svg
           viewBox={activeViewBox}
           role="img"
@@ -401,7 +427,6 @@ export function BodyMap({
                   onMouseEnter={() => setHoveredPainRegionId(region.id)}
                   onMouseLeave={() => setHoveredPainRegionId(null)}
                 >
-                  <title>{region.label}</title>
                 </path>
               );
             })}
@@ -428,7 +453,6 @@ export function BodyMap({
                     onMouseEnter={() => setHoveredPoint(entry)}
                     onMouseLeave={() => setHoveredPoint(null)}
                   >
-                    <title>{`${muscle.name}: ${point.label}`}</title>
                     <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "30" : "18"} fill="#ff3b30" opacity={active ? "0.2" : "0.07"} />
                     <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "18" : "11"} fill="#ff3b30" opacity={active ? "0.28" : "0.14"} />
                     <circle cx={renderedPoint.x} cy={renderedPoint.y} r={active ? "9" : "5"} fill={active ? "#d70015" : "#ff3b30"} />
