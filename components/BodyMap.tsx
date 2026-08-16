@@ -53,7 +53,16 @@ const frontPainRegions: PainRegion[] = [
   { id: "low-back", label: "LWS", path: "M152 332 C184 316 218 316 250 332 L244 428 C214 446 184 446 154 428 Z" },
   { id: "hip", label: "Huefte", path: "M134 430 C172 406 230 406 268 430 C258 470 234 496 202 502 C168 496 144 470 134 430" },
   { id: "buttock", label: "Gesaess", path: "M142 454 C168 438 198 438 202 488 C176 510 144 500 134 474 Z" },
-  { id: "groin", label: "Leiste", path: "M178 480 C194 470 210 470 226 480 C218 502 186 502 178 480" }
+  { id: "groin", label: "Leiste", path: "M178 480 C194 470 210 470 226 480 C218 502 186 502 178 480" },
+  { id: "anterior-thigh", label: "Vorderer Oberschenkel", path: "M144 520 C174 540 192 538 198 520 L190 660 C168 676 148 668 140 646 Z M202 520 C208 538 226 540 256 520 L260 646 C252 668 232 676 210 660 Z" },
+  { id: "medial-knee", label: "Mediales Knie", path: "M174 646 C192 638 202 646 202 666 C190 678 174 672 166 660 Z" },
+  { id: "lateral-knee", label: "Laterales Knie", path: "M224 646 C242 638 256 646 264 660 C256 674 236 678 224 666 Z" },
+  { id: "shin", label: "Schienbein", path: "M142 660 C166 678 188 678 196 660 L190 756 C176 772 154 768 148 748 Z M204 660 C212 678 234 678 258 660 L252 748 C246 768 224 772 210 756 Z" },
+  { id: "anterior-ankle", label: "Vorderes Sprunggelenk", path: "M146 744 C166 758 184 758 194 744 L194 780 C174 788 154 784 144 768 Z M206 744 C216 758 234 758 254 744 L256 768 C246 784 226 788 206 780 Z" },
+  { id: "dorsum-foot", label: "Fussruecken", path: "M126 774 C154 762 186 768 198 790 C180 806 142 806 118 792 Z M202 790 C214 768 246 762 274 774 L282 792 C258 806 220 806 202 790 Z" },
+  { id: "lateral-foot", label: "Lateraler Fuss", path: "M120 786 C144 778 162 786 170 800 C146 810 126 804 114 794 Z M230 800 C238 786 256 778 280 786 L286 794 C274 804 254 810 230 800 Z" },
+  { id: "great-toe", label: "Grosszehe", path: "M174 788 C190 786 202 794 200 806 C184 812 174 806 170 796 Z M200 806 C198 794 210 786 226 788 L230 796 C226 806 216 812 200 806 Z" },
+  { id: "toes", label: "Zehen", path: "M118 790 C146 804 176 804 198 792 C196 810 144 816 112 800 Z M202 792 C224 804 254 804 282 790 L288 800 C256 816 204 810 202 792 Z" }
 ];
 
 const backPainRegions: PainRegion[] = [
@@ -65,7 +74,16 @@ const backPainRegions: PainRegion[] = [
   { id: "hip", label: "Huefte", path: "M132 426 C170 408 230 408 268 426 C260 468 236 496 202 504 C168 496 140 468 132 426" },
   { id: "buttock", label: "Gesaess", path: "M134 454 C164 434 196 440 202 494 C174 516 140 504 130 474 Z M198 494 C204 440 236 434 266 454 L270 474 C260 504 226 516 198 494 Z" },
   { id: "posterior-thigh", label: "Hinterer Oberschenkel", path: "M136 520 C162 540 188 540 196 526 L188 672 C170 684 148 678 140 658 Z M204 526 C212 540 238 540 264 520 L260 658 C252 678 230 684 212 672 Z" },
-  { id: "calf", label: "Wade", path: "M142 664 C166 684 186 684 196 666 L190 766 C176 780 154 776 148 756 Z M204 666 C214 684 234 684 258 664 L252 756 C246 776 224 780 210 766 Z" }
+  { id: "posterior-knee", label: "Kniekehle", path: "M142 628 C166 640 188 640 198 626 L198 664 C174 678 148 672 136 652 Z M202 626 C212 640 234 640 258 628 L264 652 C252 672 226 678 202 664 Z" },
+  { id: "calf", label: "Wade", path: "M142 664 C166 684 186 684 196 666 L190 766 C176 780 154 776 148 756 Z M204 666 C214 684 234 684 258 664 L252 756 C246 776 224 780 210 766 Z" },
+  { id: "medial-ankle", label: "Mediales Sprunggelenk", path: "M158 744 C178 754 192 754 202 744 L198 778 C178 786 160 780 150 764 Z" },
+  { id: "lateral-ankle", label: "Laterales Sprunggelenk", path: "M198 744 C208 754 222 754 242 744 L250 764 C240 780 222 786 202 778 Z" },
+  { id: "heel", label: "Ferse", path: "M130 764 C158 754 188 760 198 784 C178 804 142 804 122 788 Z M202 784 C212 760 242 754 270 764 L278 788 C258 804 222 804 202 784 Z" },
+  { id: "plantar-foot", label: "Fusssohle", path: "M120 784 C150 768 184 776 198 800 C172 814 138 812 112 798 Z M202 800 C216 776 250 768 280 784 L288 798 C262 812 228 814 202 800 Z" },
+  { id: "medial-arch", label: "Laengsgewoelbe", path: "M146 780 C166 772 188 780 198 800 C176 802 154 798 138 790 Z M202 800 C212 780 234 772 254 780 L262 790 C246 798 224 802 202 800 Z" },
+  { id: "ball-of-foot", label: "Vorfußballen", path: "M116 792 C148 804 174 804 198 792 C194 810 144 816 112 802 Z M202 792 C226 804 252 804 284 792 L288 802 C256 816 206 810 202 792 Z" },
+  { id: "forefoot", label: "Vorfuß", path: "M112 788 C146 802 174 804 200 794 L198 810 C164 820 132 814 108 800 Z M200 794 C226 804 254 802 288 788 L292 800 C268 814 236 820 202 810 Z" },
+  { id: "toes", label: "Zehen", path: "M112 796 C144 812 176 812 198 802 C194 820 140 824 106 806 Z M202 802 C224 812 256 812 288 796 L294 806 C260 824 206 820 202 802 Z" }
 ];
 
 const facePainRegions: PainRegion[] = [
@@ -484,6 +502,8 @@ function BodySilhouette() {
       <path d="M150 430 C182 448 218 448 250 430" fill="none" stroke="#d9dee7" strokeWidth="2" />
       <path d="M140 248 C174 272 226 272 260 248" fill="none" stroke="#e6e8ec" strokeWidth="2" />
       <path d="M200 168 L200 760" fill="none" stroke="#e6e8ec" strokeWidth="1.5" strokeDasharray="6 8" />
+      <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
+      <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
     </g>
   );
 }
@@ -508,6 +528,8 @@ function BackBodySilhouette() {
       <path d="M260 236 C236 220 214 230 208 284 C232 322 264 320 282 278 Z" fill="none" stroke="#d9dee7" strokeWidth="2" />
       <path d="M150 430 C182 450 218 450 250 430" fill="none" stroke="#d9dee7" strokeWidth="2" />
       <path d="M130 500 C164 526 190 520 200 492 C210 520 236 526 270 500" fill="none" stroke="#e2e8f0" strokeWidth="2" />
+      <path d="M132 762 C156 748 188 758 200 786 C176 806 136 806 110 790 C112 778 120 768 132 762 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
+      <path d="M200 786 C212 758 244 748 268 762 C280 768 288 778 290 790 C264 806 224 806 200 786 Z" fill="#f8fafc" stroke="#d9dee7" strokeWidth="2" />
     </g>
   );
 }
@@ -565,6 +587,26 @@ function inferMuscleMapViews(muscle: MuscleMapItem): MapView[] {
   const searchable = muscleSearchText(muscle);
   const faceKeywords = ["kopf / gesicht", "gesicht", "masseter", "temporalis", "pterygoid", "digastric", "occipitofrontalis"];
   const neckShoulderKeywords = ["nacken", "schulter", "neck", "shoulder", "trapezius", "levator", "scalene", "sternocleidomastoid"];
+  const lowerLegKeywords = [
+    "wade",
+    "calf",
+    "heel",
+    "foot",
+    "fuss",
+    "ankle",
+    "toes",
+    "toe",
+    "shin",
+    "plantar",
+    "dorsum-foot",
+    "forefoot",
+    "medial-arch",
+    "ball-of-foot",
+    "great-toe",
+    "lateral-foot",
+    "unterschenkel"
+  ];
+
   const backKeywords = [
     "ruecken",
     "rucken",
@@ -592,6 +634,7 @@ function inferMuscleMapViews(muscle: MuscleMapItem): MapView[] {
 
   if (faceKeywords.some((keyword) => searchable.includes(keyword))) return ["face"];
   if (neckShoulderKeywords.some((keyword) => searchable.includes(keyword))) return ["front", "back"];
+  if (lowerLegKeywords.some((keyword) => searchable.includes(keyword))) return ["front", "back"];
   if (backKeywords.some((keyword) => searchable.includes(keyword))) return ["back"];
 
   return ["front"];
@@ -641,6 +684,9 @@ function regionLabel(region: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+
+
+
 
 
 
