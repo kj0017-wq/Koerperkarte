@@ -1,24 +1,642 @@
-﻿{
+{
   "lines": [
     {
-      "id": "superficial-back-line",
-      "name": "Superficial Back Line",
-      "system": "Myofasziale Leitbahn",
-      "course": "Von Plantarfaszie und Achillessehne ueber Waden, ischiocrurale Muskulatur, Sakrotuberalband, Rückenstrecker bis Galea aponeurotica.",
-      "function": "Unterstuetzt Aufrichtung, Extension und Spannungskontrolle der dorsalen Kette.",
-      "regions": ["Fusssohle", "Wade", "Ruecken", "Nacken"],
-      "mapPath": "M200 790 C192 715 186 642 176 560 C166 482 144 412 150 332 C154 250 178 188 188 126 C190 96 194 68 200 42",
-      "territoryPath": "M168 742 C178 680 178 590 164 520 C148 438 138 352 150 270 C158 212 176 156 184 96 L216 96 C224 156 242 212 250 270 C262 352 252 438 236 520 C222 590 222 680 232 742 C214 758 186 758 168 742"
+      "id": "fas-001",
+      "name": "Masseterfaszie (Fascia masseterica)",
+      "system": "Faszie",
+      "course": "Umhüllt den M. masseter und grenzt ihn gegenüber benachbarten Weichteilen ab.",
+      "function": "Umhüllt den M. masseter und grenzt ihn gegenüber benachbarten Weichteilen ab.",
+      "regions": [
+        "Kopf",
+        "Kiefer"
+      ],
+      "mapPath": "M104 204 C134 178 174 196 184 254 M216 254 C226 196 266 178 296 204",
+      "territoryPath": "M94 174 C130 138 174 154 198 198 C222 154 266 138 306 174 L292 276 C266 326 238 352 200 352 C162 352 134 326 108 276 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
     },
     {
-      "id": "superficial-front-line",
-      "name": "Superficial Front Line",
+      "id": "fas-002",
+      "name": "Parotisfaszie (Fascia parotidea)",
+      "system": "Faszie",
+      "course": "Umhüllt die Glandula parotidea und beteiligt sich an der regionalen Kompartimentierung.",
+      "function": "Umhüllt die Glandula parotidea und beteiligt sich an der regionalen Kompartimentierung.",
+      "regions": [
+        "Kopf",
+        "Ohrspeicheldrüse"
+      ],
+      "mapPath": "M104 204 C134 178 174 196 184 254 M216 254 C226 196 266 178 296 204",
+      "territoryPath": "M94 174 C130 138 174 154 198 198 C222 154 266 138 306 174 L292 276 C266 326 238 352 200 352 C162 352 134 326 108 276 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-003",
+      "name": "Temporalfaszie (Fascia temporalis)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. temporalis und bildet eine feste fasziale Begrenzung der Schläfenregion.",
+      "function": "Bedeckt den M. temporalis und bildet eine feste fasziale Begrenzung der Schläfenregion.",
+      "regions": [
+        "Kopf",
+        "Schläfe"
+      ],
+      "mapPath": "M118 72 C142 36 258 36 282 72 C274 118 250 136 200 136 C150 136 126 118 118 72",
+      "territoryPath": "M104 62 C134 28 266 28 296 62 C292 138 250 168 200 168 C150 168 108 138 104 62",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-004",
+      "name": "Oberflächliches Blatt der Temporalfaszie (Lamina superficialis fasciae temporalis)",
+      "system": "Faszienblatt",
+      "course": "Oberflächliches Blatt der Temporalfaszie; beteiligt an der Schichtung der temporalen Weichteile.",
+      "function": "Oberflächliches Blatt der Temporalfaszie; beteiligt an der Schichtung der temporalen Weichteile.",
+      "regions": [
+        "Kopf",
+        "Schläfe"
+      ],
+      "mapPath": "M118 72 C142 36 258 36 282 72 C274 118 250 136 200 136 C150 136 126 118 118 72",
+      "territoryPath": "M104 62 C134 28 266 28 296 62 C292 138 250 168 200 168 C150 168 108 138 104 62",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-005",
+      "name": "Tiefes Blatt der Temporalfaszie (Lamina profunda fasciae temporalis)",
+      "system": "Faszienblatt",
+      "course": "Tiefes Blatt der Temporalfaszie; liegt dem M. temporalis näher an.",
+      "function": "Tiefes Blatt der Temporalfaszie; liegt dem M. temporalis näher an.",
+      "regions": [
+        "Kopf",
+        "Schläfe"
+      ],
+      "mapPath": "M118 72 C142 36 258 36 282 72 C274 118 250 136 200 136 C150 136 126 118 118 72",
+      "territoryPath": "M104 62 C134 28 266 28 296 62 C292 138 250 168 200 168 C150 168 108 138 104 62",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-006",
+      "name": "Oberflächliche umhüllende Halsfaszie (Fascia investiens superficialis colli)",
+      "system": "Faszie",
+      "course": "Umhüllt oberflächliche Strukturen des Halses und unterstützt die fasziale Kompartimentierung.",
+      "function": "Umhüllt oberflächliche Strukturen des Halses und unterstützt die fasziale Kompartimentierung.",
+      "regions": [
+        "Hals"
+      ],
+      "mapPath": "M168 126 C184 116 216 116 232 126 L226 190 C208 202 190 202 174 190 Z",
+      "territoryPath": "M152 118 C180 96 220 96 248 118 L240 208 C212 226 188 226 160 208 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-007",
+      "name": "Faszie der infrahyoidalen Muskulatur (Fascia musculorum infrahyoideorum)",
+      "system": "Faszie",
+      "course": "Umhüllt die infrahyoidale Muskulatur und trennt sie von benachbarten Halsstrukturen.",
+      "function": "Umhüllt die infrahyoidale Muskulatur und trennt sie von benachbarten Halsstrukturen.",
+      "regions": [
+        "Hals"
+      ],
+      "mapPath": "M168 126 C184 116 216 116 232 126 L226 190 C208 202 190 202 174 190 Z",
+      "territoryPath": "M152 118 C180 96 220 96 248 118 L240 208 C212 226 188 226 160 208 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-008",
+      "name": "Viszerale Halsfaszie (Fascia visceralis colli)",
+      "system": "Faszie",
+      "course": "Umgibt viszerale Halsstrukturen und ermöglicht deren gleitende Verschieblichkeit zueinander.",
+      "function": "Umgibt viszerale Halsstrukturen und ermöglicht deren gleitende Verschieblichkeit zueinander.",
+      "regions": [
+        "Hals"
+      ],
+      "mapPath": "M168 126 C184 116 216 116 232 126 L226 190 C208 202 190 202 174 190 Z",
+      "territoryPath": "M152 118 C180 96 220 96 248 118 L240 208 C212 226 188 226 160 208 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-009",
+      "name": "Buccopharyngealfaszie (Fascia buccopharyngea)",
+      "system": "Faszie",
+      "course": "Bedeckt außen Anteile der Pharynx- und Buccinatormuskulatur und bildet eine fasziale Gleitschicht.",
+      "function": "Bedeckt außen Anteile der Pharynx- und Buccinatormuskulatur und bildet eine fasziale Gleitschicht.",
+      "regions": [
+        "Hals",
+        "Pharynx"
+      ],
+      "mapPath": "M168 126 C184 116 216 116 232 126 L226 190 C208 202 190 202 174 190 Z",
+      "territoryPath": "M152 118 C180 96 220 96 248 118 L240 208 C212 226 188 226 160 208 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-010",
+      "name": "Prätrachealfaszie (Fascia pretrachealis)",
+      "system": "Faszie",
+      "course": "Liegt vor den viszeralen Halsstrukturen und beteiligt sich an deren Aufhängung und Abgrenzung.",
+      "function": "Liegt vor den viszeralen Halsstrukturen und beteiligt sich an deren Aufhängung und Abgrenzung.",
+      "regions": [
+        "Hals"
+      ],
+      "mapPath": "M168 126 C184 116 216 116 232 126 L226 190 C208 202 190 202 174 190 Z",
+      "territoryPath": "M152 118 C180 96 220 96 248 118 L240 208 C212 226 188 226 160 208 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-011",
+      "name": "Thorakolumbalfaszie (Fascia thoracolumbalis)",
+      "system": "Faszie",
+      "course": "Umhüllt tiefe Rückenmuskulatur, verbindet Rumpf- und Extremitätenstrukturen und überträgt Kräfte.",
+      "function": "Umhüllt tiefe Rückenmuskulatur, verbindet Rumpf- und Extremitätenstrukturen und überträgt Kräfte.",
+      "regions": [
+        "Rücken",
+        "LWS",
+        "Thorax"
+      ],
+      "mapPath": "M124 222 C162 204 238 204 276 222 L258 340 C224 358 176 358 142 340 Z",
+      "territoryPath": "M110 202 C152 180 248 180 290 202 L270 370 C228 392 172 392 130 370 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-012",
+      "name": "Hinteres Blatt der Thorakolumbalfaszie (Lamina posterior fasciae thoracolumbaris)",
+      "system": "Faszienblatt",
+      "course": "Bildet den dorsalen Anteil der thorakolumbalen Faszie und trägt zur Stabilisierung des unteren Rückens bei.",
+      "function": "Bildet den dorsalen Anteil der thorakolumbalen Faszie und trägt zur Stabilisierung des unteren Rückens bei.",
+      "regions": [
+        "Rücken",
+        "LWS"
+      ],
+      "mapPath": "M144 228 C176 206 224 206 256 228 L250 430 C220 452 180 452 150 430 Z",
+      "territoryPath": "M118 204 C164 172 236 172 282 204 L270 468 C226 502 174 502 130 468 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-013",
+      "name": "Mittleres Blatt der Thorakolumbalfaszie (Lamina media fasciae thoracolumbaris)",
+      "system": "Faszienblatt",
+      "course": "Trennt und verbindet tiefe Muskelkompartimente der Lumbalregion.",
+      "function": "Trennt und verbindet tiefe Muskelkompartimente der Lumbalregion.",
+      "regions": [
+        "Rücken",
+        "LWS"
+      ],
+      "mapPath": "M144 228 C176 206 224 206 256 228 L250 430 C220 452 180 452 150 430 Z",
+      "territoryPath": "M118 204 C164 172 236 172 282 204 L270 468 C226 502 174 502 130 468 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-014",
+      "name": "Vorderes Blatt der Thorakolumbalfaszie (Lamina anterior fasciae thoracolumbaris)",
+      "system": "Faszienblatt",
+      "course": "Bedeckt insbesondere den M. quadratus lumborum und beteiligt sich an der lumbalen Kompartimentierung.",
+      "function": "Bedeckt insbesondere den M. quadratus lumborum und beteiligt sich an der lumbalen Kompartimentierung.",
+      "regions": [
+        "Rücken",
+        "LWS"
+      ],
+      "mapPath": "M144 228 C176 206 224 206 256 228 L250 430 C220 452 180 452 150 430 Z",
+      "territoryPath": "M118 204 C164 172 236 172 282 204 L270 468 C226 502 174 502 130 468 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-015",
+      "name": "Thorakolumbale Aponeurose (Aponeurosis thoracolumbalis)",
+      "system": "Aponeurose",
+      "course": "Sehnige Verstärkung im thorakolumbalen Fasziensystem zur Kraftübertragung im Rumpf.",
+      "function": "Sehnige Verstärkung im thorakolumbalen Fasziensystem zur Kraftübertragung im Rumpf.",
+      "regions": [
+        "Rücken",
+        "LWS"
+      ],
+      "mapPath": "M144 228 C176 206 224 206 256 228 L250 430 C220 452 180 452 150 430 Z",
+      "territoryPath": "M118 204 C164 172 236 172 282 204 L270 468 C226 502 174 502 130 468 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-016",
+      "name": "Pektoralfaszie (Fascia pectoralis)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. pectoralis major und geht in benachbarte Faszienregionen über.",
+      "function": "Bedeckt den M. pectoralis major und geht in benachbarte Faszienregionen über.",
+      "regions": [
+        "Thorax",
+        "Brust"
+      ],
+      "mapPath": "M124 222 C162 204 238 204 276 222 L258 340 C224 358 176 358 142 340 Z",
+      "territoryPath": "M110 202 C152 180 248 180 290 202 L270 370 C228 392 172 392 130 370 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-017",
+      "name": "Clavipectoralfaszie (Fascia clavipectoralis)",
+      "system": "Faszie",
+      "course": "Umhüllt tiefere pektorale Strukturen und verbindet Clavicula-, Pectoralis- und Axillaregion.",
+      "function": "Umhüllt tiefere pektorale Strukturen und verbindet Clavicula-, Pectoralis- und Axillaregion.",
+      "regions": [
+        "Thorax",
+        "Schultergürtel"
+      ],
+      "mapPath": "M108 204 C146 178 254 178 292 204 C260 236 140 236 108 204",
+      "territoryPath": "M82 190 C134 156 266 156 318 190 C286 250 114 250 82 190",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-018",
+      "name": "Thoraxfaszie (Fascia thoracica)",
+      "system": "Faszie",
+      "course": "Fasziale Bedeckung der Thoraxwand und Verbindung zu angrenzenden Rumpffaszien.",
+      "function": "Fasziale Bedeckung der Thoraxwand und Verbindung zu angrenzenden Rumpffaszien.",
+      "regions": [
+        "Thorax"
+      ],
+      "mapPath": "M124 222 C162 204 238 204 276 222 L258 340 C224 358 176 358 142 340 Z",
+      "territoryPath": "M110 202 C152 180 248 180 290 202 L270 370 C228 392 172 392 130 370 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-019",
+      "name": "Endothorakalfaszie (Fascia endothoracica)",
+      "system": "Faszie",
+      "course": "Kleidet die innere Thoraxwand aus und trennt Thoraxwand von der Pleura parietalis.",
+      "function": "Kleidet die innere Thoraxwand aus und trennt Thoraxwand von der Pleura parietalis.",
+      "regions": [
+        "Thorax innen"
+      ],
+      "mapPath": "M124 222 C162 204 238 204 276 222 L258 340 C224 358 176 358 142 340 Z",
+      "territoryPath": "M110 202 C152 180 248 180 290 202 L270 370 C228 392 172 392 130 370 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-020",
+      "name": "Umhüllende Bauchfaszie (Fascia investiens abdominis)",
+      "system": "Faszie",
+      "course": "Bedeckt und verbindet die muskulären Schichten der Bauchwand.",
+      "function": "Bedeckt und verbindet die muskulären Schichten der Bauchwand.",
+      "regions": [
+        "Abdomen"
+      ],
+      "mapPath": "M148 330 C182 316 218 316 252 330 L244 438 C216 456 184 456 156 438 Z",
+      "territoryPath": "M132 302 C174 280 226 280 268 302 L260 462 C222 488 178 488 140 462 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-021",
+      "name": "Endoabdominalfaszie (Fascia endoabdominalis)",
+      "system": "Faszie",
+      "course": "Innere fasziale Auskleidung der Bauchwand; Sammelbegriff für parietale Faszienanteile.",
+      "function": "Innere fasziale Auskleidung der Bauchwand; Sammelbegriff für parietale Faszienanteile.",
+      "regions": [
+        "Abdomen innen"
+      ],
+      "mapPath": "M148 330 C182 316 218 316 252 330 L244 438 C216 456 184 456 156 438 Z",
+      "territoryPath": "M132 302 C174 280 226 280 268 302 L260 462 C222 488 178 488 140 462 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-022",
+      "name": "Iliopsoasfaszie (Fascia iliopsoae)",
+      "system": "Faszie",
+      "course": "Umhüllt den M. iliopsoas und setzt sich in die Becken- und Oberschenkelregion fort.",
+      "function": "Umhüllt den M. iliopsoas und setzt sich in die Becken- und Oberschenkelregion fort.",
+      "regions": [
+        "Abdomen",
+        "Becken",
+        "Hüfte"
+      ],
+      "mapPath": "M148 330 C182 316 218 316 252 330 L244 438 C216 456 184 456 156 438 Z",
+      "territoryPath": "M132 302 C174 280 226 280 268 302 L260 462 C222 488 178 488 140 462 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-023",
+      "name": "Psoasfaszie (Fascia psoae)",
+      "system": "Faszie",
+      "course": "Umhüllt den M. psoas major und grenzt ihn gegenüber benachbarten retroperitonealen Strukturen ab.",
+      "function": "Umhüllt den M. psoas major und grenzt ihn gegenüber benachbarten retroperitonealen Strukturen ab.",
+      "regions": [
+        "LWS",
+        "Becken"
+      ],
+      "mapPath": "M144 228 C176 206 224 206 256 228 L250 430 C220 452 180 452 150 430 Z",
+      "territoryPath": "M118 204 C164 172 236 172 282 204 L270 468 C226 502 174 502 130 468 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-024",
+      "name": "Iliakalfaszie (Fascia iliaca)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. iliacus und setzt sich mit der Iliopsoasfaszie fort.",
+      "function": "Bedeckt den M. iliacus und setzt sich mit der Iliopsoasfaszie fort.",
+      "regions": [
+        "Becken",
+        "Hüfte"
+      ],
+      "mapPath": "M132 426 C170 408 230 408 268 426 C260 468 236 496 202 504 C168 496 140 468 132 426",
+      "territoryPath": "M112 410 C160 382 240 382 288 410 C282 486 246 530 202 536 C156 530 118 486 112 410",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-025",
+      "name": "Transversalisfaszie (Fascia transversalis)",
+      "system": "Faszie",
+      "course": "Bedeckt die Innenseite des M. transversus abdominis und beteiligt sich an der hinteren Bauchwand.",
+      "function": "Bedeckt die Innenseite des M. transversus abdominis und beteiligt sich an der hinteren Bauchwand.",
+      "regions": [
+        "Abdomen"
+      ],
+      "mapPath": "M148 330 C182 316 218 316 252 330 L244 438 C216 456 184 456 156 438 Z",
+      "territoryPath": "M132 302 C174 280 226 280 268 302 L260 462 C222 488 178 488 140 462 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-026",
+      "name": "Parietale Beckenfaszie (Fascia parietalis pelvis)",
+      "system": "Faszie",
+      "course": "Bedeckt die Beckenwände und geht in spezifische Faszien einzelner Beckenmuskeln über.",
+      "function": "Bedeckt die Beckenwände und geht in spezifische Faszien einzelner Beckenmuskeln über.",
+      "regions": [
+        "Becken"
+      ],
+      "mapPath": "M132 426 C170 408 230 408 268 426 C260 468 236 496 202 504 C168 496 140 468 132 426",
+      "territoryPath": "M112 410 C160 382 240 382 288 410 C282 486 246 530 202 536 C156 530 118 486 112 410",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-027",
+      "name": "Obturatorfaszie (Fascia obturatoria)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. obturatorius internus und beteiligt sich an der Begrenzung des kleinen Beckens.",
+      "function": "Bedeckt den M. obturatorius internus und beteiligt sich an der Begrenzung des kleinen Beckens.",
+      "regions": [
+        "Becken"
+      ],
+      "mapPath": "M132 426 C170 408 230 408 268 426 C260 468 236 496 202 504 C168 496 140 468 132 426",
+      "territoryPath": "M112 410 C160 382 240 382 288 410 C282 486 246 530 202 536 C156 530 118 486 112 410",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-028",
+      "name": "Piriformisfaszie (Fascia musculi piriformis)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. piriformis und trennt ihn von benachbarten neurovaskulären Strukturen.",
+      "function": "Bedeckt den M. piriformis und trennt ihn von benachbarten neurovaskulären Strukturen.",
+      "regions": [
+        "Becken",
+        "Gesäß"
+      ],
+      "mapPath": "M132 426 C170 408 230 408 268 426 C260 468 236 496 202 504 C168 496 140 468 132 426",
+      "territoryPath": "M112 410 C160 382 240 382 288 410 C282 486 246 530 202 536 C156 530 118 486 112 410",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-029",
+      "name": "Obere Faszie des Beckenbodens (Fascia superior diaphragmatis pelvis)",
+      "system": "Faszie",
+      "course": "Bedeckt die obere Fläche des Beckenbodens und verbindet ihn mit der Beckenfaszie.",
+      "function": "Bedeckt die obere Fläche des Beckenbodens und verbindet ihn mit der Beckenfaszie.",
+      "regions": [
+        "Beckenboden"
+      ],
+      "mapPath": "M170 468 C190 452 210 452 230 468 C220 500 180 500 170 468",
+      "territoryPath": "M150 444 C184 418 216 418 250 444 C238 510 162 510 150 444",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-030",
+      "name": "Untere Faszie des Beckenbodens (Fascia inferior diaphragmatis pelvis)",
+      "system": "Faszie",
+      "course": "Bedeckt die Unterseite des Beckenbodens und grenzt ihn zum Perineum ab.",
+      "function": "Bedeckt die Unterseite des Beckenbodens und grenzt ihn zum Perineum ab.",
+      "regions": [
+        "Beckenboden"
+      ],
+      "mapPath": "M170 468 C190 452 210 452 230 468 C220 500 180 500 170 468",
+      "territoryPath": "M150 444 C184 418 216 418 250 444 C238 510 162 510 150 444",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-031",
+      "name": "Präsakralfaszie (Fascia presacralis)",
+      "system": "Faszie",
+      "course": "Liegt vor dem Sakrum und bildet eine fasziale Begrenzung des posterioren Beckenraums.",
+      "function": "Liegt vor dem Sakrum und bildet eine fasziale Begrenzung des posterioren Beckenraums.",
+      "regions": [
+        "Becken",
+        "Sakrum"
+      ],
+      "mapPath": "M144 228 C176 206 224 206 256 228 L250 430 C220 452 180 452 150 430 Z",
+      "territoryPath": "M118 204 C164 172 236 172 282 204 L270 468 C226 502 174 502 130 468 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-032",
+      "name": "Rektosakralfaszie (Fascia rectosacralis)",
+      "system": "Faszie",
+      "course": "Verbindet beziehungsweise trennt Rektumregion und Sakralraum innerhalb der Beckenfaszien.",
+      "function": "Verbindet beziehungsweise trennt Rektumregion und Sakralraum innerhalb der Beckenfaszien.",
+      "regions": [
+        "Becken"
+      ],
+      "mapPath": "M132 426 C170 408 230 408 268 426 C260 468 236 496 202 504 C168 496 140 468 132 426",
+      "territoryPath": "M112 410 C160 382 240 382 288 410 C282 486 246 530 202 536 C156 530 118 486 112 410",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-033",
+      "name": "Perinealfaszie (Fascia perinei)",
+      "system": "Faszie",
+      "course": "Bedeckt und verbindet oberflächliche Strukturen des Perineums.",
+      "function": "Bedeckt und verbindet oberflächliche Strukturen des Perineums.",
+      "regions": [
+        "Perineum"
+      ],
+      "mapPath": "M170 468 C190 452 210 452 230 468 C220 500 180 500 170 468",
+      "territoryPath": "M150 444 C184 418 216 418 250 444 C238 510 162 510 150 444",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-034",
+      "name": "Axillarfaszie (Fascia axillaris)",
+      "system": "Faszie",
+      "course": "Bildet den faszialen Boden der Axilla und verbindet Brust- und Oberarmfaszien.",
+      "function": "Bildet den faszialen Boden der Axilla und verbindet Brust- und Oberarmfaszien.",
+      "regions": [
+        "Achsel",
+        "Schultergürtel"
+      ],
+      "mapPath": "M108 204 C146 178 254 178 292 204 C260 236 140 236 108 204",
+      "territoryPath": "M82 190 C134 156 266 156 318 190 C286 250 114 250 82 190",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-035",
+      "name": "Supraspinatusfaszie (Fascia supraspinata)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. supraspinatus und schließt ihn in der Fossa supraspinata ein.",
+      "function": "Bedeckt den M. supraspinatus und schließt ihn in der Fossa supraspinata ein.",
+      "regions": [
+        "Schulter",
+        "Scapula"
+      ],
+      "mapPath": "M108 204 C146 178 254 178 292 204 C260 236 140 236 108 204",
+      "territoryPath": "M82 190 C134 156 266 156 318 190 C286 250 114 250 82 190",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-036",
+      "name": "Infraspinatusfaszie (Fascia infraspinata)",
+      "system": "Faszie",
+      "course": "Bedeckt den M. infraspinatus und unterstützt die Abgrenzung der Fossa infraspinata.",
+      "function": "Bedeckt den M. infraspinatus und unterstützt die Abgrenzung der Fossa infraspinata.",
+      "regions": [
+        "Schulter",
+        "Scapula"
+      ],
+      "mapPath": "M108 204 C146 178 254 178 292 204 C260 236 140 236 108 204",
+      "territoryPath": "M82 190 C134 156 266 156 318 190 C286 250 114 250 82 190",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-037",
+      "name": "Deltoidfaszie (Fascia deltoidea)",
+      "system": "Faszie",
+      "course": "Umhüllt den M. deltoideus und verbindet sich mit Faszien von Schulter und Oberarm.",
+      "function": "Umhüllt den M. deltoideus und verbindet sich mit Faszien von Schulter und Oberarm.",
+      "regions": [
+        "Schulter"
+      ],
+      "mapPath": "M108 204 C146 178 254 178 292 204 C260 236 140 236 108 204",
+      "territoryPath": "M82 190 C134 156 266 156 318 190 C286 250 114 250 82 190",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-038",
+      "name": "Oberarmfaszie (Fascia brachii)",
+      "system": "Faszie",
+      "course": "Umhüllt den Oberarm, bildet Muskelkompartimente und setzt sich in Schulter- und Unterarmfaszien fort.",
+      "function": "Umhüllt den Oberarm, bildet Muskelkompartimente und setzt sich in Schulter- und Unterarmfaszien fort.",
+      "regions": [
+        "Oberarm"
+      ],
+      "mapPath": "M92 238 C128 260 150 322 150 398 M308 238 C272 260 250 322 250 398",
+      "territoryPath": "M70 224 C120 236 154 302 164 404 L126 416 C116 344 94 286 60 256 Z M330 224 L340 256 C306 286 284 344 274 416 L236 404 C246 302 280 236 330 224 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-039",
+      "name": "Unterarmfaszie (Fascia antebrachii)",
+      "system": "Faszie",
+      "course": "Umhüllt den Unterarm, bildet Muskelkompartimente und stabilisiert Muskel- und Sehnenverläufe.",
+      "function": "Umhüllt den Unterarm, bildet Muskelkompartimente und stabilisiert Muskel- und Sehnenverläufe.",
+      "regions": [
+        "Unterarm"
+      ],
+      "mapPath": "M92 238 C128 260 150 322 150 398 M308 238 C272 260 250 322 250 398",
+      "territoryPath": "M70 224 C120 236 154 302 164 404 L126 416 C116 344 94 286 60 256 Z M330 224 L340 256 C306 286 284 344 274 416 L236 404 C246 302 280 236 330 224 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "fas-040",
+      "name": "Fascia lata (Fascia lata)",
+      "system": "Faszie",
+      "course": "Tiefe Faszie des Oberschenkels; umhüllt Muskelgruppen, bildet Septen und dient der Kraftübertragung.",
+      "function": "Tiefe Faszie des Oberschenkels; umhüllt Muskelgruppen, bildet Septen und dient der Kraftübertragung.",
+      "regions": [
+        "Oberschenkel"
+      ],
+      "mapPath": "M144 520 C174 540 192 538 198 520 L190 660 C168 676 148 668 140 646 Z M202 520 C208 538 226 540 256 520 L260 646 C252 668 232 676 210 660 Z",
+      "territoryPath": "M126 500 C164 526 188 530 202 506 C212 530 236 526 274 500 L274 676 C250 706 218 704 202 676 C182 704 150 706 126 676 Z",
+      "sourceTerminology": "https://libraries.dal.ca/Fipat/ta2.html",
+      "sourceConcept": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10858998/",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "functional-arm-lines",
+      "name": "Functional Arm Lines",
       "system": "Myofasziale Leitbahn",
-      "course": "Von Fussruecken und vorderem Unterschenkel ueber Quadrizeps, Rektusscheide, Sternum bis Halsvorderseite.",
-      "function": "Unterstuetzt Flexion, Rumpfspannung und die ventrale Gegenbalance zur dorsalen Kette.",
-      "regions": ["Fussruecken", "Schienbein", "Oberschenkel vorne", "Bauch", "Hals"],
-      "mapPath": "M200 764 C206 690 210 620 210 548 C210 486 216 434 218 370 C220 304 216 242 208 182 C204 140 204 108 200 76",
-      "territoryPath": "M178 740 C186 672 188 600 188 528 C188 454 180 384 174 310 C170 250 178 190 188 128 L212 128 C222 190 230 250 226 310 C220 384 212 454 212 528 C212 600 214 672 222 740 C208 754 192 754 178 740"
+      "course": "Verbindet Armfaszien ueber Pectoralis, Latissimus und Thorakolumbalfaszie mit Rumpf und Gegenseite.",
+      "function": "Relevant fuer Zug-, Stuetz- und Rotationsmuster zwischen Arm, Schulter und Rumpf.",
+      "regions": [
+        "Arm",
+        "Schulter",
+        "Brust",
+        "Ruecken"
+      ],
+      "mapPath": "M96 240 C132 250 164 282 190 330 C210 366 236 398 278 420 M304 240 C268 250 236 282 210 330 C190 366 164 398 122 420",
+      "territoryPath": "M78 226 C134 232 174 270 206 326 C230 368 260 396 320 410 L310 442 C246 430 206 392 178 344 C150 296 116 266 66 260 Z"
     },
     {
       "id": "lateral-line",
@@ -26,7 +644,12 @@
       "system": "Myofasziale Leitbahn",
       "course": "Seitliche Verbindung von Fibularisgruppe, Tractus iliotibialis, seitlicher Rumpffaszie, Interkostalraum und Halsseite.",
       "function": "Stabilisiert Seitenneigung, Becken-Rumpf-Kopplung und laterale Balance.",
-      "regions": ["Lateraler Unterschenkel", "IT-Band", "Flanke", "Halsseite"],
+      "regions": [
+        "Lateraler Unterschenkel",
+        "IT-Band",
+        "Flanke",
+        "Halsseite"
+      ],
       "mapPath": "M252 744 C250 664 248 586 252 516 C258 444 270 382 266 314 C262 244 246 188 224 126",
       "territoryPath": "M238 732 C238 650 236 580 240 510 C244 434 252 360 250 300 C248 240 234 184 216 128 L244 132 C266 196 282 252 286 318 C290 390 276 454 270 526 C264 604 266 674 268 734 Z"
     },
@@ -36,19 +659,45 @@
       "system": "Myofasziale Leitbahn",
       "course": "Verlaeuft diagonal um Rumpf und Becken und koppelt Schulterguertel, schräge Bauchfaszien, Huftregion und Beinachsen.",
       "function": "Organisiert Rotation, Gangdynamik und diagonale Kraftuebertragung.",
-      "regions": ["Schulter", "Rumpf diagonal", "Becken", "Beinachse"],
+      "regions": [
+        "Schulter",
+        "Rumpf diagonal",
+        "Becken",
+        "Beinachse"
+      ],
       "mapPath": "M126 210 C176 260 232 312 258 382 C280 442 250 492 204 520 C160 548 140 610 156 700 M274 214 C222 266 168 318 144 386 C124 444 152 492 196 520 C238 548 260 612 244 700",
       "territoryPath": "M116 196 C176 246 246 306 276 380 C300 440 276 498 222 530 C178 556 160 610 176 690 L148 700 C128 626 146 560 190 526 C238 490 258 444 238 390 C212 324 156 274 102 226 Z"
     },
     {
-      "id": "functional-arm-lines",
-      "name": "Functional Arm Lines",
+      "id": "superficial-back-line",
+      "name": "Superficial Back Line",
       "system": "Myofasziale Leitbahn",
-      "course": "Verbindet Armfaszien ueber Pectoralis, Latissimus und Thorakolumbalfaszie mit Rumpf und Gegenseite.",
-      "function": "Relevant fuer Zug-, Stuetz- und Rotationsmuster zwischen Arm, Schulter und Rumpf.",
-      "regions": ["Arm", "Schulter", "Brust", "Ruecken"],
-      "mapPath": "M96 240 C132 250 164 282 190 330 C210 366 236 398 278 420 M304 240 C268 250 236 282 210 330 C190 366 164 398 122 420",
-      "territoryPath": "M78 226 C134 232 174 270 206 326 C230 368 260 396 320 410 L310 442 C246 430 206 392 178 344 C150 296 116 266 66 260 Z"
+      "course": "Von Plantarfaszie und Achillessehne ueber Waden, ischiocrurale Muskulatur, Sakrotuberalband, Rückenstrecker bis Galea aponeurotica.",
+      "function": "Unterstuetzt Aufrichtung, Extension und Spannungskontrolle der dorsalen Kette.",
+      "regions": [
+        "Fusssohle",
+        "Wade",
+        "Ruecken",
+        "Nacken"
+      ],
+      "mapPath": "M200 790 C192 715 186 642 176 560 C166 482 144 412 150 332 C154 250 178 188 188 126 C190 96 194 68 200 42",
+      "territoryPath": "M168 742 C178 680 178 590 164 520 C148 438 138 352 150 270 C158 212 176 156 184 96 L216 96 C224 156 242 212 250 270 C262 352 252 438 236 520 C222 590 222 680 232 742 C214 758 186 758 168 742"
+    },
+    {
+      "id": "superficial-front-line",
+      "name": "Superficial Front Line",
+      "system": "Myofasziale Leitbahn",
+      "course": "Von Fussruecken und vorderem Unterschenkel ueber Quadrizeps, Rektusscheide, Sternum bis Halsvorderseite.",
+      "function": "Unterstuetzt Flexion, Rumpfspannung und die ventrale Gegenbalance zur dorsalen Kette.",
+      "regions": [
+        "Fussruecken",
+        "Schienbein",
+        "Oberschenkel vorne",
+        "Bauch",
+        "Hals"
+      ],
+      "mapPath": "M200 764 C206 690 210 620 210 548 C210 486 216 434 218 370 C220 304 216 242 208 182 C204 140 204 108 200 76",
+      "territoryPath": "M178 740 C186 672 188 600 188 528 C188 454 180 384 174 310 C170 250 178 190 188 128 L212 128 C222 190 230 250 226 310 C220 384 212 454 212 528 C212 600 214 672 222 740 C208 754 192 754 178 740"
     }
   ]
 }
