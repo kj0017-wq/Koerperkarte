@@ -31,6 +31,8 @@ type PainRegion = {
   path: string;
 };
 
+type FocusZone = "head" | "neck" | "shoulder" | "torso" | "pelvis" | "upperLeg" | "lowerLeg" | "foot";
+
 type TriggerPointEntry = {
   muscle: MuscleMapItem;
   point: TriggerPoint;
@@ -143,14 +145,18 @@ export function BodyMap({
   const [mapView, setMapView] = useState<MapView>("front");
   const [hoveredPoint, setHoveredPoint] = useState<PositionedTriggerPointEntry | null>(null);
   const [selectedPointKey, setSelectedPointKey] = useState<string | null>(null);
+  const [showFullBody, setShowFullBody] = useState(false);
 
   useEffect(() => {
     if (mode !== "triggerpoints" && mapView !== "front") setMapView("front");
   }, [mapView, mode]);
 
+  const selectionKey = selectionFocusKey(selection);
+
   useEffect(() => {
     setHoveredPoint(null);
-  }, [mapView, mode, selection]);
+    setShowFullBody(false);
+  }, [mapView, mode, selectionKey]);
 
   const selectedMuscle =
     selection.type === "muscle"
@@ -194,7 +200,7 @@ export function BodyMap({
   }, [mapView, mode, triggerPointEntries]);
 
   const activePainRegions = mapView === "face" ? facePainRegions : mapView === "back" ? backPainRegions : frontPainRegions;
-  const activeViewBox = mapView === "face" ? "0 0 400 520" : "0 0 400 820";
+  const baseViewBox = mapView === "face" ? "0 0 400 520" : "0 0 400 820";
   const title = mapView === "face" ? "Kopf- und Gesichtskarte" : mapView === "back" ? "Dorsale Koerperansicht" : "Ventrale Koerperansicht";
   const visibleEntries = useMemo(
     () => layoutTriggerPoints(triggerPointEntries.filter((entry) => entry.mapView === mapView), mapView),
@@ -202,6 +208,8 @@ export function BodyMap({
   );
   const selectedPoint = visibleEntries.find((entry) => triggerPointKey(entry) === selectedPointKey) ?? null;
   const activePoint = hoveredPoint ?? selectedPoint;
+  const activeViewBox = showFullBody ? baseViewBox : focusViewBox(mapView, selection, activePoint, dermatomeRegions, myotomeGroups) ?? baseViewBox;
+  const focused = activeViewBox !== baseViewBox;
   const showAllLabels = visibleEntries.length <= 8;
 
   useEffect(() => {
@@ -236,6 +244,14 @@ export function BodyMap({
     selectEntry(entry);
   }
 
+  function selectPainRegion(regionId: string) {
+    const preferredView = viewForPainRegion(regionId, mapView);
+    if (preferredView !== mapView) setMapView(preferredView);
+    setShowFullBody(false);
+    onSelect({ type: "painRegion", id: regionId });
+  }
+
+
 
   return (
     <section className="glass order-1 overflow-hidden rounded-lg p-3 sm:p-4 lg:order-2 lg:min-h-[720px]">
@@ -251,7 +267,10 @@ export function BodyMap({
                 <button
                   key={tab.id}
                   type="button"
-                  onClick={() => setMapView(tab.id)}
+                  onClick={() => {
+                    setMapView(tab.id);
+                    setShowFullBody(true);
+                  }}
                   className={`focus-ring rounded-md px-3 py-2 text-sm font-semibold transition ${
                     mapView === tab.id ? "bg-slate-950 text-white" : "text-slate-600 hover:bg-slate-50"
                   }`}
@@ -261,8 +280,19 @@ export function BodyMap({
               ))}
             </div>
           )}
-          <div className="rounded-lg bg-slate-100 px-3 py-2 text-sm font-medium text-slate-600">
-            {interactionHint(mode)}
+          <div className="flex flex-wrap items-center gap-2">
+            {focused && (
+              <button
+                type="button"
+                onClick={() => setShowFullBody(true)}
+                className="focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              >
+                Ganzkoerper
+              </button>
+            )}
+            <div className="rounded-lg bg-slate-100 px-3 py-2 text-sm font-medium text-slate-600">
+              {focused ? "Fokusansicht aktiv" : interactionHint(mode)}
+            </div>
           </div>
         </div>
       </div>
@@ -333,7 +363,7 @@ export function BodyMap({
                 strokeLinejoin="round"
                 strokeOpacity={selection.type === "painRegion" && selection.id === region.id ? "0.55" : "0"}
                 className="cursor-pointer transition-opacity duration-200 hover:opacity-30"
-                onClick={() => onSelect({ type: "painRegion", id: region.id })}
+                onClick={() => selectPainRegion(region.id)}
               >
                 <title>{region.label}</title>
               </path>
@@ -439,6 +469,109 @@ export function BodyMap({
   );
 }
 
+function selectionFocusKey(selection: MapSelection) {
+  if (selection.type === "muscle") return `muscle:${selection.id}`;
+  if (selection.type === "triggerpoint") return `triggerpoint:${selection.mapView}:${selection.muscleId}:${selection.pointId}`;
+  return `${selection.type}:${selection.id}`;
+}
+
+function focusViewBox(
+  mapView: MapView,
+  selection: MapSelection,
+  activePoint: PositionedTriggerPointEntry | null,
+  dermatomeRegions: DermatomeRegion[],
+  myotomeGroups: MyotomeGroup[]
+) {
+  if (mapView === "face") return viewBoxForZone("head", mapView);
+
+  if (selection.type === "triggerpoint" && activePoint) {
+    return viewBoxForPoint(activePoint.renderedPoint.x, activePoint.renderedPoint.y, mapView);
+  }
+
+  if (selection.type === "painRegion") {
+    return viewBoxForZone(zoneForRegion(selection.id), mapView);
+  }
+
+  if (selection.type === "dermatome") {
+    const region = dermatomeRegions.find((item) => item.id === selection.id);
+    return viewBoxForZone(zoneForSegments(region?.segments ?? [selection.id]), mapView);
+  }
+
+  if (selection.type === "myotome") {
+    const group = myotomeGroups.find((item) => item.id === selection.id);
+    return viewBoxForZone(zoneForSegments(group?.segments ?? [selection.id]), mapView);
+  }
+
+  return null;
+}
+
+function viewForPainRegion(regionId: string, current: MapView): MapView {
+  const faceRegions = new Set(["head", "forehead", "temple", "eye", "orbit", "face", "ear", "jaw", "teeth", "throat"]);
+  const backRegions = new Set(["upper-back", "scapula", "posterior-thigh", "posterior-knee", "calf", "heel", "plantar-foot", "medial-arch", "ball-of-foot", "forefoot"]);
+  const frontRegions = new Set(["shin", "anterior-ankle", "dorsum-foot", "great-toe", "anterior-thigh", "groin"]);
+  if (faceRegions.has(regionId)) return "face";
+  if (backRegions.has(regionId)) return "back";
+  if (frontRegions.has(regionId)) return "front";
+  return current;
+}
+
+function zoneForRegion(regionId: string): FocusZone {
+  const head = new Set(["head", "forehead", "temple", "eye", "orbit", "face", "ear", "jaw", "teeth", "throat"]);
+  const neck = new Set(["neck"]);
+  const shoulder = new Set(["shoulder", "upper-arm", "forearm", "scapula", "upper-back"]);
+  const torso = new Set(["low-back"]);
+  const pelvis = new Set(["hip", "buttock", "groin"]);
+  const upperLeg = new Set(["anterior-thigh", "posterior-thigh", "medial-knee", "lateral-knee", "posterior-knee"]);
+  const foot = new Set(["heel", "plantar-foot", "dorsum-foot", "medial-arch", "ball-of-foot", "forefoot", "lateral-foot", "great-toe", "toes", "anterior-ankle", "medial-ankle", "lateral-ankle"]);
+  if (head.has(regionId)) return "head";
+  if (neck.has(regionId)) return "neck";
+  if (shoulder.has(regionId)) return "shoulder";
+  if (torso.has(regionId)) return "torso";
+  if (pelvis.has(regionId)) return "pelvis";
+  if (upperLeg.has(regionId)) return "upperLeg";
+  if (foot.has(regionId)) return "foot";
+  if (regionId === "shin" || regionId === "calf") return "lowerLeg";
+  return "torso";
+}
+
+function zoneForSegments(segments: string[]): FocusZone {
+  const joined = segments.join(" ").toUpperCase();
+  if (/C[2-4]/.test(joined)) return "neck";
+  if (/C[5-8]|T1/.test(joined)) return "shoulder";
+  if (/T[2-9]|T10|T11|T12/.test(joined)) return "torso";
+  if (/L1|L2/.test(joined)) return "pelvis";
+  if (/L3/.test(joined)) return "upperLeg";
+  if (/L4|L5/.test(joined)) return "lowerLeg";
+  if (/S1|S2/.test(joined)) return "foot";
+  return "torso";
+}
+
+function viewBoxForPoint(x: number, y: number, mapView: MapView) {
+  if (mapView === "face") return "56 40 288 440";
+  if (y < 210) return viewBoxForZone("neck", mapView);
+  if (y < 330) return viewBoxForZone("shoulder", mapView);
+  if (y < 470) return viewBoxForZone("torso", mapView);
+  if (y < 570) return viewBoxForZone("pelvis", mapView);
+  if (y < 670) return viewBoxForZone("upperLeg", mapView);
+  if (y < 745) return viewBoxForZone("lowerLeg", mapView);
+  return viewBoxForZone("foot", mapView);
+}
+
+function viewBoxForZone(zone: FocusZone, mapView: MapView) {
+  if (mapView === "face" || zone === "head") return "54 34 292 462";
+
+  const boxes: Record<Exclude<FocusZone, "head">, string> = {
+    neck: "80 44 240 190",
+    shoulder: "44 156 312 238",
+    torso: "88 232 224 250",
+    pelvis: "96 404 208 160",
+    upperLeg: "96 492 208 210",
+    lowerLeg: "96 620 208 170",
+    foot: "82 724 236 96"
+  };
+
+  return boxes[zone];
+}
 function triggerPointKey(entry: TriggerPointEntry) {
   return triggerPointKeyFromParts(entry.mapView, entry.muscle.id, entry.point.id);
 }
@@ -684,6 +817,9 @@ function regionLabel(region: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+
+
+
 
 
 
