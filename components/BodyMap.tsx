@@ -41,6 +41,7 @@ type BodyMapProps = {
   peripheralNerves?: PeripheralNerve[];
   fasciaLines?: FasciaLine[];
   infoPlacement?: "map" | "external";
+  resetViewKey?: number;
   onInfoChange?: (info: BodyMapInfo | null) => void;
   onSelect: (selection: MapSelection) => void;
 };
@@ -163,6 +164,7 @@ export function BodyMap({
   peripheralNerves = [],
   fasciaLines = [],
   infoPlacement = "map",
+  resetViewKey,
   onInfoChange,
   onSelect
 }: BodyMapProps) {
@@ -177,6 +179,11 @@ export function BodyMap({
   }, [mapView, mode]);
 
   const selectionKey = selectionFocusKey(selection);
+
+  useEffect(() => {
+    if (resetViewKey === undefined) return;
+    setShowFullBody(true);
+  }, [resetViewKey]);
 
   useEffect(() => {
     setHoveredPoint(null);

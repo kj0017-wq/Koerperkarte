@@ -39,6 +39,7 @@ export default function WebApp() {
     organs: false
   });
   const [zoom, setZoom] = useState(1);
+  const [bodyResetKey, setBodyResetKey] = useState(0);
   const [muscleFilter, setMuscleFilter] = useState("");
 
   useEffect(() => {
@@ -98,6 +99,11 @@ export default function WebApp() {
   function selectAndShow(nextSelection: MapSelection) {
     setSelection(nextSelection);
     setPane("map");
+  }
+
+  function resetBodyView() {
+    setZoom(1);
+    setBodyResetKey((key) => key + 1);
   }
 
   function handleModeChange(nextMode: AnatomyMode) {
@@ -162,6 +168,7 @@ export default function WebApp() {
                 selection={selection}
                 layers={layers}
                 zoom={zoom}
+                resetViewKey={bodyResetKey}
                 muscles={muscles}
                 dermatomeRegions={dermatomeRegions}
                 myotomeGroups={myotomeGroups}
@@ -268,7 +275,7 @@ export default function WebApp() {
                     </div>
                   )}
 
-                  <LayerToggles layers={layers} onChange={setLayers} zoom={zoom} onZoomChange={setZoom} />
+                  <LayerToggles layers={layers} onChange={setLayers} zoom={zoom} onZoomChange={setZoom} onResetView={resetBodyView} />
                 </div>
               </section>
             )}

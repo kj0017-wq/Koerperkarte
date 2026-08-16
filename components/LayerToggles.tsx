@@ -5,6 +5,7 @@ type LayerTogglesProps = {
   onChange: (layers: LayerState) => void;
   zoom: number;
   onZoomChange: (zoom: number) => void;
+  onResetView?: () => void;
 };
 
 const layerLabels: Array<{ id: keyof LayerState; label: string }> = [
@@ -16,7 +17,12 @@ const layerLabels: Array<{ id: keyof LayerState; label: string }> = [
   { id: "organs", label: "Organe" }
 ];
 
-export function LayerToggles({ layers, onChange, zoom, onZoomChange }: LayerTogglesProps) {
+export function LayerToggles({ layers, onChange, zoom, onZoomChange, onResetView }: LayerTogglesProps) {
+  function resetView() {
+    onZoomChange(1);
+    onResetView?.();
+  }
+
   return (
     <div className="mt-4 border-t border-slate-100 pt-4 sm:mt-5 sm:pt-5">
       <p className="text-xs font-semibold uppercase text-slate-400">Layer</p>
@@ -34,9 +40,20 @@ export function LayerToggles({ layers, onChange, zoom, onZoomChange }: LayerTogg
           </button>
         ))}
       </div>
-      <label className="mt-4 block text-sm font-medium text-slate-700 sm:mt-5" htmlFor="zoom">
-        Zoom {zoom.toFixed(1)}x
-      </label>
+
+      <div className="mt-4 flex items-center justify-between gap-3 sm:mt-5">
+        <label className="block text-sm font-medium text-slate-700" htmlFor="zoom">
+          Zoom {zoom.toFixed(1)}x
+        </label>
+        <button
+          type="button"
+          onClick={resetView}
+          className="focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+        >
+          Ganzer Koerper
+        </button>
+      </div>
+
       <input
         id="zoom"
         type="range"
