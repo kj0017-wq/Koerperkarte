@@ -811,32 +811,52 @@ function layoutTriggerPoints(entries: TriggerPointEntry[], mapView: MapView): Po
 function SkeletonLayer({ mapView }: { mapView: MapView }) {
   if (mapView === "face") {
     return (
-      <g opacity="0.72" pointerEvents="none">
-        <path d="M156 94 C176 78 224 78 244 94 C262 126 262 200 246 254 C238 286 220 314 200 324 C180 314 162 286 154 254 C138 200 138 126 156 94 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
-        <path d="M166 260 C186 274 214 274 234 260" fill="none" stroke="#94a3b8" strokeWidth="2" />
-        <path d="M176 338 C190 350 210 350 224 338 L232 456" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
-        <path d="M176 338 L168 456" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+      <g opacity="0.78" pointerEvents="none">
+        <path d="M154 92 C176 72 224 72 246 92 C268 126 266 202 248 258 C238 292 220 318 200 330 C180 318 162 292 152 258 C134 202 132 126 154 92 Z" fill="rgba(148,163,184,0.08)" stroke="#64748b" strokeWidth="2.5" />
+        <path d="M162 174 C180 164 220 164 238 174" fill="none" stroke="#94a3b8" strokeWidth="1.8" />
+        <path d="M158 222 C180 236 220 236 242 222" fill="none" stroke="#94a3b8" strokeWidth="1.8" />
+        <path d="M168 260 C186 276 214 276 232 260" fill="none" stroke="#64748b" strokeWidth="2" />
+        <path d="M176 292 C190 306 210 306 224 292" fill="none" stroke="#94a3b8" strokeWidth="1.6" />
+        <path d="M178 338 C190 350 210 350 222 338" fill="none" stroke="#64748b" strokeWidth="3" strokeLinecap="round" />
+        <path d="M176 352 L168 456 M224 352 L232 456" fill="none" stroke="#94a3b8" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M186 372 L214 372 M184 402 L216 402 M182 432 L218 432" fill="none" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
       </g>
     );
   }
 
-  const shoulderLine = mapView === "back" ? "M120 224 C156 204 244 204 280 224" : "M118 218 C154 198 246 198 282 218";
+  const isBack = mapView === "back";
+  const ribOpacity = isBack ? "0.3" : "0.42";
 
   return (
-    <g opacity="0.68" pointerEvents="none">
-      <path d="M200 58 C228 58 246 78 246 106 C246 138 226 154 200 154 C174 154 154 138 154 106 C154 78 172 58 200 58 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
-      <path d="M200 158 L200 520" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
-      <path d={shoulderLine} fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
-      <path d="M160 244 C184 226 216 226 240 244 L250 352 C226 372 174 372 150 352 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
-      <path d="M150 430 C180 452 220 452 250 430 C236 466 164 466 150 430 Z" fill="none" stroke="#64748b" strokeWidth="4" />
-      <path d="M132 230 L84 392" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
-      <path d="M268 230 L316 392" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
-      <path d="M84 392 L70 516" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
-      <path d="M316 392 L330 516" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
-      <path d="M178 518 L158 758" fill="none" stroke="#64748b" strokeWidth="6" strokeLinecap="round" />
-      <path d="M222 518 L242 758" fill="none" stroke="#64748b" strokeWidth="6" strokeLinecap="round" />
-      <path d="M158 758 C140 772 126 782 112 790" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
-      <path d="M242 758 C260 772 274 782 288 790" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+    <g opacity="0.78" pointerEvents="none">
+      <path d="M200 58 C228 58 246 78 246 106 C246 138 226 154 200 154 C174 154 154 138 154 106 C154 78 172 58 200 58 Z" fill="rgba(148,163,184,0.08)" stroke="#64748b" strokeWidth="2.5" />
+      <path d="M200 154 L200 524" fill="none" stroke="#475569" strokeWidth="5" strokeLinecap="round" />
+      <path d="M190 176 L210 176 M188 202 L212 202 M186 228 L214 228 M184 254 L216 254 M184 282 L216 282 M184 312 L216 312 M186 344 L214 344 M188 378 L212 378 M190 414 L210 414 M192 454 L208 454" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" />
+      <path d="M118 218 C150 200 250 200 282 218" fill="none" stroke="#475569" strokeWidth="5" strokeLinecap="round" />
+      <path d="M126 224 C146 236 166 240 188 236 M274 224 C254 236 234 240 212 236" fill="none" stroke="#94a3b8" strokeWidth="3" strokeLinecap="round" />
+      <path d="M160 242 C184 222 216 222 240 242 C254 274 256 320 244 354 C222 374 178 374 156 354 C144 320 146 274 160 242 Z" fill="none" stroke="#64748b" strokeWidth="2.5" />
+      {[0, 1, 2, 3, 4].map((index) => (
+        <g key={`rib-${index}`} opacity={ribOpacity}>
+          <path d={`M198 ${250 + index * 20} C174 ${248 + index * 18} 158 ${260 + index * 18} 150 ${278 + index * 18}`} fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" />
+          <path d={`M202 ${250 + index * 20} C226 ${248 + index * 18} 242 ${260 + index * 18} 250 ${278 + index * 18}`} fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" />
+        </g>
+      ))}
+      <path d="M150 430 C178 450 222 450 250 430 C238 470 162 470 150 430 Z" fill="rgba(100,116,139,0.08)" stroke="#475569" strokeWidth="3" />
+      <circle cx="156" cy="432" r="8" fill="rgba(100,116,139,0.12)" stroke="#64748b" strokeWidth="2" />
+      <circle cx="244" cy="432" r="8" fill="rgba(100,116,139,0.12)" stroke="#64748b" strokeWidth="2" />
+      <path d="M132 230 L100 324 L84 392" fill="none" stroke="#475569" strokeWidth="5" strokeLinecap="round" />
+      <path d="M268 230 L300 324 L316 392" fill="none" stroke="#475569" strokeWidth="5" strokeLinecap="round" />
+      <path d="M84 392 L72 456 L70 516" fill="none" stroke="#64748b" strokeWidth="4" strokeLinecap="round" />
+      <path d="M316 392 L328 456 L330 516" fill="none" stroke="#64748b" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="84" cy="392" r="7" fill="#e2e8f0" stroke="#64748b" strokeWidth="2" />
+      <circle cx="316" cy="392" r="7" fill="#e2e8f0" stroke="#64748b" strokeWidth="2" />
+      <path d="M178 520 L164 632 L158 758" fill="none" stroke="#475569" strokeWidth="6" strokeLinecap="round" />
+      <path d="M222 520 L236 632 L242 758" fill="none" stroke="#475569" strokeWidth="6" strokeLinecap="round" />
+      <path d="M164 632 L146 744 M236 632 L254 744" fill="none" stroke="#94a3b8" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="162" cy="636" r="8" fill="#e2e8f0" stroke="#64748b" strokeWidth="2" />
+      <circle cx="238" cy="636" r="8" fill="#e2e8f0" stroke="#64748b" strokeWidth="2" />
+      <path d="M158 758 C140 772 126 782 112 790 M158 758 C176 772 188 782 198 790" fill="none" stroke="#64748b" strokeWidth="3.5" strokeLinecap="round" />
+      <path d="M242 758 C260 772 274 782 288 790 M242 758 C224 772 212 782 202 790" fill="none" stroke="#64748b" strokeWidth="3.5" strokeLinecap="round" />
     </g>
   );
 }
@@ -844,33 +864,40 @@ function SkeletonLayer({ mapView }: { mapView: MapView }) {
 function OrgansLayer({ mapView }: { mapView: MapView }) {
   if (mapView === "face") {
     return (
-      <g opacity="0.78" pointerEvents="none">
-        <ellipse cx="166" cy="190" rx="14" ry="8" fill="#38bdf8" opacity="0.42" />
-        <ellipse cx="234" cy="190" rx="14" ry="8" fill="#38bdf8" opacity="0.42" />
-        <path d="M200 214 C190 242 188 260 200 270 C212 260 210 242 200 214" fill="#fb7185" opacity="0.35" />
-        <path d="M172 300 C190 312 210 312 228 300 C218 318 182 318 172 300" fill="#f97316" opacity="0.35" />
+      <g opacity="0.82" pointerEvents="none">
+        <ellipse cx="166" cy="190" rx="15" ry="8" fill="#38bdf8" opacity="0.48" />
+        <ellipse cx="234" cy="190" rx="15" ry="8" fill="#38bdf8" opacity="0.48" />
+        <circle cx="166" cy="190" r="4" fill="#0f172a" opacity="0.45" />
+        <circle cx="234" cy="190" r="4" fill="#0f172a" opacity="0.45" />
+        <path d="M200 214 C190 242 188 260 200 270 C212 260 210 242 200 214" fill="#fb7185" opacity="0.42" stroke="#e11d48" strokeWidth="1.5" />
+        <path d="M170 300 C188 314 212 314 230 300 C220 320 180 320 170 300" fill="#f97316" opacity="0.4" stroke="#ea580c" strokeWidth="1.5" />
+        <path d="M138 222 C152 216 174 218 190 226 M210 226 C226 218 248 216 262 222" fill="none" stroke="#22c55e" strokeWidth="2" opacity="0.35" strokeLinecap="round" />
       </g>
     );
   }
 
   if (mapView === "back") {
     return (
-      <g opacity="0.72" pointerEvents="none">
-        <ellipse cx="174" cy="334" rx="22" ry="36" fill="#f97316" opacity="0.22" />
-        <ellipse cx="226" cy="334" rx="22" ry="36" fill="#f97316" opacity="0.22" />
-        <path d="M158 404 C182 390 218 390 242 404 L236 440 C216 454 184 454 164 440 Z" fill="#f59e0b" opacity="0.22" />
+      <g opacity="0.78" pointerEvents="none">
+        <ellipse cx="174" cy="334" rx="20" ry="34" fill="#f97316" opacity="0.24" stroke="#ea580c" strokeWidth="1.5" />
+        <ellipse cx="226" cy="334" rx="20" ry="34" fill="#f97316" opacity="0.24" stroke="#ea580c" strokeWidth="1.5" />
+        <path d="M158 402 C182 388 218 388 242 402 L236 440 C216 454 184 454 164 440 Z" fill="#f59e0b" opacity="0.24" stroke="#d97706" strokeWidth="1.5" />
+        <path d="M176 460 C190 452 210 452 224 460 C218 482 182 482 176 460 Z" fill="#a78bfa" opacity="0.24" stroke="#7c3aed" strokeWidth="1.5" />
       </g>
     );
   }
 
   return (
-    <g opacity="0.78" pointerEvents="none">
-      <ellipse cx="172" cy="276" rx="30" ry="48" fill="#38bdf8" opacity="0.28" />
-      <ellipse cx="228" cy="276" rx="30" ry="48" fill="#38bdf8" opacity="0.28" />
-      <path d="M188 292 C202 274 226 288 224 314 C222 342 204 356 196 378 C186 354 170 338 174 314 C176 304 180 296 188 292 Z" fill="#fb7185" opacity="0.38" />
-      <path d="M158 356 C190 340 230 350 252 380 C228 404 178 400 154 380 Z" fill="#f59e0b" opacity="0.3" />
-      <path d="M160 394 C194 382 232 388 246 418 C224 446 176 446 154 418 Z" fill="#f97316" opacity="0.24" />
-      <path d="M176 448 C190 440 210 440 224 448 C214 470 186 470 176 448 Z" fill="#a78bfa" opacity="0.26" />
+    <g opacity="0.84" pointerEvents="none">
+      <ellipse cx="170" cy="276" rx="31" ry="50" fill="#38bdf8" opacity="0.3" stroke="#0284c7" strokeWidth="1.5" />
+      <ellipse cx="230" cy="276" rx="31" ry="50" fill="#38bdf8" opacity="0.3" stroke="#0284c7" strokeWidth="1.5" />
+      <path d="M188 292 C202 274 226 288 224 314 C222 342 204 356 196 378 C186 354 170 338 174 314 C176 304 180 296 188 292 Z" fill="#fb7185" opacity="0.44" stroke="#e11d48" strokeWidth="1.5" />
+      <path d="M158 354 C190 336 230 348 254 378 C230 404 178 400 154 380 Z" fill="#f59e0b" opacity="0.36" stroke="#d97706" strokeWidth="1.5" />
+      <path d="M226 348 C246 348 260 362 258 384 C246 384 236 376 230 362 Z" fill="#22c55e" opacity="0.34" stroke="#16a34a" strokeWidth="1.2" />
+      <path d="M160 394 C194 382 232 388 246 418 C224 448 176 448 154 418 Z" fill="#f97316" opacity="0.28" stroke="#ea580c" strokeWidth="1.5" />
+      <path d="M176 448 C190 440 210 440 224 448 C214 472 186 472 176 448 Z" fill="#a78bfa" opacity="0.3" stroke="#7c3aed" strokeWidth="1.4" />
+      <path d="M186 332 C198 342 202 362 196 386" fill="none" stroke="#e11d48" strokeWidth="1.5" opacity="0.55" strokeLinecap="round" />
+      <path d="M192 386 C182 408 184 430 196 448" fill="none" stroke="#fb7185" strokeWidth="1.4" opacity="0.4" strokeLinecap="round" />
     </g>
   );
 }
