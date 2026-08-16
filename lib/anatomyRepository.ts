@@ -4,7 +4,7 @@ import fallbackMyotomes from "@/data/myotomes.json";
 import fallbackPeripheralNerves from "@/data/peripheralNerves.json";
 import fallbackFascia from "@/data/fascia.json";
 import fallbackTriggerpoints from "@/data/triggerpoints.json";
-import { firebaseDatabaseUrl, realtimeDb } from "@/lib/firebase";
+import { firebaseAuth, firebaseDatabaseUrl, realtimeDb } from "@/lib/firebase";
 import type { BodyMapBlock, DermatomeRegion, FasciaLine, MuscleMapItem, MyotomeGroup, PeripheralNerve } from "@/lib/types";
 
 const { get, ref, remove, set } = database as any;
@@ -24,9 +24,30 @@ export type AnatomyData = {
 
 
 export async function isAdminUser(uid: string): Promise<boolean> {
+  const sdkResult = await readAdminWithSdk(uid);
+  if (sdkResult) return true;
+  return readAdminWithToken(uid);
+}
+
+async function readAdminWithSdk(uid: string): Promise<boolean> {
   try {
     const snapshot = await withTimeout<any>(get(ref(realtimeDb, `admins/${uid}`)), REALTIME_LOAD_TIMEOUT_MS);
     return snapshot.exists() && snapshot.val() === true;
+  } catch {
+    return false;
+  }
+}
+
+async function readAdminWithToken(uid: string): Promise<boolean> {
+  try {
+    const token = await firebaseAuth.currentUser?.getIdToken(true);
+    if (!token) return false;
+    const response = await fetchWithTimeout(
+      `${firebaseDatabaseUrl}/admins/${uid}.json?auth=${encodeURIComponent(token)}`,
+      REALTIME_LOAD_TIMEOUT_MS
+    );
+    if (!response.ok) return false;
+    return (await response.json()) === true;
   } catch {
     return false;
   }
