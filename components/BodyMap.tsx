@@ -398,6 +398,7 @@ export function BodyMap({
           {layers.anatomy && (mapView === "face" ? <FaceSilhouette /> : mapView === "back" ? <BackBodySilhouette /> : <BodySilhouette />)}
 
           {layers.skeleton && <SkeletonLayer mapView={mapView} />}
+          {layers.joints && <JointLayer mapView={mapView} />}
           {layers.organs && <OrgansLayer mapView={mapView} />}
 
           {mode === "triggerpoints" && layers.referral &&
@@ -844,6 +845,63 @@ function layoutTriggerPoints(entries: TriggerPointEntry[], mapView: MapView): Po
   }
 
   return result;
+}
+function JointLayer({ mapView }: { mapView: MapView }) {
+  const capsule = "#0f766e";
+  const cartilage = "#5eead4";
+  const line = "#115e59";
+
+  if (mapView === "face") {
+    return (
+      <g pointerEvents="none" opacity="0.82">
+        <ellipse cx="132" cy="238" rx="13" ry="18" fill={cartilage} opacity="0.2" stroke={line} strokeWidth="2" />
+        <ellipse cx="268" cy="238" rx="13" ry="18" fill={cartilage} opacity="0.2" stroke={line} strokeWidth="2" />
+        <path d="M128 226 C140 236 140 252 130 264" fill="none" stroke={capsule} strokeWidth="2.2" strokeLinecap="round" />
+        <path d="M272 226 C260 236 260 252 270 264" fill="none" stroke={capsule} strokeWidth="2.2" strokeLinecap="round" />
+        <path d="M142 252 C166 276 234 276 258 252" fill="none" stroke={capsule} strokeWidth="1.6" strokeDasharray="5 5" opacity="0.45" />
+      </g>
+    );
+  }
+
+  if (mapView === "back") {
+    return (
+      <g pointerEvents="none" opacity="0.84">
+        <path d="M184 166 C192 176 208 176 216 166" fill="none" stroke={line} strokeWidth="2.2" strokeLinecap="round" />
+        <path d="M186 190 L214 190 M186 218 L214 218 M186 246 L214 246 M186 276 L214 276 M186 308 L214 308 M186 342 L214 342 M188 378 L212 378 M190 416 L210 416" fill="none" stroke={capsule} strokeWidth="2" strokeLinecap="round" opacity="0.8" />
+        <ellipse cx="132" cy="220" rx="18" ry="14" fill={cartilage} opacity="0.22" stroke={line} strokeWidth="2" />
+        <ellipse cx="268" cy="220" rx="18" ry="14" fill={cartilage} opacity="0.22" stroke={line} strokeWidth="2" />
+        <path d="M112 230 C140 242 162 236 184 220" fill="none" stroke={capsule} strokeWidth="2" strokeLinecap="round" />
+        <path d="M288 230 C260 242 238 236 216 220" fill="none" stroke={capsule} strokeWidth="2" strokeLinecap="round" />
+        <ellipse cx="84" cy="392" rx="15" ry="18" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" />
+        <ellipse cx="316" cy="392" rx="15" ry="18" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" />
+        <ellipse cx="156" cy="448" rx="19" ry="30" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" transform="rotate(-12 156 448)" />
+        <ellipse cx="244" cy="448" rx="19" ry="30" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" transform="rotate(12 244 448)" />
+        <path d="M172 432 C186 448 192 468 190 492 M228 432 C214 448 208 468 210 492" fill="none" stroke={capsule} strokeWidth="2" strokeLinecap="round" />
+        <ellipse cx="162" cy="636" rx="20" ry="15" fill={cartilage} opacity="0.2" stroke={line} strokeWidth="2" />
+        <ellipse cx="238" cy="636" rx="20" ry="15" fill={cartilage} opacity="0.2" stroke={line} strokeWidth="2" />
+        <path d="M144 752 C156 760 178 760 190 752 M210 752 C222 760 244 760 256 752" fill="none" stroke={line} strokeWidth="2.4" strokeLinecap="round" />
+      </g>
+    );
+  }
+
+  return (
+    <g pointerEvents="none" opacity="0.84">
+      <path d="M188 166 C196 176 204 176 212 166" fill="none" stroke={line} strokeWidth="2.2" strokeLinecap="round" />
+      <ellipse cx="122" cy="218" rx="18" ry="15" fill={cartilage} opacity="0.22" stroke={line} strokeWidth="2" />
+      <ellipse cx="278" cy="218" rx="18" ry="15" fill={cartilage} opacity="0.22" stroke={line} strokeWidth="2" />
+      <circle cx="160" cy="198" r="7" fill="#ecfeff" stroke={capsule} strokeWidth="1.8" />
+      <circle cx="240" cy="198" r="7" fill="#ecfeff" stroke={capsule} strokeWidth="1.8" />
+      <ellipse cx="84" cy="392" rx="15" ry="18" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" />
+      <ellipse cx="316" cy="392" rx="15" ry="18" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" />
+      <path d="M70 520 C82 528 96 528 108 520 M292 520 C304 528 318 528 330 520" fill="none" stroke={line} strokeWidth="2" strokeLinecap="round" />
+      <ellipse cx="158" cy="458" rx="20" ry="31" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" transform="rotate(11 158 458)" />
+      <ellipse cx="242" cy="458" rx="20" ry="31" fill={cartilage} opacity="0.18" stroke={line} strokeWidth="2" transform="rotate(-11 242 458)" />
+      <path d="M178 472 C190 486 210 486 222 472" fill="none" stroke={capsule} strokeWidth="2" strokeLinecap="round" />
+      <ellipse cx="162" cy="636" rx="20" ry="15" fill={cartilage} opacity="0.2" stroke={line} strokeWidth="2" />
+      <ellipse cx="238" cy="636" rx="20" ry="15" fill={cartilage} opacity="0.2" stroke={line} strokeWidth="2" />
+      <path d="M144 752 C156 760 178 760 190 752 M210 752 C222 760 244 760 256 752" fill="none" stroke={line} strokeWidth="2.4" strokeLinecap="round" />
+    </g>
+  );
 }
 function SkeletonLayer({ mapView }: { mapView: MapView }) {
   if (mapView === "face") {

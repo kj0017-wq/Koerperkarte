@@ -14,6 +14,7 @@ const layerLabels: Array<{ id: keyof LayerState; label: string }> = [
   { id: "referral", label: "Ausstrahlung" },
   { id: "segments", label: "Segmente" },
   { id: "skeleton", label: "Skelett" },
+  { id: "joints", label: "Gelenke" },
   { id: "organs", label: "Organe" }
 ];
 
@@ -67,3 +68,4 @@ export function LayerToggles({ layers, onChange, zoom, onZoomChange, onResetView
     </div>
   );
 }
+

@@ -6,6 +6,7 @@ export type LayerState = {
   referral: boolean;
   segments: boolean;
   skeleton: boolean;
+  joints: boolean;
   organs: boolean;
 };
 
@@ -104,5 +105,4 @@ export type FasciaLine = {
 };
 
 export type DataSourceState = "loading" | "realtime" | "local";
-
 

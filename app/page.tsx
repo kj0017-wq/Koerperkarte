@@ -20,6 +20,7 @@ export default function Home() {
     referral: true,
     segments: true,
     skeleton: false,
+    joints: true,
     organs: false
   });
   const [zoom, setZoom] = useState(1);
