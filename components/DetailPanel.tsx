@@ -61,7 +61,7 @@ function MuscleDetail({
       {selectedPoint && <TriggerPointDetail muscle={item} point={selectedPoint} />}
       <InfoBlock label="Verlauf" value={item.course} />
       <InfoBlock label="Ausstrahlung" value={item.referralArea} />
-      <InfoBlock label="Kurz erklaert" value={item.explanation} />
+      {isDisplayableInfo(item.explanation) && <InfoBlock label="Kurz erklaert" value={item.explanation} />}
       <div>
         <p className="text-sm font-semibold text-slate-800">Triggerpunkte</p>
         <div className="mt-2 grid gap-2">
@@ -96,7 +96,7 @@ function TriggerPointHoverOverlay({ muscle, point }: { muscle: MuscleMapItem; po
   const regions = point.painRegions?.length ? point.painRegions : muscle.painRegions;
   const location = point.anatomicalLocation || muscle.bodyArea || "Lage noch nicht beschrieben";
   const referral = point.referralArea || muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben";
-  const source = point.sourcePage ? `Quelle S. ${point.sourcePage}` : point.reviewStatus || "Entwurf";
+  const source = point.sourcePage ? `Quelle S. ${point.sourcePage}` : isDisplayableInfo(point.reviewStatus) ? point.reviewStatus : "";
 
   return (
     <div
@@ -125,7 +125,7 @@ function TriggerPointHoverOverlay({ muscle, point }: { muscle: MuscleMapItem; po
           ))}
         </div>
       )}
-      <p className="mt-2 text-xs font-medium text-slate-400">{source}</p>
+      {source && <p className="mt-2 text-xs font-medium text-slate-400">{source}</p>}
     </div>
   );
 }
@@ -133,7 +133,7 @@ function TriggerPointDetail({ muscle, point }: { muscle: MuscleMapItem; point: M
   const regions = point.painRegions?.length ? point.painRegions : muscle.painRegions;
   const location = point.anatomicalLocation || muscle.bodyArea || "Lage noch nicht beschrieben";
   const referral = point.referralArea || muscle.referralArea || "Ausstrahlungsgebiet noch nicht beschrieben";
-  const note = point.notes || muscle.explanation;
+  const note = isDisplayableInfo(point.notes) ? point.notes : isDisplayableInfo(muscle.explanation) ? muscle.explanation : "";
 
   return (
     <section className="rounded-lg border border-red-100 bg-red-50 p-4">
@@ -218,9 +218,11 @@ function PainRegionResults({
             <span className={active ? "block font-semibold text-white" : "block font-semibold text-slate-950"}>
               {item.name}
             </span>
-            <span className={active ? "mt-1 block text-sm leading-6 text-blue-50" : "mt-1 block text-sm leading-6 text-slate-600"}>
-              {item.explanation}
-            </span>
+            {isDisplayableInfo(item.explanation) && (
+              <span className={active ? "mt-1 block text-sm leading-6 text-blue-50" : "mt-1 block text-sm leading-6 text-slate-600"}>
+                {item.explanation}
+              </span>
+            )}
             <span className={active ? "mt-2 block text-xs font-semibold uppercase text-blue-100" : "mt-2 block text-xs font-semibold uppercase text-blue-600"}>
               {item.bodyArea}
             </span>
@@ -283,12 +285,33 @@ function NerveDetail({ item }: { item: PeripheralNerve }) {
 }
 
 function InfoBlock({ label, value }: { label: string; value: string }) {
+  if (!isDisplayableInfo(value)) return null;
+
   return (
     <div>
       <p className="text-sm font-semibold text-slate-800">{label}</p>
       <p className="mt-1 text-sm leading-6 text-slate-600">{value}</p>
     </div>
   );
+}
+
+function isDisplayableInfo(value: unknown) {
+  if (typeof value !== "string") return false;
+  const normalized = value.trim().toLowerCase();
+  if (!normalized) return false;
+
+  return ![
+    "draft",
+    "entwurf",
+    "demo-datensatz",
+    "draft-datensatz",
+    "draft-datensatz aus triggerpunkt-import",
+    "noch zu ergaenzen",
+    "noch zu erg?nzen",
+    "noch nicht beschrieben",
+    "noch pruefen",
+    "noch pr?fen"
+  ].some((marker) => normalized.includes(marker));
 }
 
 function panelTitle(
