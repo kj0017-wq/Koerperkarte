@@ -29,6 +29,7 @@ export default function Home() {
   const [hoveredDermatomeId, setHoveredDermatomeId] = useState<string | null>(null);
   const [hoveredMyotomeId, setHoveredMyotomeId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     let mounted = true;
@@ -117,6 +118,45 @@ export default function Home() {
     if (nextMode === "fascia" && fasciaLines[0]) setSelection({ type: "fascia", id: fasciaLines[0].id });
   }
 
+  if (showIntro) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-white">
+        <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center gap-8 px-4 py-6 sm:px-8 lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-center lg:gap-10">
+          <div className="order-2 lg:order-1">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-200">Koerperkarte</p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-6xl">
+              Anatomie verstehen, fuehlen und bewegen.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+              Interaktive Karten fuer Muskeln, Triggerpunkte, Dermatome, Myotome, Nerven und Faszien. Fuer Unterricht, Praxis und strukturiertes Lernen am Koerpermodell.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setShowIntro(false)}
+                className="focus-ring rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-blue-50"
+              >
+                Karte oeffnen
+              </button>
+              <a
+                href="/webapp"
+                className="focus-ring rounded-lg border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Webapp starten
+              </a>
+            </div>
+          </div>
+          <div className="order-1 overflow-hidden rounded-lg border border-white/10 bg-black shadow-2xl shadow-black/40 lg:order-2">
+            <img
+              src="/intro-skeleton-muscles.jpg"
+              alt="Skelett mit Muskeln anterior Ansicht"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </section>
+      </main>
+    );
+  }
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-4 px-3 py-3 sm:gap-6 sm:px-6 sm:py-5 lg:px-8">
       <header className="flex flex-col gap-3 rounded-lg px-1 py-2 sm:gap-4 sm:py-3 lg:flex-row lg:items-end lg:justify-between">
@@ -368,4 +408,5 @@ function sourceLabel(source: DataSourceState) {
   if (source === "realtime") return "Realtime Database";
   return "Lokale Demo-Daten";
 }
+
 
