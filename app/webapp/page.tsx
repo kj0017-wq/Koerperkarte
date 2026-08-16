@@ -45,6 +45,7 @@ export default function WebApp() {
   const [hoveredDermatomeId, setHoveredDermatomeId] = useState<string | null>(null);
   const [hoveredMyotomeId, setHoveredMyotomeId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
+  const [activeFasciaIds, setActiveFasciaIds] = useState<string[]>([]);
 
   useEffect(() => {
     let mounted = true;
@@ -110,6 +111,15 @@ export default function WebApp() {
     setBodyResetKey((key) => key + 1);
   }
 
+  function toggleFasciaLine(id: string) {
+    setActiveFasciaIds((current) => (current.includes(id) ? current.filter((item) => item !== id) : [...current, id]));
+    selectAndShow({ type: "fascia", id });
+  }
+
+  function clearFasciaLines() {
+    setActiveFasciaIds([]);
+  }
+
   function handleModeChange(nextMode: AnatomyMode) {
     if (!anatomyData) return;
     setMode(nextMode);
@@ -119,7 +129,10 @@ export default function WebApp() {
     if (nextMode === "dermatomes" && dermatomeRegions[0]) setSelection({ type: "dermatome", id: dermatomeRegions[0].id });
     if (nextMode === "myotomes" && myotomeGroups[0]) setSelection({ type: "myotome", id: myotomeGroups[0].id });
     if (nextMode === "nerves" && peripheralNerves[0]) setSelection({ type: "nerve", id: peripheralNerves[0].id });
-    if (nextMode === "fascia" && fasciaLines[0]) setSelection({ type: "fascia", id: fasciaLines[0].id });
+    if (nextMode === "fascia" && fasciaLines[0]) {
+      setSelection({ type: "fascia", id: fasciaLines[0].id });
+      setActiveFasciaIds([]);
+    }
   }
 
   return (
@@ -186,6 +199,7 @@ export default function WebApp() {
                 blocks={blocks}
                 peripheralNerves={peripheralNerves}
           fasciaLines={fasciaLines}
+                activeFasciaIds={activeFasciaIds}
                 onSelect={setSelection}
               />
             )}
@@ -264,18 +278,27 @@ export default function WebApp() {
                   )}
 
                   {mode === "fascia" && (
-                    <div className="grid gap-2">
-                      {fasciaLines.map((line) => (
-                        <button
-                          key={line.id}
-                          type="button"
-                          onClick={() => selectAndShow({ type: "fascia", id: line.id })}
-                          className="focus-ring rounded-lg bg-slate-50 px-3 py-3 text-left"
-                        >
-                          <span className="block font-semibold">{line.name}</span>
-                          <span className="text-sm text-slate-500">{line.regions.join(", ")}</span>
-                        </button>
-                      ))}
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 p-2 text-xs text-slate-600">
+                        <span>{activeFasciaIds.length} Faszien sichtbar</span>
+                        <button type="button" onClick={clearFasciaLines} className="focus-ring rounded-md px-2 py-1 font-semibold text-slate-700 hover:bg-white">Leeren</button>
+                      </div>
+                      <div className="grid gap-2">
+                        {fasciaLines.map((line) => {
+                          const active = activeFasciaIds.includes(line.id);
+                          return (
+                            <button
+                              key={line.id}
+                              type="button"
+                              onClick={() => toggleFasciaLine(line.id)}
+                              className={`focus-ring rounded-lg px-3 py-3 text-left ${active ? "bg-teal-600 text-white" : "bg-slate-50 text-slate-700"}`}
+                            >
+                              <span className="block font-semibold">{line.name}</span>
+                              <span className={active ? "text-sm text-teal-100" : "text-sm text-slate-500"}>{line.regions.join(", ")}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
                   )}
                   {mode === "myotomes" && (

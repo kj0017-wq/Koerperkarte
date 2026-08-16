@@ -40,6 +40,7 @@ type BodyMapProps = {
   blocks: BodyMapBlock[];
   peripheralNerves?: PeripheralNerve[];
   fasciaLines?: FasciaLine[];
+  activeFasciaIds?: string[];
   infoPlacement?: "map" | "external";
   resetViewKey?: number;
   hoveredPainRegionId?: string | null;
@@ -167,6 +168,7 @@ export function BodyMap({
   blocks,
   peripheralNerves = [],
   fasciaLines = [],
+  activeFasciaIds = [],
   infoPlacement = "map",
   resetViewKey,
   hoveredPainRegionId: externalHoveredPainRegionId,
@@ -524,7 +526,9 @@ export function BodyMap({
             })}
 
           {mode === "fascia" && (layers.segments || layers.referral) &&
-            fasciaLines.map((line) => {
+            fasciaLines
+              .filter((line) => activeFasciaIds.includes(line.id))
+              .map((line) => {
               const active = selection.type === "fascia" && selection.id === line.id;
 
               return (

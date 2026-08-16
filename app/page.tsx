@@ -29,6 +29,7 @@ export default function Home() {
   const [hoveredDermatomeId, setHoveredDermatomeId] = useState<string | null>(null);
   const [hoveredMyotomeId, setHoveredMyotomeId] = useState<string | null>(null);
   const [muscleFilter, setMuscleFilter] = useState("");
+  const [activeFasciaIds, setActiveFasciaIds] = useState<string[]>([]);
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
@@ -107,6 +108,15 @@ export default function Home() {
     setBodyResetKey((key) => key + 1);
   }
 
+  function toggleFasciaLine(id: string) {
+    setActiveFasciaIds((current) => (current.includes(id) ? current.filter((item) => item !== id) : [...current, id]));
+    setSelection({ type: "fascia", id });
+  }
+
+  function clearFasciaLines() {
+    setActiveFasciaIds([]);
+  }
+
   function handleModeChange(nextMode: AnatomyMode) {
     if (!anatomyData) return;
 
@@ -115,7 +125,10 @@ export default function Home() {
     if (nextMode === "dermatomes" && dermatomeRegions[0]) setSelection({ type: "dermatome", id: dermatomeRegions[0].id });
     if (nextMode === "myotomes" && myotomeGroups[0]) setSelection({ type: "myotome", id: myotomeGroups[0].id });
     if (nextMode === "nerves" && peripheralNerves[0]) setSelection({ type: "nerve", id: peripheralNerves[0].id });
-    if (nextMode === "fascia" && fasciaLines[0]) setSelection({ type: "fascia", id: fasciaLines[0].id });
+    if (nextMode === "fascia" && fasciaLines[0]) {
+      setSelection({ type: "fascia", id: fasciaLines[0].id });
+      setActiveFasciaIds([]);
+    }
   }
 
   if (showIntro) {
@@ -313,17 +326,26 @@ export default function Home() {
           )}
 
           {mode === "fascia" && (
-            <div className="grid gap-2">
-              {fasciaLines.map((line) => (
-                <button
-                  key={line.id}
-                  onClick={() => setSelection({ type: "fascia", id: line.id })}
-                  className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${selection.type === "fascia" && selection.id === line.id ? "bg-teal-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"}`}
-                >
-                  <span className="block font-semibold">{line.name}</span>
-                  <span className={selection.type === "fascia" && selection.id === line.id ? "text-teal-100" : "text-slate-500"}>{line.regions.join(", ")}</span>
-                </button>
-              ))}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 p-2 text-xs text-slate-600">
+                <span>{activeFasciaIds.length} Faszien sichtbar</span>
+                <button type="button" onClick={clearFasciaLines} className="focus-ring rounded-md px-2 py-1 font-semibold text-slate-700 hover:bg-white">Leeren</button>
+              </div>
+              <div className="grid gap-2">
+                {fasciaLines.map((line) => {
+                  const active = activeFasciaIds.includes(line.id);
+                  return (
+                    <button
+                      key={line.id}
+                      onClick={() => toggleFasciaLine(line.id)}
+                      className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${active ? "bg-teal-600 text-white" : "bg-slate-50 text-slate-700 hover:bg-slate-100"}`}
+                    >
+                      <span className="block font-semibold">{line.name}</span>
+                      <span className={active ? "text-teal-100" : "text-slate-500"}>{line.regions.join(", ")}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           )}
           {mode === "myotomes" && (
@@ -372,6 +394,7 @@ export default function Home() {
           blocks={blocks}
           peripheralNerves={peripheralNerves}
           fasciaLines={fasciaLines}
+                activeFasciaIds={activeFasciaIds}
           infoPlacement="external"
           onInfoChange={setBodyInfo}
           onSelect={setSelection}
