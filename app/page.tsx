@@ -330,7 +330,7 @@ export default function Home() {
           onSelect={setSelection}
         />
 
-        <div className="order-3 space-y-4 lg:order-3">
+        <div className="order-3 space-y-4 lg:sticky lg:top-4 lg:order-3 lg:max-h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto lg:pr-1">
           {mode === "triggerpoints" && <BodyInfoPanel info={bodyInfo} />}
           <DetailPanel mode={mode} selection={selection} data={selectedData} activePainRegionId={hoveredPainRegionId} onPainRegionHover={setHoveredPainRegionId} onSelect={setSelection} />
         </div>
