@@ -39,7 +39,7 @@ export async function deleteAnatomyItem(collection: "muscles" | "dermatomes" | "
   await remove(ref(realtimeDb, `${collection}/${id}`));
 }
 const localData: AnatomyData = {
-  muscles: normalizeMuscles(fallbackTriggerpoints.muscles),
+  muscles: normalizeMuscles(fallbackTriggerpoints.muscles as unknown as MuscleMapItem[]),
   dermatomeRegions: normalizeDermatomes(fallbackDermatomes.regions),
   myotomeGroups: normalizeMyotomes(fallbackMyotomes.groups),
   peripheralNerves: normalizePeripheralNerves(fallbackPeripheralNerves.nerves),
@@ -286,3 +286,4 @@ function firstSegment(segments: unknown): string {
   const values = asStringArray(segments);
   return values[0] || "";
 }
+
