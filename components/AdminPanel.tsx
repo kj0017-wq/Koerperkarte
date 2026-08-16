@@ -48,7 +48,10 @@ export function AdminPanel({ data, onDataChanged }: AdminPanelProps) {
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [message, setMessage] = useState("");
 
+  const [query, setQuery] = useState("");
+
   const items = useMemo(() => getItems(data, collection), [collection, data]);
+  const filteredItems = useMemo(() => filterItems(items, query), [items, query]);
 
   function switchCollection(nextCollection: AdminCollection) {
     setCollection(nextCollection);
@@ -119,64 +122,92 @@ export function AdminPanel({ data, onDataChanged }: AdminPanelProps) {
   }
 
   return (
-    <section className="grid gap-4 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-5">
-      <aside className="glass rounded-lg p-4">
-        <div className="flex rounded-lg border border-slate-200 bg-white p-1">
-          {(["muscles", "dermatomes", "myotomes"] as AdminCollection[]).map((key) => (
+    <section className="grid gap-3 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-4">
+      <aside className="glass overflow-hidden rounded-lg">
+        <div className="border-b border-slate-200 p-3">
+          <div className="grid grid-cols-3 gap-1 rounded-lg border border-slate-200 bg-white p-1">
+            {(["muscles", "dermatomes", "myotomes"] as AdminCollection[]).map((key) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => switchCollection(key)}
+                className={`focus-ring rounded-md px-2 py-2 text-xs font-semibold transition ${
+                  collection === key ? "bg-slate-950 text-white" : "text-slate-600 hover:bg-slate-100"
+                }`}
+              >
+                {collectionLabel(key)}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-3 grid grid-cols-[1fr_auto] gap-2">
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Liste filtern"
+              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-blue-400"
+            />
             <button
-              key={key}
               type="button"
-              onClick={() => switchCollection(key)}
-              className={`focus-ring flex-1 rounded-md px-2 py-2 text-sm font-semibold transition ${
-                collection === key ? "bg-slate-950 text-white" : "text-slate-600 hover:bg-slate-100"
+              onClick={() => selectItem("new")}
+              className={`focus-ring rounded-lg px-3 py-2 text-sm font-semibold transition ${
+                selectedId === "new" ? "bg-blue-600 text-white" : "bg-white text-slate-700 hover:bg-slate-50"
               }`}
             >
-              {collectionLabel(key)}
+              Neu
             </button>
-          ))}
+          </div>
+
+          <div className="mt-2 flex items-center justify-between text-xs text-slate-500">
+            <span>{filteredItems.length} von {items.length}</span>
+            <span>{collectionHint(collection)}</span>
+          </div>
         </div>
 
-        <div className="mt-4 grid gap-2">
-          <button
-            type="button"
-            onClick={() => selectItem("new")}
-            className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${
-              selectedId === "new" ? "bg-blue-600 text-white" : "bg-white text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <span className="block font-semibold">Neuer Datensatz</span>
-            <span className={selectedId === "new" ? "text-blue-100" : "text-slate-500"}>Eintrag anlegen</span>
-          </button>
-
-          {items.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => selectItem(item.id)}
-              className={`focus-ring rounded-lg px-3 py-3 text-left text-sm transition ${
-                selectedId === item.id ? "bg-blue-600 text-white" : "bg-white text-slate-700 hover:bg-slate-50"
-              }`}
-            >
-              <span className="block font-semibold">{item.name}</span>
-              <span className={selectedId === item.id ? "text-blue-100" : "text-slate-500"}>{item.id}</span>
-            </button>
-          ))}
+        <div className="max-h-[68vh] overflow-y-auto p-2">
+          <div className="grid gap-1">
+            {filteredItems.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => selectItem(item.id)}
+                className={`focus-ring grid grid-cols-[1fr_auto] items-center gap-3 rounded-md px-3 py-2 text-left text-sm transition ${
+                  selectedId === item.id ? "bg-blue-600 text-white" : "bg-white text-slate-700 hover:bg-slate-50"
+                }`}
+              >
+                <span className="min-w-0">
+                  <span className="block truncate font-semibold leading-5">{item.name}</span>
+                  <span className={`block truncate text-xs ${selectedId === item.id ? "text-blue-100" : "text-slate-500"}`}>{itemMeta(collection, item)}</span>
+                </span>
+                <span className={`rounded-full px-2 py-1 text-[11px] font-semibold ${selectedId === item.id ? "bg-white/15 text-white" : "bg-slate-100 text-slate-500"}`}>
+                  {item.id}
+                </span>
+              </button>
+            ))}
+            {!filteredItems.length && (
+              <div className="rounded-lg border border-dashed border-slate-200 bg-white px-3 py-8 text-center text-sm text-slate-500">
+                Keine passenden Eintraege.
+              </div>
+            )}
+          </div>
         </div>
       </aside>
 
-      <form className="glass rounded-lg p-4 sm:p-5" onSubmit={(event) => event.preventDefault()}>
-        <div className="flex flex-col gap-3 border-b border-slate-200 pb-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase text-slate-400">Datenbank Verwaltung</p>
-            <h2 className="mt-1 text-2xl font-semibold text-slate-950">{collectionLabel(collection)}</h2>
+      <form className="glass rounded-lg p-3 sm:p-4" onSubmit={(event) => event.preventDefault()}>
+        <div className="flex flex-col gap-3 border-b border-slate-200 pb-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase text-slate-400">Datenbank</p>
+            <h2 className="mt-1 truncate text-xl font-semibold text-slate-950 sm:text-2xl">
+              {selectedId === "new" ? `Neuer Eintrag: ${collectionLabel(collection)}` : draft.name || collectionLabel(collection)}
+            </h2>
           </div>
-          <div className="flex gap-2">
+          <div className="flex shrink-0 gap-2">
             {selectedId !== "new" && (
               <button
                 type="button"
                 onClick={handleDelete}
                 disabled={saveState === "saving"}
-                className="focus-ring rounded-lg border border-red-200 bg-white px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-60"
+                className="focus-ring rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-60"
               >
                 Loeschen
               </button>
@@ -193,12 +224,12 @@ export function AdminPanel({ data, onDataChanged }: AdminPanelProps) {
         </div>
 
         {message && (
-          <div className={`mt-4 rounded-lg border px-3 py-2 text-sm ${saveState === "error" ? "border-red-200 bg-red-50 text-red-700" : "border-emerald-200 bg-emerald-50 text-emerald-700"}`}>
+          <div className={`mt-3 rounded-lg border px-3 py-2 text-sm ${saveState === "error" ? "border-red-200 bg-red-50 text-red-700" : "border-emerald-200 bg-emerald-50 text-emerald-700"}`}>
             {message}
           </div>
         )}
 
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           <TextField label="ID" value={draft.id} onChange={(value) => setDraft({ ...draft, id: slugify(value) })} />
           <TextField label="Name" value={draft.name} onChange={(value) => setDraft({ ...draft, name: value })} />
 
@@ -218,7 +249,6 @@ export function AdminPanel({ data, onDataChanged }: AdminPanelProps) {
     </section>
   );
 }
-
 function MuscleFields({ item, onChange }: { item: MuscleMapItem; onChange: (item: MuscleMapItem) => void }) {
   return (
     <>
@@ -266,7 +296,7 @@ function TextField({ label, value, onChange }: { label: string; value: string; o
       <input
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm outline-none transition focus:border-blue-400"
+        className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-blue-400"
       />
     </label>
   );
@@ -274,17 +304,42 @@ function TextField({ label, value, onChange }: { label: string; value: string; o
 
 function TextArea({ label, helper, value, onChange }: { label: string; helper?: string; value: string; onChange: (value: string) => void }) {
   return (
-    <label className="text-sm font-medium text-slate-700 sm:col-span-2">
+    <label className="text-sm font-medium text-slate-700 sm:col-span-2 xl:col-span-3">
       {label}
       {helper && <span className="ml-2 text-xs font-normal text-slate-400">{helper}</span>}
       <textarea
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        rows={4}
-        className="mt-2 w-full resize-y rounded-lg border border-slate-200 bg-white px-3 py-3 text-sm leading-6 outline-none transition focus:border-blue-400"
+        rows={3}
+        className="mt-1.5 w-full resize-y rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm leading-6 outline-none transition focus:border-blue-400"
       />
     </label>
   );
+}
+
+function filterItems(items: Array<MuscleMapItem | DermatomeRegion | MyotomeGroup>, query: string) {
+  const needle = query.trim().toLowerCase();
+  if (!needle) return items;
+  return items.filter((item) => [item.id, item.name, itemMetaForSearch(item)].join(" ").toLowerCase().includes(needle));
+}
+
+function itemMeta(collection: AdminCollection, item: MuscleMapItem | DermatomeRegion | MyotomeGroup) {
+  if (collection === "muscles" && "bodyArea" in item) return item.bodyArea || "Triggerpunkt";
+  if (collection === "dermatomes" && "segments" in item) return item.segments.join(", ") || "Dermatom";
+  if (collection === "myotomes" && "movement" in item) return item.movement || item.segments.join(", ") || "Myotom";
+  return "";
+}
+
+function itemMetaForSearch(item: MuscleMapItem | DermatomeRegion | MyotomeGroup) {
+  if ("bodyArea" in item) return [item.bodyArea, item.painRegions.join(" ")].join(" ");
+  if ("movement" in item) return [item.movement, item.segments.join(" ")].join(" ");
+  return "segments" in item ? item.segments.join(" ") : "";
+}
+
+function collectionHint(collection: AdminCollection) {
+  if (collection === "muscles") return "Muskeln / Trigger";
+  if (collection === "dermatomes") return "Segmente";
+  return "Bewegung";
 }
 
 function getItems(data: AnatomyData, collection: AdminCollection) {
