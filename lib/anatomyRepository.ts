@@ -25,11 +25,27 @@ export type AnatomyData = {
 
 export async function isAdminUser(uid: string): Promise<boolean> {
   try {
-    const snapshot = await get(ref(realtimeDb, `admins/${uid}`));
+    const snapshot = await withTimeout<any>(get(ref(realtimeDb, `admins/${uid}`)), REALTIME_LOAD_TIMEOUT_MS);
     return snapshot.exists() && snapshot.val() === true;
   } catch {
     return false;
   }
+}
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = window.setTimeout(() => reject(new Error("Firebase request timed out")), timeoutMs);
+    promise.then(
+      (value) => {
+        window.clearTimeout(timer);
+        resolve(value);
+      },
+      (error) => {
+        window.clearTimeout(timer);
+        reject(error);
+      }
+    );
+  });
 }
 export async function saveAnatomyItem<T extends { id: string }>(collection: "muscles" | "dermatomes" | "myotomes", item: T): Promise<void> {
   await set(ref(realtimeDb, `${collection}/${item.id}`), item);

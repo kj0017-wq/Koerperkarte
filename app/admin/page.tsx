@@ -43,11 +43,17 @@ export default function AdminPage() {
     let mounted = true;
     setIsAdmin(null);
 
-    isAdminUser(user.uid).then((allowed) => {
-      if (!mounted) return;
-      setIsAdmin(allowed);
-      if (allowed) refreshData();
-    });
+    isAdminUser(user.uid)
+      .then((allowed) => {
+        if (!mounted) return;
+        setIsAdmin(allowed);
+        if (allowed) refreshData();
+      })
+      .catch((error) => {
+        console.error("Adminrechte konnten nicht geprueft werden.", error);
+        if (!mounted) return;
+        setIsAdmin(false);
+      });
 
     return () => {
       mounted = false;
