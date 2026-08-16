@@ -335,20 +335,15 @@ export function BodyMap({
               ))}
             </div>
           )}
-          <div className="flex flex-wrap items-center gap-2">
-            {focused && (
-              <button
-                type="button"
-                onClick={() => setShowFullBody(true)}
-                className="focus-ring rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-              >
-                Ganzkoerper
-              </button>
-            )}
-            <div className="rounded-lg bg-slate-100 px-3 py-2 text-sm font-medium text-slate-600">
-              {focused ? "Fokusansicht aktiv" : interactionHint(mode)}
-            </div>
-          </div>
+          {focused && (
+            <button
+              type="button"
+              onClick={() => setShowFullBody(true)}
+              className="focus-ring w-fit rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            >
+              Ganzkoerper
+            </button>
+          )}
         </div>
       </div>
 
@@ -1129,13 +1124,6 @@ function projectReferralPath(path: string) {
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
-}
-
-function interactionHint(mode: AnatomyMode) {
-  if (mode === "triggerpoints") return "Muskel waehlen oder Schmerzregion tippen";
-  if (mode === "dermatomes") return "Region tippen";
-  if (mode === "myotomes") return "Muskelgruppe tippen";
-  return "Modul in Vorbereitung";
 }
 
 function regionLabel(region: string) {
