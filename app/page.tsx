@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { BodyInfoPanel, BodyMap, type BodyMapInfo } from "@/components/BodyMap";
@@ -26,13 +26,19 @@ export default function Home() {
   useEffect(() => {
     let mounted = true;
 
-    loadAnatomyData().then((data) => {
-      if (!mounted) return;
+    loadAnatomyData()
+      .then((data) => {
+        if (!mounted) return;
 
-      setAnatomyData(data);
-      setDataSource(data.source);
-      setSelection({ type: "muscle", id: data.muscles[0].id });
-    });
+        setAnatomyData(data);
+        setDataSource(data.source);
+        const firstSelection = getInitialSelection(data);
+        if (firstSelection) setSelection(firstSelection);
+      })
+      .catch((error) => {
+        console.error("Anatomische Daten konnten nicht initialisiert werden.", error);
+        if (mounted) setDataSource("local");
+      });
 
     return () => {
       mounted = false;
@@ -297,6 +303,14 @@ function modeLabel(mode: AnatomyMode) {
   return labels[mode];
 }
 
+function getInitialSelection(data: AnatomyData): MapSelection | null {
+  if (data.muscles[0]) return { type: "muscle", id: data.muscles[0].id };
+  if (data.dermatomeRegions[0]) return { type: "dermatome", id: data.dermatomeRegions[0].id };
+  if (data.myotomeGroups[0]) return { type: "myotome", id: data.myotomeGroups[0].id };
+  if (data.peripheralNerves[0]) return { type: "nerve", id: data.peripheralNerves[0].id };
+  if (data.blocks[0]) return { type: "block", id: data.blocks[0].id };
+  return null;
+}
 function sourceLabel(source: DataSourceState) {
   if (source === "loading") return "Realtime Database wird geprueft";
   if (source === "realtime") return "Realtime Database";

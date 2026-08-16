@@ -8,6 +8,8 @@ import type { BodyMapBlock, DermatomeRegion, MuscleMapItem, MyotomeGroup, Periph
 
 const { get, ref, remove, set } = database as any;
 
+const REALTIME_LOAD_TIMEOUT_MS = 4500;
+
 
 export type AnatomyData = {
   muscles: MuscleMapItem[];
@@ -177,21 +179,25 @@ function asStringArray(value: unknown) {
 
 async function readRealtimeList<T extends { id: string }>(path: string): Promise<T[]> {
   try {
-    const response = await fetch(`${firebaseDatabaseUrl}/${path}.json`, { cache: "no-store" });
+    const response = await fetchWithTimeout(`${firebaseDatabaseUrl}/${path}.json`, REALTIME_LOAD_TIMEOUT_MS);
     if (!response.ok) throw new Error(`REST ${path} failed with ${response.status}`);
     const value = (await response.json()) as Record<string, Omit<T, "id"> & { id?: string }> | Array<Omit<T, "id"> & { id?: string }> | null;
     return valueToList<T>(value);
   } catch (restError) {
-    console.warn(`REST-Laden fuer ${path} fehlgeschlagen. Firebase SDK wird versucht.`, restError);
-  }
-
-  const snapshot = await get(ref(realtimeDb, path));
-
-  if (!snapshot.exists()) {
+    console.warn(`REST-Laden fuer ${path} fehlgeschlagen. Lokale Daten werden verwendet, falls vorhanden.`, restError);
     return [];
   }
+}
 
-  return valueToList<T>(snapshot.val());
+async function fetchWithTimeout(url: string, timeoutMs: number): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(url, { cache: "no-store", signal: controller.signal });
+  } finally {
+    window.clearTimeout(timeout);
+  }
 }
 
 function valueToList<T extends { id: string }>(
