@@ -5,6 +5,8 @@ export type LayerState = {
   triggerpoints: boolean;
   referral: boolean;
   segments: boolean;
+  skeleton: boolean;
+  organs: boolean;
 };
 
 export type MapSelection =

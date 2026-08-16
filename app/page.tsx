@@ -18,7 +18,9 @@ export default function Home() {
     anatomy: true,
     triggerpoints: true,
     referral: true,
-    segments: true
+    segments: true,
+    skeleton: false,
+    organs: false
   });
   const [zoom, setZoom] = useState(1);
   const [muscleFilter, setMuscleFilter] = useState("");

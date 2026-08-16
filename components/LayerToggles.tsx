@@ -1,4 +1,4 @@
-import type { LayerState } from "@/lib/types";
+﻿import type { LayerState } from "@/lib/types";
 
 type LayerTogglesProps = {
   layers: LayerState;
@@ -11,7 +11,9 @@ const layerLabels: Array<{ id: keyof LayerState; label: string }> = [
   { id: "anatomy", label: "Koerper" },
   { id: "triggerpoints", label: "Triggerpunkte" },
   { id: "referral", label: "Ausstrahlung" },
-  { id: "segments", label: "Segmente" }
+  { id: "segments", label: "Segmente" },
+  { id: "skeleton", label: "Skelett" },
+  { id: "organs", label: "Organe" }
 ];
 
 export function LayerToggles({ layers, onChange, zoom, onZoomChange }: LayerTogglesProps) {

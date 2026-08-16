@@ -376,6 +376,9 @@ export function BodyMap({
 
           {layers.anatomy && (mapView === "face" ? <FaceSilhouette /> : mapView === "back" ? <BackBodySilhouette /> : <BodySilhouette />)}
 
+          {layers.skeleton && <SkeletonLayer mapView={mapView} />}
+          {layers.organs && <OrgansLayer mapView={mapView} />}
+
           {mode === "triggerpoints" && layers.referral &&
             visibleTriggerpointMuscles
               .filter((muscle) => muscle.referralPath && inferMuscleMapViews(muscle).includes(mapView))
@@ -804,6 +807,72 @@ function layoutTriggerPoints(entries: TriggerPointEntry[], mapView: MapView): Po
   }
 
   return result;
+}
+function SkeletonLayer({ mapView }: { mapView: MapView }) {
+  if (mapView === "face") {
+    return (
+      <g opacity="0.72" pointerEvents="none">
+        <path d="M156 94 C176 78 224 78 244 94 C262 126 262 200 246 254 C238 286 220 314 200 324 C180 314 162 286 154 254 C138 200 138 126 156 94 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
+        <path d="M166 260 C186 274 214 274 234 260" fill="none" stroke="#94a3b8" strokeWidth="2" />
+        <path d="M176 338 C190 350 210 350 224 338 L232 456" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+        <path d="M176 338 L168 456" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+      </g>
+    );
+  }
+
+  const shoulderLine = mapView === "back" ? "M120 224 C156 204 244 204 280 224" : "M118 218 C154 198 246 198 282 218";
+
+  return (
+    <g opacity="0.68" pointerEvents="none">
+      <path d="M200 58 C228 58 246 78 246 106 C246 138 226 154 200 154 C174 154 154 138 154 106 C154 78 172 58 200 58 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
+      <path d="M200 158 L200 520" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
+      <path d={shoulderLine} fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
+      <path d="M160 244 C184 226 216 226 240 244 L250 352 C226 372 174 372 150 352 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
+      <path d="M150 430 C180 452 220 452 250 430 C236 466 164 466 150 430 Z" fill="none" stroke="#64748b" strokeWidth="4" />
+      <path d="M132 230 L84 392" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
+      <path d="M268 230 L316 392" fill="none" stroke="#64748b" strokeWidth="5" strokeLinecap="round" />
+      <path d="M84 392 L70 516" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+      <path d="M316 392 L330 516" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+      <path d="M178 518 L158 758" fill="none" stroke="#64748b" strokeWidth="6" strokeLinecap="round" />
+      <path d="M222 518 L242 758" fill="none" stroke="#64748b" strokeWidth="6" strokeLinecap="round" />
+      <path d="M158 758 C140 772 126 782 112 790" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+      <path d="M242 758 C260 772 274 782 288 790" fill="none" stroke="#94a3b8" strokeWidth="4" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function OrgansLayer({ mapView }: { mapView: MapView }) {
+  if (mapView === "face") {
+    return (
+      <g opacity="0.78" pointerEvents="none">
+        <ellipse cx="166" cy="190" rx="14" ry="8" fill="#38bdf8" opacity="0.42" />
+        <ellipse cx="234" cy="190" rx="14" ry="8" fill="#38bdf8" opacity="0.42" />
+        <path d="M200 214 C190 242 188 260 200 270 C212 260 210 242 200 214" fill="#fb7185" opacity="0.35" />
+        <path d="M172 300 C190 312 210 312 228 300 C218 318 182 318 172 300" fill="#f97316" opacity="0.35" />
+      </g>
+    );
+  }
+
+  if (mapView === "back") {
+    return (
+      <g opacity="0.72" pointerEvents="none">
+        <ellipse cx="174" cy="334" rx="22" ry="36" fill="#f97316" opacity="0.22" />
+        <ellipse cx="226" cy="334" rx="22" ry="36" fill="#f97316" opacity="0.22" />
+        <path d="M158 404 C182 390 218 390 242 404 L236 440 C216 454 184 454 164 440 Z" fill="#f59e0b" opacity="0.22" />
+      </g>
+    );
+  }
+
+  return (
+    <g opacity="0.78" pointerEvents="none">
+      <ellipse cx="172" cy="276" rx="30" ry="48" fill="#38bdf8" opacity="0.28" />
+      <ellipse cx="228" cy="276" rx="30" ry="48" fill="#38bdf8" opacity="0.28" />
+      <path d="M188 292 C202 274 226 288 224 314 C222 342 204 356 196 378 C186 354 170 338 174 314 C176 304 180 296 188 292 Z" fill="#fb7185" opacity="0.38" />
+      <path d="M158 356 C190 340 230 350 252 380 C228 404 178 400 154 380 Z" fill="#f59e0b" opacity="0.3" />
+      <path d="M160 394 C194 382 232 388 246 418 C224 446 176 446 154 418 Z" fill="#f97316" opacity="0.24" />
+      <path d="M176 448 C190 440 210 440 224 448 C214 470 186 470 176 448 Z" fill="#a78bfa" opacity="0.26" />
+    </g>
+  );
 }
 function BodySilhouette() {
   return (

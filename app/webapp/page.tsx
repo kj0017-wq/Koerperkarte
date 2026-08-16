@@ -14,6 +14,7 @@ const modes: Array<{ id: AnatomyMode; label: string; enabled: boolean }> = [
   { id: "dermatomes", label: "Dermatome", enabled: true },
   { id: "myotomes", label: "Myotome", enabled: true },
   { id: "nerves", label: "Nerven", enabled: true },
+  { id: "fascia", label: "Faszien", enabled: true },
   { id: "future", label: "Mehr", enabled: false }
 ];
 
@@ -33,7 +34,9 @@ export default function WebApp() {
     anatomy: true,
     triggerpoints: true,
     referral: true,
-    segments: true
+    segments: true,
+    skeleton: false,
+    organs: false
   });
   const [zoom, setZoom] = useState(1);
   const [muscleFilter, setMuscleFilter] = useState("");
