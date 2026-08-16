@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import type {
@@ -108,8 +108,8 @@ const backPainRegions: PainRegion[] = [
   { id: "heel", label: "Ferse", path: "M130 764 C158 754 188 760 198 784 C178 804 142 804 122 788 Z M202 784 C212 760 242 754 270 764 L278 788 C258 804 222 804 202 784 Z" },
   { id: "plantar-foot", label: "Fusssohle", path: "M120 784 C150 768 184 776 198 800 C172 814 138 812 112 798 Z M202 800 C216 776 250 768 280 784 L288 798 C262 812 228 814 202 800 Z" },
   { id: "medial-arch", label: "Laengsgewoelbe", path: "M146 780 C166 772 188 780 198 800 C176 802 154 798 138 790 Z M202 800 C212 780 234 772 254 780 L262 790 C246 798 224 802 202 800 Z" },
-  { id: "ball-of-foot", label: "Vorfußballen", path: "M116 792 C148 804 174 804 198 792 C194 810 144 816 112 802 Z M202 792 C226 804 252 804 284 792 L288 802 C256 816 206 810 202 792 Z" },
-  { id: "forefoot", label: "Vorfuß", path: "M112 788 C146 802 174 804 200 794 L198 810 C164 820 132 814 108 800 Z M200 794 C226 804 254 802 288 788 L292 800 C268 814 236 820 202 810 Z" },
+  { id: "ball-of-foot", label: "VorfuÃŸballen", path: "M116 792 C148 804 174 804 198 792 C194 810 144 816 112 802 Z M202 792 C226 804 252 804 284 792 L288 802 C256 816 206 810 202 792 Z" },
+  { id: "forefoot", label: "VorfuÃŸ", path: "M112 788 C146 802 174 804 200 794 L198 810 C164 820 132 814 108 800 Z M200 794 C226 804 254 802 288 788 L292 800 C268 814 236 820 202 810 Z" },
   { id: "toes", label: "Zehen", path: "M112 796 C144 812 176 812 198 802 C194 820 140 824 106 806 Z M202 802 C224 812 256 812 288 796 L294 806 C260 824 206 820 202 802 Z" }
 ];
 
@@ -395,7 +395,7 @@ export function BodyMap({
             </filter>
           </defs>
 
-          {layers.anatomy && (mapView === "face" ? <FaceSilhouette /> : mapView === "back" ? <BackBodySilhouette showMuscleFields={mode !== "dermatomes" && mode !== "myotomes"} /> : <BodySilhouette showMuscleFields={mode !== "dermatomes" && mode !== "myotomes"} />)}
+          {layers.anatomy && (mapView === "face" ? <FaceSilhouette /> : mapView === "back" ? <BackBodySilhouette showMuscleFields={mode !== "nerves" && mode !== "fascia"} /> : <BodySilhouette showMuscleFields={mode !== "nerves" && mode !== "fascia"} />)}
 
           {layers.skeleton && <SkeletonLayer mapView={mapView} />}
           {layers.joints && <JointLayer mapView={mapView} />}
@@ -416,7 +416,7 @@ export function BodyMap({
                 />
               ))}
 
-          {mode === "triggerpoints" &&
+          {mode === "triggerpoints" && layers.segments &&
             activePainRegions.map((region) => {
               const active = activePainRegionId === region.id;
               const fixed = selection.type === "painRegion" && selection.id === region.id;
@@ -498,15 +498,16 @@ export function BodyMap({
             </g>
           )}
 
-          {mode === "nerves" && layers.segments &&
+          {mode === "nerves" && (layers.segments || layers.referral) &&
             peripheralNerves.map((nerve) => {
               const active = selection.type === "nerve" && selection.id === nerve.id;
 
               return (
                 <g key={nerve.id} className="cursor-pointer outline-none" tabIndex={0} role="button" aria-label={nerve.name} onClick={() => onSelect({ type: "nerve", id: nerve.id })}>
-                  {nerve.territoryPath && (
+                  {layers.referral && nerve.territoryPath && (
                     <path d={nerve.territoryPath} fill="#7c3aed" opacity={active ? "0.18" : "0.07"} className="transition-opacity duration-200 hover:opacity-20" />
                   )}
+                  {layers.segments && (
                   <path
                     d={nerve.mapPath}
                     fill="none"
@@ -517,19 +518,21 @@ export function BodyMap({
                     opacity={active ? "0.95" : "0.55"}
                     className="transition-all duration-200 hover:opacity-90"
                   />
+                  )}
                 </g>
               );
             })}
 
-          {mode === "fascia" && layers.segments &&
+          {mode === "fascia" && (layers.segments || layers.referral) &&
             fasciaLines.map((line) => {
               const active = selection.type === "fascia" && selection.id === line.id;
 
               return (
                 <g key={line.id} className="cursor-pointer outline-none" tabIndex={0} role="button" aria-label={line.name} onClick={() => onSelect({ type: "fascia", id: line.id })}>
-                  {line.territoryPath && (
+                  {layers.referral && line.territoryPath && (
                     <path d={line.territoryPath} fill="#14b8a6" opacity={active ? "0.2" : "0.08"} className="transition-opacity duration-200 hover:opacity-20" />
                   )}
+                  {layers.segments && (
                   <path
                     d={line.mapPath}
                     fill="none"
@@ -540,6 +543,7 @@ export function BodyMap({
                     opacity={active ? "0.95" : "0.58"}
                     className="transition-all duration-200 hover:opacity-90"
                   />
+                  )}
                 </g>
               );
             })}
@@ -1199,4 +1203,6 @@ function regionLabel(region: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+
+
 
