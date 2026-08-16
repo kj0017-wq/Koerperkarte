@@ -322,9 +322,17 @@ export function BodyMap({
         </div>
       )}
 
-      <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start">
-        <div className="relative flex min-h-[58vh] items-center justify-center overflow-hidden rounded-lg bg-white p-3 sm:min-h-[620px]">
-          <svg
+      <div className="relative flex min-h-[58vh] items-center justify-center overflow-hidden rounded-lg bg-white p-3 sm:min-h-[620px]">
+        {mode === "triggerpoints" && (
+          <BodyInfoOverlay
+            point={activePoint}
+            painRegion={activePainRegion}
+            painRegionMuscleCount={activePainRegionMuscles.length}
+            selection={selection}
+            title={title}
+          />
+        )}
+        <svg
           viewBox={activeViewBox}
           role="img"
           aria-label={title}
@@ -475,17 +483,7 @@ export function BodyMap({
                 </path>
               );
             })}
-          </svg>
-        </div>
-        {mode === "triggerpoints" && (
-          <BodyInfoOverlay
-            point={activePoint}
-            painRegion={activePainRegion}
-            painRegionMuscleCount={activePainRegionMuscles.length}
-            selection={selection}
-            title={title}
-          />
-        )}
+        </svg>
       </div>
     </section>
   );
@@ -509,7 +507,7 @@ function BodyInfoOverlay({
     const regions = (point.point.painRegions?.length ? point.point.painRegions : point.muscle.painRegions) ?? [];
 
     return (
-      <div className="rounded-lg border border-red-100 bg-white p-4 text-left shadow-xl shadow-slate-950/10 ring-1 ring-slate-950/5 xl:sticky xl:top-4">
+      <div className="pointer-events-none absolute right-3 top-3 z-30 w-[min(320px,calc(100%-1.5rem))] rounded-lg border border-red-100 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
         <p className="text-xs font-semibold uppercase text-red-600">{fixed ? "Fixierter Triggerpunkt" : "Triggerpunkt"}</p>
         <h3 className="mt-1 text-lg font-semibold text-slate-950">{point.muscle.name}</h3>
         <p className="mt-1 text-sm font-semibold text-red-700">{point.point.label}</p>
@@ -536,19 +534,12 @@ function BodyInfoOverlay({
     );
   }
 
-  if (!painRegion) {
-    return (
-      <div className="rounded-lg border border-slate-200 bg-white p-4 text-left text-sm leading-6 text-slate-500 shadow-sm xl:sticky xl:top-4">
-        <p className="text-xs font-semibold uppercase text-slate-400">Infofeld</p>
-        <p className="mt-2">Triggerpunkt oder Schmerzregion beruehren. Die Details erscheinen hier ausserhalb der Body-Visualisierung.</p>
-      </div>
-    );
-  }
+  if (!painRegion) return null;
 
   const fixed = selection.type === "painRegion" && selection.id === painRegion.id;
 
   return (
-    <div className="rounded-lg border border-orange-200 bg-white p-4 text-left shadow-xl shadow-slate-950/10 ring-1 ring-slate-950/5 xl:sticky xl:top-4">
+    <div className="pointer-events-none absolute right-3 top-3 z-20 w-[min(280px,calc(100%-1.5rem))] rounded-lg border border-orange-200 bg-white/95 p-3 text-left shadow-2xl shadow-slate-950/15 ring-1 ring-slate-950/5 backdrop-blur">
       <p className="text-xs font-semibold uppercase text-orange-600">{fixed ? "Fixierte Schmerzregion" : "Schmerzregion"}</p>
       <h3 className="mt-1 text-lg font-semibold text-slate-950">{painRegion.label}</h3>
       <p className="mt-2 text-sm leading-5 text-slate-600">
