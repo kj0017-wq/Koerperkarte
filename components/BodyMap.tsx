@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   AnatomyMode,
   BodyMapBlock,
@@ -184,6 +184,7 @@ export function BodyMap({
   const [selectedPointKey, setSelectedPointKey] = useState<string | null>(null);
   const [showFullBody, setShowFullBody] = useState(false);
   const [manualViewOverride, setManualViewOverride] = useState(false);
+  const previousModeRef = useRef(mode);
 
   useEffect(() => {
     if (mode !== "triggerpoints" && mode !== "nerves" && mode !== "fascia" && mapView !== "front") setMapView("front");
@@ -197,9 +198,13 @@ export function BodyMap({
   }, [resetViewKey]);
 
   useEffect(() => {
+    const previousMode = previousModeRef.current;
+    const modeChanged = previousMode !== mode;
+    previousModeRef.current = mode;
+
     setHoveredPoint(null);
     hoverPainRegion(null);
-    setShowFullBody(false);
+    setShowFullBody(modeChanged && (mode === "dermatomes" || mode === "myotomes"));
     setManualViewOverride(false);
   }, [mode, selectionKey]);
 
@@ -1207,6 +1212,7 @@ function regionLabel(region: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+
 
 
 
